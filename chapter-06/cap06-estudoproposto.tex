@@ -1,0 +1,263 @@
+\chapter{Descrição do Estudo Proposto}\label{cap:estudo-proposto}
+\graphicspath{{chapter-06/img-cap06/}}
+
+No presente trabalho serão ilustrados e analisados os resultados obtidos pelas análises numéricas computacionais para um escoamento compressível, axissimétrico e em regime permanente baseado na abordagem RANS para descrever a turbulência, em especial os modelos Spalart-Allmaras e SST $\kappa$-$\omega$. Dentre os trabalhos já citados, as referências \cite{Sahu1985,Mahmoud2009,torangatti2basawaraj,belaidouni2016,nicolas-perez_accuracy_2017,Dali2018a,Lucena2020,Reddy2021} serviram como norteadoras para o emprego dessas simulações. 
+
+Ademais, a implementação do MPMTM faz uso dos recursos disponíveis pelas simulações CFD a fim de comparar o funcionamento do projetil em duas situações: o voo inerte, que seria o voo sem uso do \texit{Base Bleed}; voo ativo, com o uso do \texit{Base Bleed}. Desta forma, aplica-se o que já foi desenvolvido e consolidado em trabalhos anteriores \cite{Gauchoux1991,balon2006analysis,Abou-Elela2013,Skande2014,Lim2016,Rosendo2020}.
+
+\section{Parâmetros de Interesse}
+
+Nesta seção espera-se definir quais variáveis de saída são relevantes para o projeto. Por razões técnicas, a tecnologia \textit{Base Bleed} procura resolver o problema do arrasto induzido na base do projetil, logo são calculados os valores necessários para a compreensão desta força aerodinâmica. 
+
+\subsection{Coeficiente de Arrasto}
+
+Esse coeficiente ($C_D$) é um número adimensional que pode ser obtido de acordo com a equação \ref{eq:cd}:
+
+\begin{equation} \label{eq:cd}
+    C_{D} = \frac{F_{D}}{\frac{1}{2}\rho V^2 A}
+\end{equation}
+%
+os termos $F_{D}$, $\frac{1}{2}\rho V^2$ e $A$ representam, respectivamente, a força de arrasto aerodinâmico, a pressão dinâmica exercida pelo fluido e a área de referência da munição. Neste trabalho em específico, não são considerados os efeitos causados pelo ângulo de ataque.
+
+\subsection{Coeficiente de Pressão}
+
+A pressão é uma das propriedades de maior interesse do fluido, portanto calcula-se um adimensional que permite entender como as forças de sustentação e arrasto se comportam no escoamento. O coeficiente de pressão ($C_{P}$) é um número adimensional que descreve as pressões relativas no escoamento independente do tamanho do corpo. Ele pode ser calculado a partir da expressão \eqref{eq:cp-equation}: 
+
+\begin{equation}\label{eq:cp-equation}
+    C_P = \frac{p - p_{\infty}}{\frac{1}{2}\rho_{\infty}V^2}
+\end{equation}
+%
+onde $\text{p}_\infty$ e $\rho_\infty$ são, respectivamente, a pressão e a densidade do meio livre. Assume-se que quando os contornos de pressão indicam regiões com $C_{P} > 1$, o escoamento é compressível.
+
+\subsection{Parâmetro de Injeção}
+
+Para aplicar o conceito do parâmetro, $Inj$, é necessário olhar para a expressão \eqref{eq:parametro-injecao}:
+
+\begin{equation}\label{eq:parametro-injecao}
+    Inj = \frac{\Dot{m_{BB}}}{\rho_{\infty}u_{\infty}A_{b}}
+\end{equation}
+%
+onde $\rho_{\infty}$ é a densidade do ar no meio livre; o $U_{\infty}$ é a velocidade do ar no meio livre e $A_{b}$ significa a área da base do projetil. 
+
+Ao observar a equação anterior, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m_{BB}}$. Como o fluido de trabalho para as simulações CFD é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
+
+\begin{equation}\label{eq:vazao-massica-BB}
+    \Dot{m} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
+\end{equation}
+%
+Sejam $p_{c}$ e $p_{t}$ as pressões na câmara geradora de gás e na saída do sistema, respectivamente. Os termos $\rho_{t}$, $V_{t}$ e $A_{t}$ se referem a densidade, a velocidade e a área na saída do \texit{Base Bleed}. 
+
+Como requisitos das simulações de dinâmica dos fluidos computacional, a temperatura e velocidade de saída dos gases (em função do número de Mach) são computadas com base na pressão da câmara, que é obtida a partir da equação para a vazão mássica \ref{eq:vazao-massica-BB}. Como o gás é isentrópico, as equações para essas propriedades são as seguintes:
+
+\begin{align}
+    \label{eq:temperatura-BB}
+    T_{t} = T_{c}\left(\frac{p_t}{p_c}\right)^{(\gamma - 1)/\gamma} \\
+    \label{eq:velocidade-mach-BB}
+    M_{t} = \sqrt{\frac{2}{\gamma - 1}\left[\left(\frac{p_c}{p_t}\right)^{(\gamma - 1)/\gamma}-1\right]}
+\end{align}
+
+\section{Geração de malha}\label{sec:geracao-malha}
+
+Para conseguir formular a abordagem numérica exigida pelo método de volumes finitos, a ser empregado no presente trabalho, foi necessário construir um domínio computacional através de uma malha. Com a evolução do projeto, foi construída um domínio axissimétrico em formato de "C", assim como visto em trabalhos anteriores \cite{Mahmoud2009,nicolas-perez_accuracy_2017}. Uma vantagem desse tipo de malha é permitir simplificações nas fronteiras para imposição das condições de contorno, além de reduzir o custo computacional para obtenção de resultados.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=1.0\textwidth]{foto01-malha.png}
+	\caption{Domínio computacional}
+	\label{fig12:autor-malha}
+\end{figure}
+
+E com o domínio preparado, foram feitas 2 malhas (vide \autoref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \texit{Base Bleed} é de 1 polegada (25,4 mm).
+
+\begin{table}[ht]
+\centering
+\caption[Malhas desenvolvidas para o domínio computacional (sem \textit{Base Bleed})]{Malhas desenvolvidas para o domínio computacional (sem \textit{Base Bleed})}
+\vspace{0.5cm}
+\begin{tabular}{c|c}
+\multicolumn{2}{c}{Primeiro Teste de Convergência} \\
+\hline 
+Número da Malha & Quantidade de elementos \\ 
+\hline
+1 & 186500 \\
+2 & 380000
+\end{tabular}
+\label{tab:tabela-malhas-inicial}
+\fonte{Autor.}
+\end{table}
+
+A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a 50,8mm e a temperatura de saída com valor de 2306,15K. Nesta etapa, foram testadas 4 malhas, de acordo com a \autoref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com 380000 elementos para obtenção dos resultados finais.
+
+\begin{table}[ht]
+\centering
+\caption[Malhas desenvolvidas para o domínio computacional (com \texit{Base Bleed})]{Malhas desenvolvidas para o domínio computacional (com \textit{Base Bleed})}
+\vspace{0.5cm}
+\begin{tabular}{c|c}
+\multicolumn{2}{c}{Segundo Teste de Convergência} \\
+\hline 
+Número da Malha & Quantidade de elementos \\ 
+\hline
+1 & 380000 \\
+2 & 453600 \\
+3 & 514800 \\
+4 & 566550
+\end{tabular}
+\label{tab:tabela-malhas-secundaria}
+\fonte{Autor.}
+\end{table}
+
+Após a ratificação dos valores encontrados para o coeficiente de arrasto, atestou-se a influência do efeito \texit{Base Bleed} pela temperatura de injeção dos gases. É importante salientar que a maior temperatura foi extraída de outro trabalho desenvolvido pelo autor desta dissertação em que se fez presente como co-autor \cite{Gil2020}.
+
+\begin{table}[ht]
+\centering
+\caption[Efeito \textit{Base Bleed} em função da temperatura]{Efeito \texit{Base Bleed} em função da temperatura}
+\vspace{0.5cm}
+\begin{tabular}{c|c}
+Diâmetro do Base Bleed (mm) & Temperatura (K)\\ 
+\hline
+\multirow{3}*{25,4} & 300\\
+& 1500\\
+& 2306,15
+\end{tabular}
+\label{tab:tabela-vazoes-por-diametro}
+\fonte{Autor.}
+\end{table}
+
+Após esse passo, foram comparados dois diâmetros possíveis para saída da câmara geradora de gás (sistema BB) com a mesma temperatura, conforme a \autoref{tab:tabela-vazoes-por-diametro}.
+
+\begin{table}[ht]
+\centering
+\caption[Diâmetros testados para analisar o efeito \textit{Base Bleed} ($T_{BB} = 2306,15 K$)]{Diâmetros testados para analisar o efeito \textit{Base Bleed} ($T_{BB} = 2306,15 K$)}
+\vspace{0.5cm}
+\begin{tabular}{c|c|c}
+Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 (kg/s) & Vazão nº 2 (kg/s)\\ 
+\hline
+1" \hspace{2mm} 25,4 & 0,015 & 0,030\\
+2" \hspace{2mm} 50,8 & 0,030 & 0,060
+\end{tabular}
+\label{tab:tabela-vazoes-por-diametro}
+\fonte{Autor.}
+\end{table}
+
+\section{Condições Iniciais e de Contorno}\label{sec:condicao-contorno}
+
+A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram impostas para descobrir a velocidade do escoamento nesta região, já que a pressão é definida a partir do gradiente nulo ($\nabla p = 0$) em respeito ao escoamento livre.
+
+No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão possui o valor de $1,01325 \times 10^{5}$ Pa (1 atm). A velocidade é prescrita conforme os valores de entrada do escoamento e a temperatura é determinada como $T = 288,15 \text{K}$ por razões de condições ambientais predeterminadas em tabelas de tiro.
+
+No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que é igual ao valor encontrado no meio livre. A região da parede, que descreve o corpo sólido do projetil, possui a condição de não-deslizamento para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a 0,7 metros, aproximadamente o valor do comprimento do projetil.
+
+\section{Método de Resolução das Simulações CFD}\label{sec:metodo-resolucao-cfd}
+
+Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos \cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de $2^{a}$ ordem. 
+
+Para lidar com a compressibilidade existente no regime de voo desta munição estudada, o esquema \textit{density-based} totalmente implícito foi aplicado \cite{Weiss1995PreconditioningAT,Weiss1997IMPLICITSO,Weiss1999ImplicitSO}.
+
+Para o cálculo dos gradientes foi utilizado o método dos Mínimos Quadrados e o esquema de avaliação do fluxo optou pelo ROE-FDS, pois demonstra bons resultados para problemas com escoamentos compressíveis \cite{nicolas-perez_accuracy_2017}. Para a resolução do sistema de equações lineares foi utilizada a técnica \textit{multigrid} \cite{Hutchinson1986}.
+
+O problema foi considerado convergido quando todos os resíduos forem menores que $1,0 \times 10^{-6}$. Um software comercial foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
+
+\section{Implementação do Modelo de Trajetória}\label{subsec:implementacao-trajetoria}
+
+No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. Para maior esclarecimento, serão explicados nas subseções a posteriori.
+
+\subsection{Condições Geométricas}\label{subsec:condicoes-geometricas}
+
+O projetil de calibre 155mm possui um formato axissimétrico, portanto ele permite aplicar o modelo MPMTM. Isto é, o corpo rígido é tratado como um ponto material. Contudo, o \autoref{quad:geo_inputs} apresenta quais informações são exigidas para implementação do código que calcula a trajetória, conforme previsto pela STANAG 4355.
+
+\begin{quadro}[htb]
+\caption{\label{quad:geo_inputs}Dados Geométricos}
+\begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Descrição} & \textbf{Valores} & \textbf{Unidade}\\ \hline
+    Diâmetro de referência & 0,15470 & m\\ \hline
+    Diâmetro do boat-tail & 0,13373 & m\\ \hline
+    Massa (sem propelente) & 42,9850 & kg\\ \hline
+    Massa do propelente & 0,5600 & kg\\ \hline
+    Momento de inércia axial no início & 0,14245 & kg$\cdot$m$^{-2}$\\ \hline
+    Momento de inércia axial após a queima & 0,13730 & kg$\cdot$m$^{-2}$\\\hline
+    Centro de gravidade no início (a partir da ponta da ogiva) & 0,45835 & m\\\hline
+    Centro de gravidade após a queima (a partir da ponta da ogiva) & 0,44645 & m\\\hline
+\end{tabular}
+\fonte{Autor.}
+\end{quadro}
+
+\subsection{Condições Balísticas}\label{subsec:condicoes-balisticas}
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{foto02-mccoy2012.png}   
+	\caption[Sistema de referência para o cálculo de trajetória]{Sistema de referência para o cálculo de trajetória \cite{McCoy2012}}
+	\label{fig:traj-ref-mccoy2012}
+\end{figure}
+
+Neste sistema o canhão é centrado no eixo de referência da Terra em $O_{\text{XYZ}}$, conforme Figura \ref{fig:traj-ref-mccoy2012} e programado para lançar com ângulos de elevação de 40 e 45 graus a partir da horizontal, partindo com a mesma velocidade. Como citado na \autoref{quad:muzzle_inputs}, os fatores de arrasto e Magnus são constantes expressadas na STANAG 4355. A latitude do Rio de Janeiro foi considerada para vias de estudo.
+
+\begin{quadro}[htb]
+\caption{\label{quad:muzzle_inputs}Dados Balísticos}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Descrição} & \textbf{Valores} & \textbf{Unidade}\\
+\hline
+Velocidade de disparo & 878 & m$\cdot$s$^{-1}$\\
+\hline
+Ângulo de elevação & $2\pi/9$, $\pi/4$ & radianos \\
+\hline
+Latitude & $-23 \pi/180$ & radianos \\
+\hline
+Azimute & 0 & radianos \\
+\hline
+Taxa de torção no disparo & 25 & calibres por revolução \\
+\hline
+Fator de arrasto & 1,2 & - \\
+\hline
+Fator de Magnus & 1,2 & - \\
+\hline
+\end{tabular}
+\fonte{Autor.}
+\end{quadro}
+
+\subsection{Condições Ambientais}\label{subsec:condicoes-ambientais}
+
+Respeitando o modelo da \citeonline{international1993manual}, existem algumas variáveis a saber no início do lançamento. Elas estão representadas no \autoref{quad:ICAOinputs}. A velocidade do vento foi desconsiderada porque o simulador necessitava criar confiabilidade antes de aumentar as incertezas, assim como os fatores de umidade foram desprezados pela mesma razão.
+
+\begin{quadro}[htb]
+\caption{\label{quad:ICAOinputs}Dados Atmosféricos}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Descrição} & \textbf{Valores} & \textbf{Unidade}\\
+\hline
+Temperatura ao nível do mar & 288,15 & K\\
+\hline
+Gradiente de Temperatura & $6,5 \times 10^{-3}$ & K$\cdot$m$^{-1}$\\
+\hline
+Pressão do ar ao nível do mar & $1,01325 \times 10^{5}$ & Pa\\
+\hline
+Densidade do ar ao nível do mar & 1,225 & kg$\cdot$m$^{-2}$ \\
+\hline
+Razão de expansão adiabática do ar & 1,4 & - \\
+\hline
+Aceleração da gravidade ao nível do mar & 9,80665 & m$\cdot$s$^{-2}$\\
+\hline
+Raio da Terra & $6,371 \times 10^{6}$ & m\\
+\hline
+Velocidade angular da Terra & $7,292 \times 10^{-5}$ & rad$\cdot$s$^{-1}$ \\
+\hline
+\end{tabular}
+\fonte{\citeonline{international1993manual}}
+\end{quadro}
+
+\subsection{Condições Aerodinâmicas}\label{subsec:condicoes-aerodinamicas}
+
+Com o suporte do PRODAS®, os coeficientes aerodinâmicos foram calculados usando formulações semi-empíricas a partir das propriedades geométricas e de massa do projétil. Essas variáveis adimensionais são funções do número de Mach e da guinada de repouso de acordo com cada força atuante no sistema. Os coeficientes são todos em função de um projetil sem alcance estendido, pela limitação do software comercial. 
+
+A norma faz uma comparação entre os coeficientes aerodinâmicos da STANAG 4355 com o que a NACA (Comitê Nacional para Aconselhamento da Aeronáutica) oferece \cite{stanag4355}. Por esta razão, os coeficientes obtidos no PRODAS® são calculados em função dos eixos da munição, enquanto que os valores adimensionais de interesse são em respeito ao vetor de velocidade do centro de massa. Por esta razão, são feitas algumas transformações rotacionais para se chegar nos coeficientes desejados:
+
+\begin{align}
+    C_{D_{0}} &= C_{X_{0}} \\
+    C_{D_{\alpha^2}} &= C_{X_{\alpha^2}} + C_{Z_{\alpha}} - \frac{1}{2}C_{X_{0}}\\
+    C_{L_{\alpha}} &= C_{Z_{\alpha}} - C_{X_{0}} \\
+    C_{mag-f} &= \frac{1}{2}C_{y_{pa}} \\
+    C_{spin} &= \frac{1}{2}C_{l_{p}}
+\end{align}
+%
+os valores dos coeficientes que foram aplicados ao modelo de trajetória podem ser vistos do \autoref{apend:apendice-sembb} ao \autoref{apend:apendice-combb-2pol-006}.

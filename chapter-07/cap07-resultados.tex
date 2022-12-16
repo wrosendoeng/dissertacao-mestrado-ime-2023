@@ -1,0 +1,433 @@
+\chapter{Resultados}\label{cap:resultados}
+\graphicspath{{chapter-07/img-cap07/}}
+
+\section{Projetil inerte (sem \textit{Base Bleed})}\label{sec:resultados-sem-basebleed}
+
+Os valores encontrados para o coeficiente de arrasto aerodinâmico em um projetil de artilharia sem uso de \textit{Base Bleed} foram desenvolvidos a partir do modelo SST $\kappa-\omega$, como visto na \autoref{fig:cd-sembasebleed-comparacao}. As curvas de arrasto foram desenvolvidas com base nas malhas citadas na \autoref{tab:tabela-malhas-inicial} e foram comparadas com os resultados obtidos em simulação computacional desenvolvida por \citeauthor{Mahmoud2009}. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{cd-sembasebleed-comparacao.png}
+	\caption{Coeficiente de Arrasto $C_{D}$ em função do número de Mach (sem BB)}
+	\label{fig:cd-sembasebleed-comparacao}
+\end{figure}
+
+Através do que é demonstrado na Figura \autoref{fig:cd-sembasebleed-comparacao}, percebe-se que a curva referente a malha com 380.000 elementos (380K) se aproximou consideravelmente da referência. Por esta razão, a implementação do domínio computacional foi considerada válida para as próximas análises com a tecnologia \textit{Base Bleed} como condição de contorno.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-pressao.png}
+        \caption{Contornos de Pressão}
+        \label{fig:contorno-pressao-sembasebleed}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-velocidade.png}
+        \caption{Contornos de Velocidade}
+        \label{fig:contorno-velocidade-sembasebleed}
+    \end{subfigure}
+	\caption{Projetil sob regime de velocidade igual a Mach 2,0}
+	\label{fig:contornos-pressao-velocidade-sembasebleed}
+\end{figure}
+
+Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, é necessário observar a \autoref{fig:contornos-pressao-velocidade-sembasebleed}, pois os contornos de pressão (\autoref{fig:contorno-pressao-sembasebleed}) e de velocidade (\autoref{fig:contorno-velocidade-sembasebleed}) demonstram o escoamento do ar em torno do projetil. Além da onda de choque causada pela velocidade supersônica ($M  = 2,0$), existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. Contudo, é a partir da \autoref{fig:corrente-velocidade-sembasebleed} que se examina com maiores detalhes o comportamento desta recirculação outrora citada.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{corrente-velocidade-off.png}
+    \caption{Linhas de corrente para a velocidade sob regime $M = 2,0$}
+    \label{fig:corrente-velocidade-sembasebleed}
+\end{figure}
+
+\section{Projetil ativo (com \textit{Base Bleed})}\label{sec:resultados-com-basebleed}
+
+\subsection{Teste de convergência}
+
+A \autoref{tab:tabela-malhas-secundaria}, presente na \autoref{sec:geracao-malha}, demonstra as malhas testadas para o projetil ativo. Com estas malhas foram feitos dois testes de convergência, onde os resultados foram apresentados na \autoref{tab:tabela-malhas-convergencia}. Em ambos os casos o modelo SST $\kappa-\omega$ foi usado para descrever a turbulência. A condição de contorno "Entrada do \textit{Base Bleed}"{} considerou a saída dos gases com $\phi_{bb} = 50,8 \unit{\mm}$, $\Dot{m}_{bb} = 0,030 \si{kg/s}$ e $T_{bb} = 2306,15 \unit{\kelvin}$.
+
+\begin{table}[ht]
+\centering
+\caption[Teste de convergência (com \textit{Base Bleed})]{Teste de convergência (com \textit{Base Bleed})}
+\vspace{0.5cm}
+\begin{tabular}{c|c|c|c|c}
+\multicolumn{5}{c}{Segundo Teste de Convergência} \\
+\hline 
+Número da Malha & $C_{D} (M = 1,0)$ & Diferença (\%) & $C_{D} (M = 2,0)$ & Diferença (\%)\\ 
+\hline
+1 & 0,32784 & -- & 0,26330 & --\\
+2 & 0,33064 & 0,854 & 0,26364 & 0,129\\
+3 & 0,32912 & 0,390 & 0,26185 & 0,551\\
+4 & 0,32656 & 0,394 & 0,26143 & 0,710
+\end{tabular}
+\label{tab:tabela-malhas-convergencia}
+\fonte{Autor.}
+\end{table}
+
+Para o projetil em velocidade sônica ($M = 1,0$), a maior diferença percentual ficou na ordem de 0,85$\%$, enquanto que para $M = 2,0$ o maior desvio foi de aproximadamente 0,7$\%$, o que denota quase nenhuma diferença nos resultados mesmo aumentando significativamente o número de elementos. Desta forma, o custo computacional para resolver a malha com 380.000 elementos é suficiente para predizer o coeficiente de arrasto.
+
+\subsection{Influência no diâmetro de saída do \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-diametros}
+
+Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de 25,4 mm para 50,8 mm (1 para 2 polegadas). A temperatura na condição de contorno "Entrada do \textit{Base Bleed}"{} foi fixada em $T_{bb} = 2306,15 K$. Desta forma, a \autoref{fig:comparacao-bb-diametro-2pol} demonstra uma redução do coeficiente de arrasto, enquanto que a \autoref{fig:comparacao-bb-diametro-1pol} mostrou que o diâmetro de 1 polegada aumentou o perfil de arrasto, se comparado ao sistema BB desativado.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-1pol.png}
+    	\caption{Saída do bocal com $\phi_{bb} = 25,4 \unit{\mm}$}
+    	\label{fig:comparacao-bb-diametro-1pol}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+    	\centering
+    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-2pol.png}
+    	\caption{Saída do bocal com $\phi_{bb} = 50,8 \unit{\mm}$}
+    	\label{fig:comparacao-bb-diametro-2pol}
+    \end{subfigure}
+	\caption{Influência do diâmetro sobre o coeficiente de arrasto.}
+	\label{fig:comparacao-bb-diametro-vazoes}
+\end{figure}
+
+Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa $M < 0,8$. A escolha das vazões de 0,015 kg/s e 0,060 kg/s foi para garantir a conservação da velocidade ao aumentar em 4 vezes a área de saída dos gases do \textit{Base Bleed}. Ainda analisando os resultados pelas vazões mássicas, atesta-se da \autoref{fig:comparacao-bb-diametro-vazoes} que os coeficientes de arrasto sofreram redução em ambos os casos, embora pouco relevantes.
+
+Para entender o que ocorreu para acrescentar o arrasto nos projetis com diâmetro de saída do \textit{Base Bleed} iguais a 1 polegada ($\phi_{bb} = 25,4 \unit{\mm}$), a \autoref{fig:influencia-diametro-vazao-1pol} apresenta os campos de pressão e velocidade sob regime $M = 2,0$. Conforme esperado pela literatura, as Figuras \ref{fig:contorno-pressao-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-bb-1pol-vazao0030} demonstram o campo de pressão à jusante da base do projetil, que está abaixo do valor prescrito da região denominada "Escoamento livre"{} do domínio computacional. Tanto na \autoref{fig:contorno-pressao-bb-1pol-vazao0015} quanto na \autoref{fig:contorno-pressao-bb-1pol-vazao0030} não há um aumento significativo da pressão atmosférica na região, apesar da diferenciação do campo de velocidades ser demonstrada pelas Figuras \ref{fig:contorno-velocidade-bb-1pol-vazao0015} e \ref{fig:contorno-velocidade-bb-1pol-vazao0030}. Contudo, a apresentação do campo de velocidades da \autoref{fig:contorno-velocidade-bb-1pol-vazao0030} reflete uma vazão mássica excedente que aumenta a força de arrasto.
+
+As Figuras \ref{fig:corrente-velocidade-bb-1pol-vazao0015} e \ref{fig:corrente-velocidade-bb-1pol-vazao0030} mostram as linhas de corrente para a velocidade nas duas condições impostas para o sistema BB com 1 polegada. Da \autoref{fig:corrente-velocidade-bb-1pol-vazao0015} se conclui que a injeção de gases nessa vazão mássica produz nenhum efeito significativo no que diz respeito ao deslocamento da região primária de recirculação e da formação da recirculação anular.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-pressao-2306K-vazao-0015-1pol.png}
+        \caption{Contorno de Pressão - $\Dot{m}_{bb} = 0,015 \unit{\kg/\s}$}
+        \label{fig:contorno-pressao-bb-1pol-vazao0015}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-pressao-2306K-vazao-0030-1pol.png}
+        \caption{Contornos de Pressão - $\Dot{m}_{bb} = 0,030 \unit{\kg/\s}$}
+        \label{fig:contorno-pressao-bb-1pol-vazao0030}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-velocidade-2306K-vazao-0015-1pol.png}
+        \caption{Contorno de Velocidade - $\Dot{m}_{bb} = 0,015 \unit{\kg/\s}$}
+        \label{fig:contorno-velocidade-bb-1pol-vazao0015}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-velocidade-2306K-vazao-0030-1pol.png}
+        \caption{Contornos de Velocidade - $\Dot{m}_{bb} = 0,030 \unit{\kg/\s}$}
+        \label{fig:contorno-velocidade-bb-1pol-vazao0030}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{corrente-velocidade-2306K-vazao-0015-1pol.png}
+        \caption{Linhas de corrente - $\Dot{m}_{bb} = 0,015 \unit{\kg/\s}$}
+        \label{fig:corrente-velocidade-bb-1pol-vazao0015}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{corrente-velocidade-2306K-vazao-0030-1pol.png}
+        \caption{Linhas de corrente - $\Dot{m}_{bb} = 0,030 \unit{\kg/\s}$}
+        \label{fig:corrente-velocidade-bb-1pol-vazao0030}
+    \end{subfigure}
+	\caption{Projetil sob diferentes condições de vazão mássica sob regime $M = 2,0$ e diâmetro de saída do \textit{Base Bleed} de 1 polegada ($\phi_{bb} = 25,4 \unit{\mm}$)}
+	\label{fig:influencia-diametro-vazao-1pol}
+\end{figure}
+
+O passo seguinte foi apresentar o escoamento no entorno do projetil assumindo que o diâmetro de saída do bocal, $\phi_{bb}$, seja igual a 50,8 mm. Assim como na \autoref{fig:influencia-diametro-vazao-1pol}, a velocidade do meio livre foi definida como $M = 2,0$ para os contornos de pressão e de velocidade, além das linhas de corrente, sendo todos esses perfis vistos na \autoref{fig:influencia-diametro-vazao-2pol}.
+
+Seja na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0030} ou na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0060}, a formação da recirculação é bastante proeminente, acima de tudo no caso em que a vazão mássica é igual a $0,060 \unit{\kg/\s}$. Todavia, não se relata nenhuma variação significativa no campo de pressão, como demonstrado nas Figuras \ref{fig:contorno-pressao-bb-2pol-vazao-0030} e \ref{fig:contorno-pressao-bb-2pol-vazao-0060}. No entanto, é com as Figuras \ref{fig:corrente-velocidade-bb-2pol-vazao-0030} e \ref{fig:corrente-velocidade-bb-2pol-vazao-0060} que se ratifica a influência do diâmetro do bocal. As linhas de corrente observadas na \autoref{fig:corrente-velocidade-bb-2pol-vazao-0060} se aproximam das referências \cite{Sahu1985,Mahmoud2009,Lucena2020}. Por esta razão acredita-se que houve a maior redução do arrasto na escolha do maior diâmetro de saída do sistema BB (2 polegadas).
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-pressao-2306K-vazao-0030-2pol.png}
+        \caption{Contornos de Pressão - $\Dot{m}_{bb} = 0,030$ Kg/s}
+        \label{fig:contorno-pressao-bb-2pol-vazao-0030}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-pressao-2306K-vazao-0060-2pol.png}
+        \caption{Contornos de Pressão - $\Dot{m}_{bb} = 0,060$ Kg/s}
+        \label{fig:contorno-pressao-bb-2pol-vazao-0060}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-velocidade-2306K-vazao-0030-2pol.png}
+        \caption{Contornos de Velocidade - $\Dot{m}_{bb} = 0,030$ Kg/s}
+        \label{fig:contorno-velocidade-bb-2pol-vazao-0030}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-velocidade-2306K-vazao-0060-2pol.png}
+        \caption{Contornos de Velocidade - $\Dot{m}_{bb} = 0,060$ Kg/s}
+        \label{fig:contorno-velocidade-bb-2pol-vazao-0060}
+    \end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{corrente-velocidade-2306K-vazao-0030-2pol.png}
+        \caption{Linhas de Corrente - $\Dot{m}_{bb} = 0,030$ kg/s}
+        \label{fig:corrente-velocidade-bb-2pol-vazao-0030}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{corrente-velocidade-2306K-vazao-0060-2pol.png}
+        \caption{Linhas de Corrente - $\Dot{m}_{bb} = 0,060$ kg/s}
+	\label{fig:corrente-velocidade-bb-2pol-vazao-0060}
+    \end{subfigure}
+	\caption{Projetil sob diferentes condições de vazão mássica sob regime $M = 2,0$ e diâmetro de saída do \textit{Base Bleed} de 2 polegadas ($\phi_{bb} = 50,8 \unit{\mm}$)}
+	\label{fig:influencia-diametro-vazao-2pol}
+\end{figure}
+
+\subsection{Influência da vazão mássica no sistema \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-vazao}
+
+A \autoref{fig:comparacao-basebleed-vazao} demonstra a influência da vazão nos resultados obtidos nas simulações computacionais com o efeito \textit{Base Bleed} na base do projetil, assumindo que a temperatura de saída dos gases foi fixada em 1500K e o diâmetro de saída do \textit{Base Bleed} escolhido foi de 2 polegadas ($\phi_{bb} = 50,8\unit{\mm}$). A escolha por esse diâmetro de saída se deve aos melhores resultados produzidos na \autoref{subsec:resultados-com-basebleed-diametros}.
+
+Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-vazao} uma redução dos valores conforme aumenta a vazão mássica, $\Dot{m}_{BB}$. As oscilações nos valores continuam aparecendo no regime subsônico, apesar de seguirem a mesma tendência, não importando qual vazão seja. O regime transônico reúne as maiores reduções do arrasto aerodinâmico, mas a redução do arrasto se faz menos efeito conforme aumenta a velocidade, passando pelo supersônico, especialmente quando $M > 2,0$.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.47\textwidth]{cd-combasebleed-1500K-2pol.png}
+	\caption{Influência da vazão mássica do \textit{Base Bleed} sobre o coeficiente de arrasto com $T_{bb} = 1500 \unit{\kelvin}$}
+	\label{fig:comparacao-basebleed-vazao}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=4cm]{contorno-pressao-1500K-vazao-0030-2pol.png}
+        \caption{Contornos de Pressão - $\Dot{m}_{bb} = 0,030 \unit{\kg/\s}$}
+        \label{fig:contorno-pressao-bb-1500K-vazao0030}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=4cm]{contorno-pressao-1500K-vazao-0060-2pol.png}
+        \caption{Contornos de Pressão - $\Dot{m}_{bb} = 0,060 \unit{\kg/\s}$}
+        \label{fig:contorno-pressao-bb-1500K-vazao0060}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=4cm]{contorno-velocidade-1500K-vazao-0030-2pol.png}
+        \caption{Contornos de Velocidade - $\Dot{m}_{bb} = 0,030 \unit{\kg/\s}$}
+        \label{fig:contorno-velocidade-bb-1500K-vazao0030}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=4cm]{contorno-velocidade-1500K-vazao-0060-2pol.png}
+        \caption{Contornos de Velocidade - $\Dot{m}_{bb} = 0,060 \unit{\kg/\s}$}
+        \label{fig:contorno-velocidade-bb-1500K-vazao0060}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=4cm]{corrente-velocidade-1500K-vazao-0030-2pol.png}
+        \caption{Linhas de Corrente - $\Dot{m}_{bb} = 0,030 \unit{\kg/\s}$}
+        \label{fig:corrente-velocidade-bb-1500K-vazao0030}
+    \end{subfigure}
+    \hfill
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,height=4cm]{corrente-velocidade-1500K-vazao-0060-2pol.png}
+        \caption{Linhas de Corrente - $\Dot{m}_{bb} = 0,060 \unit{\kg/\s}$}
+        \label{fig:corrente-velocidade-bb-1500K-vazao0060}
+    \end{subfigure}
+    \caption{Projetil sob diferentes condições de vazão mássica sob regime $M = 2,0$, diâmetro de saída do \textit{Base Bleed} de 2 polegadas ($\phi_{bb} = 50,8 \unit{\mm}$) e Temperatura prescrita ($T_{bb} = 1500 \unit{\kelvin}$)}
+	\label{fig:influencia-temperatura-bb}
+\end{figure}
+
+Conforme aumenta a vazão, há um aumento de velocidade, apesar de não haver acréscimo de pressão, o que é demonstrado pela \autoref{fig:contorno-pressao-bb-1500K-vazao0030} ou \autoref{fig:contorno-pressao-bb-1500K-vazao0060}. Os contornos de velocidade, presentes nas Figuras \ref{fig:contorno-velocidade-bb-1500K-vazao0030} e \ref{fig:contorno-velocidade-bb-1500K-vazao0060}, apresentam o deslocamento da região primária de recirculação, além do aumento da esteira turbulenta. 
+
+Pelas Figuras \ref{fig:corrente-velocidade-bb-1500K-vazao0030} e \ref{fig:corrente-velocidade-bb-1500K-vazao0060} se observam as linhas de corrente para a velocidade. Em ambos os casos há a formação da recirculação anular, mas essa zona secundária de recirculação é mais proeminente conforme o aumento da vazão. A \autoref{fig:corrente-velocidade-bb-1500K-vazao0060} apresenta com maior clareza um valor mais próximo do que se espera ocorrer na região, dentro do que a literatura demonstrou em trabalhos anteriores \cite{Andersson1976,Sahu1985}. Assume-se que todos os contornos da \autoref{fig:influencia-temperatura-bb} estão sob regime $M  = 2,0$.
+
+\subsection{Influência da temperatura}
+
+A \autoref{fig:comparacao-basebleed-temperatura} demonstra a influência da temperatura nos resultados obtidos nas simulações computacionais com o efeito \textit{Base Bleed} na base do projetil, assumindo que a vazão mássica de saída dos gases foi fixada em 0.060 kg/s e o diâmetro de saída do \textit{Base Bleed} escolhido foi de 2 polegadas ($\phi_{bb} = 50,8\unit{\mm}$). A escolha por esse diâmetro de saída se deve aos melhores resultados produzidos na \autoref{subsec:resultados-com-basebleed-diametros}. A escolha pela vazão de $0,060 \unit{\kg\/s}$ se baseou nos resultados das \autoref{subsec:resultados-com-basebleed-vazao}, em que a redução do coeficiente de arrasto foi mais significativo quando comparado ao projetil inerte.
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.47\textwidth]{cd-combasebleed-vazao006-2pol.png}
+	\caption{Influência da temperatura do \textit{Base Bleed} sobre o coeficiente de arrasto com $\Dot{m}_{bb} = 0,060 \unit{\kg/\s}$}
+	\label{fig:comparacao-basebleed-temperatura}
+\end{figure}
+
+Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-temperatura} uma redução dos valores conforme aumenta a temperatura, $\Dot{m}_{BB}$. As oscilações nos valores continuam aparecendo no regime subsônico, embora tenham valores discrepantes no início da curva no caso em que a temperatura é mais elevada ($T_{bb} = 2306,15 \unit{\kelvin}$). Mesmo assim, seguem a mesma tendência, não importando qual vazão seja. O regime transônico reúne as maiores reduções do arrasto aerodinâmico, mas a redução do arrasto também é considerável no regime supersônico, principalmente na faixa $1,5 \leq M \leq 2,0$. Após esse intervalo, a redução é mais gradual.
+
+\subsection{Influência da abordagem RANS}\label{subsec:resultados-com-basebleed-RANS}
+
+Conforme foi citado anteriormente, o modelo Spalart-Allmaras \cite{Spalart1992} foi manejado para atestar a eficiência de outra técnica RANS para descrição da turbulência além do que foi proposto por \citeauthor{Menter1994TwoequationET}. A comparação foi realizada somente para os seguintes valores na condição de contorno \textit{base bleed inlet}: $\phi_{bb} = 50,8 \unit{\mm}$, $T_{bb} = 2306,15 \unit{\kelvin}$ e $\Dot{m}_{bb} = 0,030 \si{kg/s}$.
+
+Entretanto, é notório que o modelo Spalart-Allmaras (S-A) superestimou a curva de arrasto em todos os regimes de velocidade, relatado pela Figura \ref{fig:comparacao-bb-rans}.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{cd-combasebleed-rans.png}
+ 	\caption{Curvas de arrasto de acordo com modelos de turbulência RANS}
+    \label{fig:comparacao-bb-rans}
+\end{figure}
+
+De acordo com a apresentação da \autoref{fig:contornos-pressao-velocidade-RANS}, o modelo S-A não conseguiu encontrar a zona de recirculação gerada pelo sistema \textit{base bleed} como tampouco registra o momento provocado pela vazão mássica de gases do propelente.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-pressao-SPALART-2pol.png}
+        \caption{Contornos de Pressão}
+        \label{fig:contorno-pressao-bb-2pol-RANS}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{contorno-velocidade-SPALART-2pol.png}
+        \caption{Contornos de Velocidade}
+        \label{fig:contorno-velocidade-bb-2pol-RANS}
+    \end{subfigure}
+	\caption{Projetil sob modelo Spalart-Allmaras}
+	\label{fig:contornos-pressao-velocidade-RANS}
+\end{figure}
+
+Para assegurar o que foi demonstrado na \autoref{fig:contorno-pressao-bb-2pol-RANS}, a \autoref{fig:corrente-velocidade-bb-RANS} foi elaborada para analisar as linhas de corrente com o modelo de 1 equação, donde se concluiu que o alto gradiente adverso de pressão existente no sistema BB resultou em desvios que fogem da explicação do fenômeno físico real, ainda que as técnicas RANS enxerguem os valores médios das propriedades do fluido.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{corrente-velocidade-SPALART-2pol.png}
+ 	\caption{Linhas de corrente para o modelo Spalart-Allmaras}
+    \label{fig:corrente-velocidade-bb-RANS}
+\end{figure}
+
+\section{Resultados da Trajetória}\label{sec:resultados-trajetoria}
+
+A partir do momento em que há disponibilidade das condições citadas na \autoref{subsec:implementacao-trajetoria} e dos resultados das simulações de fluidodinâmica computacional, pode-se calcular a predição da trajetória MPMTM. Apesar do suporte do PRODAS® e das informações obtidas, algumas premissas foram consideradas:
+
+\begin{itemize}
+    \item Lançamento do Rio de Janeiro, logo a latitude é de $\ang{23}$;
+    \item Desprezando efeitos da umidade sobre a atmosfera;
+    \item Sem velocidade do vento, assim como citado por \citeauthor{Rosendo2020};
+    \item Vazão mássica do propelente é constante durante o acionamento do BB;
+    \item Parâmetro ótimo de injeção ($Inj_0$) igual a $\num{5e-3}$, tal como descrito por \citeauthor{DAVENAS1993329};
+    \item Assumir que os coeficientes aerodinâmicos são linearmente dependentes do ângulo $\alpha_{e}$
+\end{itemize}
+
+Pela última condição assumida, logo $C_{L\alpha^{3}}$ e $C_{m\alpha^{3}}$ não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
+
+De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores $f_{L}$ e $i_{BB}$ tais que se adéquem à cada simulação realizada. Os dados de entrada são comparados com os testes reais de tiro feito com os projetis. Contudo, o simulador desenvolvido neste trabalho comprovou que, mesmo não sendo utilizados em suas respectivas equações \ref{eq:liftMPM} e \ref{eq:baseMPM}, os valores finais de trajetória foram considerados com boa acurácia, se comparados aos lançamentos reais de projetis.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto1.png}
+        \caption{Trajetória com QE = 711 mil ($\phi_{bb} = 25,4\unit{mm}$)}
+        \label{fig:trajetoria-711mil-1pol}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto2.png}
+        \caption{Trajetória com QE = 800 mil ($\phi_{bb} = 25,4\unit{mm}$)}
+        \label{fig:trajetoria-800mil-1pol}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto3.png}
+        \caption{Trajetória com QE = 711 mil ($\phi_{bb} = 50,8\unit{mm}$)}
+        \label{fig:trajetoria-711mil-2pol}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto4.png}
+        \caption{Trajetória com QE = 800 mil ($\phi_{bb} = 50,8\unit{mm}$)}
+        \label{fig:trajetoria-800mil-2pol}
+    \end{subfigure}
+	\caption{Projetil com diferentes saídas de bocal e diferentes vazões}
+	\label{fig:trajetoria-1pol-2pol}
+\end{figure}
+
+A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-1pol-2pol} esclarece os resultados das predições de voo. Sobre a \autoref{fig:trajetoria-711mil-1pol}, os resultados não demonstraram um efeito positivo, seja sobre o alcance ou o apogeu, como visto na \autoref{tab:tabela-711mil-bb-1pol}. 
+
+\begin{table}[ht]
+\centering
+\caption[Trajetória Balística com QE = 711 mil e v = 878 m/s ($\phi_{bb} = 25,4\unit{mm}$]{Trajetória Balística com QE = 711 mil e v = 878 m/s ($\phi_{bb} = 25,4\unit{mm}$)}
+\vspace{0.5cm}
+\begin{tabular}{c|c|c|c|c}
+Vazão Mássica (kg/s) & Alcance (m) & Aumento (\%) & Apogeu (m) & Aumento (\%) \\
+\hline
+sem \textit{Base Bleed} & 23922,2 & -- & 7256,8 & -- \\ 
+0,015 & 22647,8 & -5,3 & 7145,0 & -1,5 \\
+0,030 & 23069,0 & -3,6 & 7093,4 & -2,3
+\end{tabular}
+\label{tab:tabela-711mil-bb-1pol}
+\fonte{Autor.}
+\end{table}
+
+Acerca da \autoref{fig:trajetoria-800mil-1pol}, apesar de haver um aumento do alcance dos lançamentos sob efeito BB, os resultados também foram piores, quando comparados com o lançamento inerte. A \autoref{tab:tabela-800mil-bb-1pol} demonstra resultados percentuais muito próximos dos que foram apresentados na tabela anterior.
+
+\begin{table}[ht]
+\centering
+\caption[Trajetória Balística com QE = 800 mil e v = 878 m/s ($\phi_{bb} = 25,4\unit{mm}$]{Trajetória Balística com QE = 800 mil e v = 878 m/s ($\phi_{bb} = 25,4\unit{mm}$)}
+\vspace{0.5cm}
+\begin{tabular}{c|c|c|c|c}
+Vazão Mássica (kg/s) & Alcance (m) & Aumento (\%) & Apogeu (m) & Aumento (\%) \\
+\hline
+sem \textit{Base Bleed} & 24429,5 & -- & 8638,6 & -- \\ 
+0,015 & 23117,9 & -5,4 & 8493,6 & -1,7 \\
+0,030 & 23577,0 & -3,5 & 8435,9 & -2,3
+\end{tabular}
+\label{tab:tabela-800mil-bb-1pol}
+\fonte{Autor.}
+\end{table}
+
+Ao verificar a \autoref{tab:tabela-711mil-bb-2pol}, percebe-se uma tendência positiva nos resultados da \autoref{fig:trajetoria-711mil-2pol}, sobretudo com a vazão mássica de 0,060 kg/s. Há o aumento do alcance de quase 6 por cento, mesmo com um modelo simplificado para reproduzir o efeito BB.
+
+\begin{table}[ht]
+\centering
+\caption[Trajetória Balística com QE = 711 mil e v = 878 m/s ($\phi_{bb} = 50,8\unit{mm}$]{Trajetória Balística com QE = 711 mil e v = 878 m/s ($\phi_{bb} = 50,8\unit{mm}$)}
+\vspace{0.5cm}
+\begin{tabular}{c|c|c|c|c}
+Vazão Mássica (kg/s) & Alcance (m) & Aumento (\%) & Apogeu (m) & Aumento (\%) \\
+\hline
+sem \textit{Base Bleed} & 23922,2 & -- & 7256,8 & -- \\ 
+0,030 & 24439,8 & 2,2 & 7463,5 & 2,8 \\
+0,060 & 25334,3 & 5,9 & 7616,6 & 5,0
+\end{tabular}
+\label{tab:tabela-711mil-bb-2pol}
+\fonte{Autor.}
+\end{table}
+
+Ao aumentar o ângulo de elevação de disparo houve um incremento percentual sobre o alcance e o apogeu também, como demonstrado na \autoref{fig:trajetoria-800mil-2pol}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-2pol} com a \autoref{tab:tabela-800mil-bb-2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
+
+\begin{table}[ht]
+\centering
+\caption[Trajetória Balística com QE = 800 mil e v = 878 m/s ($\phi_{bb} = 50,8\unit{mm}$]{Trajetória Balística com QE = 800 mil e v = 878 m/s ($\phi_{bb} = 50,8\unit{mm}$)}
+\vspace{0.5cm}
+\begin{tabular}{c|c|c|c|c}
+Vazão Mássica (kg/s) & Alcance (m) & Aumento (\%) & Apogeu (m) & Aumento (\%) \\
+\hline
+sem \textit{Base Bleed} & 24429,5 & -- & 8638,6 & -- \\ 
+0,015 & 25030,7 & 2,5 & 8892,7 & 2,9 \\
+0,030 & 26008,5 & 6,5 & 9084,5 & 5,2
+\end{tabular}
+\label{tab:tabela-800mil-bb-2pol}
+\fonte{Autor.}
+\end{table}

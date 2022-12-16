@@ -1,0 +1,82 @@
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{ Este trabalho é dedicado às crianças adultas que,\\
+   quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Os agradecimentos principais são direcionados à Isabella, minha mulher, que foi a primeira pessoa a acreditar neste projeto e aceitou dividir a vida comigo. Sem o seu suporte e paciência para aguentar todas as noites de preocupação jamais teria chegado a lugar algum.
+
+À minha família de origem, pois fui criado por cinco mulheres incríveis que sempre serei grato por tudo que fizeram a mim: Rosimeri, minha mãe; Jessica, minha irmã; Eunice, minha avó paterna; Vera Lúcia, tia paterna e Rosängela, minha madrinha que infelizmente não está mais entre nós. Aos parentes não citados, agradeço-lhes numa mensagem sucinta para que saibam que reconheço seu apoio em todas as minhas empreitadas, mesmo as que sentiram desconfiança devido ao grau de incerteza envolvido.
+
+Aos amigos de infância, deixo-lhes claro novamente o profundo sentimento de amor fraternal após todos esses anos de convívio. Antônio, Alexandre, João e Lucas, contem comigo para tudo. Vocês sempre me demonstraram que a vida não se exige muito para ser bem vivida, nós que a complicamos.
+
+Aos amigos do CEFET-RJ, Marcus, Raul, Renan, Rodrigo e Tobias, jamais esquecerei dos bons momentos vividos na adolescência. Sem o bom convívio convosco durante o curso técnico em Mecânica Industrial, eu jamais teria escolhido a Engenharia Mecânica como uma possibilidade de graduação.
+
+Aos amigos do 44, nunca fui tão bom como disseram, nem tão ruim quanto às vezes acho que sou. Sem vocês eu jamais teria conhecido a minha esposa e vivido momentos felizes numa fase tão difícil quanto foi a perda de meu pai.
+
+Aos amigos do Tamandaré, fica o meu apreço pela vossa amizade e espero encontrá-los mais vezes para ter certeza que serei o único que terá um fio de cabelo na cabeça na próxima década.
+
+Aos amigos da UERJ, em especial Carol, Gabriel Cerqueira, Gabriel Amaral, Guilherme, João Tinoco, Luciano, Yoná, pois vocês apareceram na minha vida de universitário justamente quando mais quis desistir do curso. Tenho muito orgulho de tê-los conhecido e convivido durante todos esses anos, ainda mais no momento crítico que passamos dentro da universidade.
+
+Aos amigos oriundos do GFRJ, vocês têm parte da culpa por eu ter escolhido fazer esse mestrado. Ao Arthur, Bruno, Júlio César, Patrick e Thiago, gratidão eterna pelos momentos vividos nos trabalhos da Olimpíada Brasileira de Astronomia e por me ensinarem a amar o setor espacial como tanto me sinto parte dele, além de me darem a única chance que tive de sair do país para fazer algo interessante. 
+
+Aos professores André Rezende e Cel. Barros que foram determinantes no suporte ao desenvolvimento deste trabalho, deixo-lhes meu sincero agradecimento. A todo o restante do corpo docente Programa de Pós-Graduação em Engenharia Mecânica do Instituto Militar de Engenharia (IME), agradeço o suporte e condições técnicas ofertadas para que toda a pesquisa pudesse ser desenvolvida nos laboratórios da instituição.
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{"
+		Quem deve enfrentar monstros deve permanecer\\
+		atento para não se tornar também um monstro. \\
+		Se olhares demasiado tempo dentro de um abismo, \\
+		o abismo acabará por olhar dentro de ti." \\
+		(NIETZSCHE, F. W. \textbf{Além do bem e do mal}. Márcio Pugliesi (Trad.) São Paulo: Editora Hemus, 2001)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+\SingleSpacing
+
+A extensão de alcance em projéteis é um tema de grande interesse para pesquisas sobre aerodinâmica. Para aumentar o deslocamento do corpo, procura-se reduzir o arrasto aerodinâmico através da injeção de gases em altas temperaturas na base do projetil por meio de uma câmara geradora de gás, sendo tal tecnologia conhecida como \textit{Base Bleed}. Esse sistema busca reduzir o arrasto através do aumento de pressão na região à jusante da base do projetil, injetando gases em altas temperaturas e em velocidades subsônicas. O objetivo deste trabalho é observar a diminuição do coeficiente de arrasto pela influência do \textit{Base Bleed} através da manipulação de parâmetros como o diâmetro de saída do bocal, a temperatura dos gases injetados e a vazão mássica desses gases propelidos. Tais fenômenos serão analisados por simulações de dinâmica dos fluidos computacional (CFD) usado Método dos Volumes Finitos (MVF). No presente trabalho o coeficiente de arrasto não sofrerá efeito do ângulo de ataque, $C_{D_{0}}$, para construção de uma malha bidimensional e axissimétrica.
+Para descrever a turbulência duas modelagens com ênfase em problemas aerodinâmicos foram utilizadas: Spalart-Allmaras e Shear-Stress Transport $\kappa-\omega$. A escolha destes modelos também se deve ao custo computacional. Além do coeficiente de arrasto, os resultados de interesse são o campo de velocidades, de pressão e as linhas de corrente para a velocidade. Com os valores obtidos será implementado o modelo de trajetória ponto-massa modificado (MPMTM), regulamento pela OTAN, para predição de trajetória e verificação da extensão de alcance gerada pelo \textit{Base Bleed} em código próprio desenvolvido em MATLAB e validado previamente com referências de softwares comerciais como o PRODAS, de larga aplicação na indústria aeroespacial.
+
+\textbf{Palavras-chave}: \imprimirpalavraschave
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+%  \linespread{1.3}
+\SingleSpacing
+Range extension in projectiles is a topic of great interest for aerodynamics research. To increase the displacement of the body, it is sought to reduce the aerodynamic drag by injecting gases at high temperatures at the base of the projectile through a gas generating chamber, and such technology is known as \textit{Base Bleed}. This system seeks to reduce drag by increasing the pressure in the region downstream of the base of the projectile, injecting gases at high temperatures and subsonic velocities. The objective of this work is to observe the reduction of the drag coefficient by the influence of the \textit{Base Bleed} through the manipulation of parameters such as the nozzle exit diameter, the injected gas temperature and the mass flow rate of these propelled gases. Such phenomena will be analyzed by computational fluid dynamics (CFD) simulations used Finite Volume Method (FVM). In the present work the drag coefficient will not be affected by the angle of attack, $C_{D_{0}}$, to construct a two-dimensional and axisymmetric mesh.
+To describe the turbulence two modeling approaches with emphasis on aerodynamic problems were used: Spalart-Allmaras and Shear-Stress Transport $\kappa-\omega$. The choice of these models is also due to the computational cost. Besides the drag coefficient, the results of interest are the velocity field, pressure field and the current lines for the velocity. With the obtained values the modified point-mass trajectory model (MPMTM), NATO regulation, will be implemented for trajectory prediction and verification of the range extension generated by the \textit{Base Bleed} in own code developed in MATLAB and previously validated with commercial software references such as PRODAS, widely applicable in aerospace industry.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Keywords}: \imprimirkeywords
+ \end{otherlanguage*}
+\end{resumo}
