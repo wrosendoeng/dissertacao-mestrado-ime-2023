@@ -11,7 +11,7 @@ Os objetivos deste trabalho são:
 
 O trabalho possui 8 capítulos, onde cada 1 se encontra em uma pasta junto de suas imagens, quando houver.
 
-Se quiser usar o citação alfabética, e.g. (MOREIRA et al., 2019), procure e alterne o comentário do seguinte trecho do arquivo *main.tex*.
+O formato das referências bibliográficas é baseado em ordenação numérica de citação, o que é permitido pela ABNT. Caso queira usar o citação alfabética, e.g. (MOREIRA et al., 2019), procure e alterne o comentário do seguinte trecho do arquivo *main.tex*.
 
 ```
 De:
@@ -22,6 +22,22 @@ Para:
 %\usepackage[num,abnt-etal-list=0,bibjustif]{./abntex2cite} % Citações numéricas (ordem de apresentação)
 \usepackage[alf,abnt-etal-list=0,bibjustif]{./abntex2cite} % Citações autor-data (ordem alfabética)
 ```
+
+### Capítulo 01 - Introdução
+
+Neste capítulo o foco é desenvolver a revisão bibliográfica, além de explicar a motivação e o objetivo do estudo. Por fim, há uma seção somente para explicar o roteiro do trabalho para orientar a leitura a parte interessada.
+
+### Capítulo 02 - Revisão Teórica
+
+A revisão teórica concentra uma revisão sobre escoamentos compressíveis e descrever as equações de Navier-Stokes para um regime compressível e estacionário.
+
+### Capítulo 03 - Métodos Numéricos
+
+Nesta parte o objetivo é apresentar possíveis abordagens de discretização, com ênfase no Método dos Volumes Finitos (MVF). Também são apresentadas as técnicas que auxiliam a resolução deste método.
+
+### Capítulo 04 - Modelagem da Turbulência
+
+O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras, $\kappa-\epsilon$ padrão, $\kappa-\omega$ padrão e *Shear-Stress Transport* (SST) \kappa-\omega.
 
 ## Criar e remover arquivos de conteúdo
 
