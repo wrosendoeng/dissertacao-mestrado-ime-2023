@@ -1,15 +1,15 @@
-# AbnTex 2 IME
+# Dissertação de Mestrado - IME 2023
 
-Este é o modelo LaTex de tese e dissertação de pós-graduação do Instituto Militar de Engenharia.
+Este é o modelo LaTex de dissertação de pós-graduação do Instituto Militar de Engenharia para o Programa de Pós-Graduação em Engenharia Mecânica.
 
-Os objetivos deste modelo são:
+Os objetivos deste trabalho são:
 
-- Padronizar o texto de trabalhos acadêmicos de acordo com as normas da ABNT
-- Acelerar a checagem de formatação dos trabalhos acadêmicos pela biblioteca para a emissão de certificado de conclusão de curso
+- Estudar a aerodinâmica de um projetil de calibre 155mm para desenvolver simulações CFD
+- Predizer a trajetória da munição para criar tabelas de tiro.
 
-## Citações
+## Capítulos
 
-O modelo usa por padrão citações numéricas e com parênteses, e.g. (1), permitido pela ABNT.
+O trabalho possui 8 capítulos, onde cada 1 se encontra em uma pasta junto de suas imagens, quando houver.
 
 Se quiser usar o citação alfabética, e.g. (MOREIRA et al., 2019), procure e alterne o comentário do seguinte trecho do arquivo *main.tex*.
 

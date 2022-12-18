@@ -3,7 +3,7 @@
 
 No presente trabalho serão ilustrados e analisados os resultados obtidos pelas análises numéricas computacionais para um escoamento compressível, axissimétrico e em regime permanente baseado na abordagem RANS para descrever a turbulência, em especial os modelos Spalart-Allmaras e SST $\kappa$-$\omega$. Dentre os trabalhos já citados, as referências \cite{Sahu1985,Mahmoud2009,torangatti2basawaraj,belaidouni2016,nicolas-perez_accuracy_2017,Dali2018a,Lucena2020,Reddy2021} serviram como norteadoras para o emprego dessas simulações. 
 
-Ademais, a implementação do MPMTM faz uso dos recursos disponíveis pelas simulações CFD a fim de comparar o funcionamento do projetil em duas situações: o voo inerte, que seria o voo sem uso do \texit{Base Bleed}; voo ativo, com o uso do \texit{Base Bleed}. Desta forma, aplica-se o que já foi desenvolvido e consolidado em trabalhos anteriores \cite{Gauchoux1991,balon2006analysis,Abou-Elela2013,Skande2014,Lim2016,Rosendo2020}.
+Ademais, a implementação do MPMTM faz uso dos recursos disponíveis pelas simulações CFD a fim de comparar o funcionamento do projetil em duas situações: o voo inerte, que seria o voo sem uso do \textit{Base Bleed}; voo ativo, com o uso do \textit{Base Bleed}. Desta forma, aplica-se o que já foi desenvolvido e consolidado em trabalhos anteriores \cite{Gauchoux1991,balon2006analysis,Abou-Elela2013,Skande2014,Lim2016,Rosendo2020}.
 
 \section{Parâmetros de Interesse}
 
@@ -24,30 +24,30 @@ os termos $F_{D}$, $\frac{1}{2}\rho V^2$ e $A$ representam, respectivamente, a f
 A pressão é uma das propriedades de maior interesse do fluido, portanto calcula-se um adimensional que permite entender como as forças de sustentação e arrasto se comportam no escoamento. O coeficiente de pressão ($C_{P}$) é um número adimensional que descreve as pressões relativas no escoamento independente do tamanho do corpo. Ele pode ser calculado a partir da expressão \eqref{eq:cp-equation}: 
 
 \begin{equation}\label{eq:cp-equation}
-    C_P = \frac{p - p_{\infty}}{\frac{1}{2}\rho_{\infty}V^2}
+    C_P = \frac{p - p_{\infty}}{\frac{1}{2}\rho V^2}
 \end{equation}
 %
-onde $\text{p}_\infty$ e $\rho_\infty$ são, respectivamente, a pressão e a densidade do meio livre. Assume-se que quando os contornos de pressão indicam regiões com $C_{P} > 1$, o escoamento é compressível.
+onde $p_{\infty}$ é a pressão do meio livre. Quando os contornos de pressão indicam regiões com $C_{P} > 1$, o escoamento é compressível.
 
 \subsection{Parâmetro de Injeção}
 
 Para aplicar o conceito do parâmetro, $Inj$, é necessário olhar para a expressão \eqref{eq:parametro-injecao}:
 
 \begin{equation}\label{eq:parametro-injecao}
-    Inj = \frac{\Dot{m_{BB}}}{\rho_{\infty}u_{\infty}A_{b}}
+    Inj = \frac{\Dot{m}_{BB}}{\rho VA_{b}}
 \end{equation}
 %
-onde $\rho_{\infty}$ é a densidade do ar no meio livre; o $U_{\infty}$ é a velocidade do ar no meio livre e $A_{b}$ significa a área da base do projetil. 
+onde $A_{b}$ significa a área da base do projetil. 
 
-Ao observar a equação anterior, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m_{BB}}$. Como o fluido de trabalho para as simulações CFD é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
+Ao observar a equação \ref{eq:parametro-injecao}, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m}_{BB}$. Como o fluido de trabalho para as simulações CFD é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
 
 \begin{equation}\label{eq:vazao-massica-BB}
-    \Dot{m} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
+    \Dot{m}_{BB} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
 \end{equation}
 %
-Sejam $p_{c}$ e $p_{t}$ as pressões na câmara geradora de gás e na saída do sistema, respectivamente. Os termos $\rho_{t}$, $V_{t}$ e $A_{t}$ se referem a densidade, a velocidade e a área na saída do \texit{Base Bleed}. 
+Sejam $p_{c}$ e $p_{t}$ as pressões na câmara geradora de gás e na saída do sistema, respectivamente. Os termos $\rho_{t}$, $V_{t}$ e $A_{t}$ se referem a densidade, a velocidade e a área na saída do \textit{Base Bleed}. 
 
-Como requisitos das simulações de dinâmica dos fluidos computacional, a temperatura e velocidade de saída dos gases (em função do número de Mach) são computadas com base na pressão da câmara, que é obtida a partir da equação para a vazão mássica \ref{eq:vazao-massica-BB}. Como o gás é isentrópico, as equações para essas propriedades são as seguintes:
+Como requisitos das simulações de dinâmica dos fluidos computacional, a temperatura e velocidade de saída dos gases (em função do número de Mach) são computadas com base na pressão da câmara, que é obtida a partir da equação \ref{eq:vazao-massica-BB}. Como o gás é isentrópico, as equações para essas propriedades são as seguintes:
 
 \begin{align}
     \label{eq:temperatura-BB}
@@ -67,7 +67,7 @@ Para conseguir formular a abordagem numérica exigida pelo método de volumes fi
 	\label{fig12:autor-malha}
 \end{figure}
 
-E com o domínio preparado, foram feitas 2 malhas (vide \autoref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \texit{Base Bleed} é de 1 polegada (25,4 mm).
+E com o domínio preparado, foram feitas 2 malhas (vide \autoref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de 1 polegada (25,4 mm).
 
 \begin{table}[ht]
 \centering
@@ -89,7 +89,7 @@ A seguir a segunda fase de testes de convergência foi realizada, assumindo que 
 
 \begin{table}[ht]
 \centering
-\caption[Malhas desenvolvidas para o domínio computacional (com \texit{Base Bleed})]{Malhas desenvolvidas para o domínio computacional (com \textit{Base Bleed})}
+\caption[Malhas desenvolvidas para o domínio computacional (com \textit{Base Bleed})]{Malhas desenvolvidas para o domínio computacional (com \textit{Base Bleed})}
 \vspace{0.5cm}
 \begin{tabular}{c|c}
 \multicolumn{2}{c}{Segundo Teste de Convergência} \\
@@ -105,11 +105,11 @@ Número da Malha & Quantidade de elementos \\
 \fonte{Autor.}
 \end{table}
 
-Após a ratificação dos valores encontrados para o coeficiente de arrasto, atestou-se a influência do efeito \texit{Base Bleed} pela temperatura de injeção dos gases. É importante salientar que a maior temperatura foi extraída de outro trabalho desenvolvido pelo autor desta dissertação em que se fez presente como co-autor \cite{Gil2020}.
+Após a ratificação dos valores encontrados para o coeficiente de arrasto, atestou-se a influência do efeito \textit{Base Bleed} pela temperatura de injeção dos gases. É importante salientar que a maior temperatura foi extraída de outro trabalho desenvolvido pelo autor desta dissertação em que se fez presente como co-autor \cite{Gil2020}.
 
 \begin{table}[ht]
 \centering
-\caption[Efeito \textit{Base Bleed} em função da temperatura]{Efeito \texit{Base Bleed} em função da temperatura}
+\caption[Efeito \textit{Base Bleed} em função da temperatura]{Efeito \textit{Base Bleed} em função da temperatura}
 \vspace{0.5cm}
 \begin{tabular}{c|c}
 Diâmetro do Base Bleed (mm) & Temperatura (K)\\ 
