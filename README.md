@@ -39,6 +39,22 @@ Nesta parte o objetivo é apresentar possíveis abordagens de discretização, c
 
 O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras (SPALART,P.R. and ALLMARAS, S.R.,1994), $\kappa-\epsilon$ padrão (JONES, W.P and LAUNDER, B.E., 1972; LAUNDER, B.E and SHARMA, B.I.,1974), $\kappa-\omega$ padrão (WILCOX, D.C., 1988) e *Shear-Stress Transport* (SST) $\kappa-\omega$ (MENTER, F.L, 1994).
 
+### Capítulo 05 - Modelagem de Trajetória
+
+O modelo de trajetória implementado será o Modelo de Trajetória Ponto-Material (ou Ponto-Massa) Modificado (de sigla MPMTM, que vem do inglês *Modified Point-Mass Trajectory Model*), que foi deduzido na década de 60 (LIESKE, R.F. and REITER, M.L., 1966) e aprimorado (BARANOWSKI, L., 2013b). Neste modelo considera-se 3 graus de translação e apenas 1 para rotação, conhecido como *guinada de repouso*, cuja aplicação é restrita aos projetis axissimétricos estabilizados por rotação. Atualmente é padronizado pela OTAN através da norma STANAG 4355 (OTAN, 2009). Também é tratado neste capítulo os efeitos causados pela atmosfera e o método numérico implementado para predizer o voo da munição 155mm.
+
+### Capítulo 06 - Descrição do Estudo Proposto
+
+A descrição do estudo serve para orientar como se conceberam os resultados, sejam elas as simulações CFD ou as predições de trajetória. São descritos os modelos de turbulência utilizados, a construção do domínio computacional e as condições de contorno para resolver numericamente o escoamento no entorno do projetil, com ou sem *Base Bleed*. Acerca da trajetória, são relatadas as condições aerodinâmicas, ambientais, atmosféricas e balísticas.
+
+### Capítulo 07 - Resultados
+
+Os resultados das simulações CFD são observados inicialmente a partir de testes de convergência de malha sem *Base Bleed*; depois computando com *Base Bleed* a partir da variação dos seguintes parâmetros: diâmetro de saída; vazão mássica de injeção, temperatura e modelos RANS. Por fim, os resultados são acoplados ao modelo de trajetória para atestar o desempenho.
+
+### Capítulo 08 - Considerações Finais
+
+No último capítulo são inseridas as considerações finais, bem como as conclusões e sugestões para futuros trabalhos.
+
 ## Criar e remover arquivos de conteúdo
 
 Arquivos podem ser incluídos no documento com o comando *\input{}*
@@ -67,6 +83,34 @@ Para remover os arquivos de exemplo do seu documento procure pelas linhas abaixo
 ```
 
 Tenha cuidado para adicionar os elementos textuais, o apendice e o anexo nos locais onde estão no arquivo *main.tex*, pois a ordem e o local onde aparecem influi no documento final gerado.
+
+### Referências
+
+Nesta parte a bibliografia é inserida. Com o compilador de bibliografias *BibTex*, basta criar um arquivo *.bib* e escrever no arquivo *main.tex* (antes dos apêndices)
+
+```
+\bibliography{arquivo-bibliografia_sem_ponto_bib}
+```
+
+### Apêndices
+
+Os apêndices ao fim servem apenas para inserir as tabelas com os coeficientes aerodinâmicos necessários para modelar a trajetória. Sugiro escrever o apêndice como um arquivo *.tex* (nome-do-apendice.tex) 
+
+```
+\begin{apendicesenv}
+    \partapendices
+    \include{nome-do-apendice_sem_ponto_tex}
+\end{apendicesenv}
+```
+
+ou se preferir com o comando \input{}:
+
+```
+\begin{apendicesenv}
+    \partapendices
+    \input{nome-do-apendice_sem_ponto_tex}
+\end{apendicesenv}
+```
 
 ## Outras informações
 
