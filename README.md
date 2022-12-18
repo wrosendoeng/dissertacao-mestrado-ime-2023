@@ -37,7 +37,7 @@ Nesta parte o objetivo é apresentar possíveis abordagens de discretização, c
 
 ### Capítulo 04 - Modelagem da Turbulência
 
-O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras, $\kappa-\epsilon$ padrão, $\kappa-\omega$ padrão e *Shear-Stress Transport* (SST) \kappa-\omega.
+O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras (SPALART,P.R. and ALLMARAS, S.R.,1994), $\kappa-\epsilon$ padrão (JONES, W.P and LAUNDER, B.E., 1972; LAUNDER, B.E and SHARMA, B.I.,1974), $\kappa-\omega$ padrão (WILCOX, D.C., 1988) e *Shear-Stress Transport* (SST) $\kappa-\omega$ (MENTER, F.L, 1994).
 
 ## Criar e remover arquivos de conteúdo
 
