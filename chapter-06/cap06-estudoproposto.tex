@@ -1,9 +1,9 @@
 \chapter{Descrição do Estudo Proposto}\label{cap:estudo-proposto}
 \graphicspath{{chapter-06/img-cap06/}}
 
-No presente trabalho serão ilustrados e analisados os resultados obtidos pelas análises numéricas computacionais para um escoamento compressível, axissimétrico e em regime permanente baseado na abordagem RANS para descrever a turbulência, em especial os modelos Spalart-Allmaras e SST $\kappa$-$\omega$. Dentre os trabalhos já citados, as referências \cite{Sahu1985,Mahmoud2009,torangatti2basawaraj,belaidouni2016,nicolas-perez_accuracy_2017,Dali2018a,Lucena2020,Reddy2021} serviram como norteadoras para o emprego dessas simulações. 
+No presente trabalho serão ilustrados e analisados os resultados obtidos pelas análises numéricas computacionais para um escoamento compressível, axissimétrico e em regime permanente baseado na abordagem RANS para descrever a turbulência, em especial os modelos Spalart-Allmaras e SST $\kappa$-$\omega$. Dentre os trabalhos já citados, as referências \cite{Dali2018a,Sahu1985,Mahmoud2009,torangatti2basawaraj,belaidouni2016,nicolas-perez_accuracy_2017,Lucena2020,Reddy2021} serviram como norteadoras para o emprego dessas simulações. 
 
-Ademais, a implementação do MPMTM faz uso dos recursos disponíveis pelas simulações CFD a fim de comparar o funcionamento do projetil em duas situações: o voo inerte, que seria o voo sem uso do \textit{Base Bleed}; voo ativo, com o uso do \textit{Base Bleed}. Desta forma, aplica-se o que já foi desenvolvido e consolidado em trabalhos anteriores \cite{Gauchoux1991,balon2006analysis,Abou-Elela2013,Skande2014,Lim2016,Rosendo2020}.
+Ademais, a implementação do MPMTM faz uso dos recursos disponíveis pelas simulações CFD a fim de comparar o funcionamento do projetil em duas situações: o voo inerte, que seria o voo sem uso do \textit{Base Bleed}; voo ativo, com o uso do \textit{Base Bleed}. Desta forma, aplica-se o que já foi desenvolvido e consolidado em trabalhos anteriores \cite{Rosendo2020,Gauchoux1991,balon2006analysis,Abou-Elela2013,Skande2014,Lim2016}.
 
 \section{Parâmetros de Interesse}
 
@@ -118,7 +118,7 @@ Diâmetro do Base Bleed & Temperatura\\
 & \qty{1500}{\kelvin}\\
 & \qty{2306,15}{\kelvin}
 \end{tabular}
-\label{tab:tabela-vazoes-por-diametro}
+\label{tab:tabela-bb-temperatura}
 \fonte{Autor.}
 \end{table}
 
@@ -138,17 +138,21 @@ Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 & Vazão nº 2\\
 \fonte{Autor.}
 \end{table}
 
-\section{Condições Iniciais e de Contorno}\label{sec:condicao-contorno}
+\section{Condições de Contorno}\label{sec:condicao-contorno}
 
 No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão $p = \qty{101,325}{\kilo\pascal}$ e a temperatura $T = \qty{288,15}{\kelvin}$ são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
 
-A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram impostas para descobrir a velocidade do escoamento nesta região, já que a pressão é definida a partir do gradiente nulo ($\nabla p = 0$) em respeito ao escoamento livre.
+A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram prescritas para descobrir a velocidade do escoamento nesta região. A pressão na saída dos gases BB é definida como sendo igual a pressão no "Escoamento livre"{} $\left(\nabla p = 0\right)$.
 
-No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que é igual ao valor encontrado no meio livre. A região da parede, que descreve o corpo sólido do projetil, possui a condição de não-deslizamento para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a \qty{0,7}{\metre}, aproximadamente o valor do comprimento do projetil.
+No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que são iguais aos valores determinados no "Escoamento livre"{} $\left(\nabla p = 0, \nabla T = 0\right)$.
+
+A região da parede, que descreve o contorno do formato do projetil, possui a condição de não-deslizamento, portanto $V_{parede} = 0$ para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. A parede é considerada como adiabática, logo o fluxo de temperatura nesta região é nulo $\left(\nabla T = 0\right)$.
+
+Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a \qty{0,7}{\metre}, aproximadamente o valor do comprimento do projetil.
 
 \section{Método de Resolução das Simulações CFD}\label{sec:metodo-resolucao-cfd}
 
-Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos \cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de $2^{a}$ ordem. 
+Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos \cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de segunda ordem. 
 
 Para lidar com a compressibilidade existente no regime de voo desta munição estudada, o esquema \textit{density-based} totalmente implícito foi aplicado \cite{Weiss1995PreconditioningAT,Weiss1997IMPLICITSO,Weiss1999ImplicitSO}.
 
@@ -162,21 +166,30 @@ No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dado
 
 \subsection{Condições Geométricas}\label{subsec:condicoes-geometricas}
 
-O projetil de calibre 155mm possui um formato axissimétrico, portanto ele permite aplicar o modelo MPMTM. Isto é, o corpo rígido é tratado como um ponto material. Contudo, o \autoref{quad:geo_inputs} apresenta quais informações são exigidas para implementação do código que calcula a trajetória, conforme previsto pela STANAG 4355.
+O projetil de calibre \qty{155}{\milli\metre} possui um formato axissimétrico, portanto ele permite aplicar o modelo MPMTM. Isto é, o corpo rígido é tratado como um ponto material. Contudo, o Quadro \ref{quad:geo_inputs} apresenta quais informações são exigidas para implementação do código que calcula a trajetória, conforme previsto pela STANAG 4355.
 
 \begin{quadro}[htb]
 \caption{\label{quad:geo_inputs}Dados Geométricos}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|}
     \hline
-    \textbf{Descrição} & \textbf{Valores} & \textbf{Unidade}\\ \hline
-    Diâmetro de referência & 0,15470 & m\\ \hline
-    Diâmetro do boat-tail & 0,13373 & m\\ \hline
-    Massa (sem propelente) & 42,9850 & kg\\ \hline
-    Massa do propelente & 0,5600 & kg\\ \hline
-    Momento de inércia axial no início & 0,14245 & kg$\cdot$m$^{-2}$\\ \hline
-    Momento de inércia axial após a queima & 0,13730 & kg$\cdot$m$^{-2}$\\\hline
-    Centro de gravidade no início (a partir da ponta da ogiva) & 0,45835 & m\\\hline
-    Centro de gravidade após a queima (a partir da ponta da ogiva) & 0,44645 & m\\\hline
+    \textbf{Descrição} & \textbf{Valores} \\ 
+    \hline
+    Diâmetro de referência & \qty{0,15470}{\metre} \\ 
+    \hline
+    Diâmetro do boat-tail & \qty{0,13373}{\metre} \\ 
+    \hline
+    Massa (sem propelente) & \qty{42,9850}{\kilogram} \\ 
+    \hline
+    Massa do propelente & \qty{0,5600}{\kilogram} \\ 
+    \hline
+    Momento de inércia axial no início & \qty[per-mode = symbol]{0,14245}{\kilogram\per\square\metre} \\ 
+    \hline
+    Momento de inércia axial após a queima & \qty[per-mode = symbol]{0,13730}{\kilogram\per\square\metre} \\
+    \hline
+    Centro de gravidade no início (a partir da ponta da ogiva) & \qty{0,45835}{\metre} \\
+    \hline
+    Centro de gravidade após a queima (a partir da ponta da ogiva) & \qty{0,44645}{\metre} \\
+    \hline
 \end{tabular}
 \fonte{Autor.}
 \end{quadro}
@@ -194,23 +207,23 @@ Neste sistema o canhão é centrado no eixo de referência da Terra em $O_{\text
 
 \begin{quadro}[htb]
 \caption{\label{quad:muzzle_inputs}Dados Balísticos}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|}
 \hline
-\textbf{Descrição} & \textbf{Valores} & \textbf{Unidade}\\
+\textbf{Descrição} & \textbf{Valores}\\
 \hline
-Velocidade de disparo & 878 & m$\cdot$s$^{-1}$\\
+Velocidade de disparo & \qty[per-mode=symbol]{878}{\metre\per\second} \\
 \hline
-Ângulo de elevação & $2\pi/9$, $\pi/4$ & radianos \\
+Ângulo de elevação & \qtylist[parse-numbers=false]{2 \pi/9; \pi/4}{\radian} \\
 \hline
-Latitude & $-23 \pi/180$ & radianos \\
+Latitude & \qty[parse-numbers=false]{-23 \pi/180}{\radian} \\
 \hline
-Azimute & 0 & radianos \\
+Azimute & \qty{0}{\radian} \\
 \hline
-Taxa de torção no disparo & 25 & calibres por revolução \\
+Taxa de torção no disparo & \qty[per-mode=symbol]{25}{\calibers\per\revolution} \\
 \hline
-Fator de arrasto & 1,2 & - \\
+Fator de arrasto & 1,2 \\
 \hline
-Fator de Magnus & 1,2 & - \\
+Fator de Magnus & 1,2 \\
 \hline
 \end{tabular}
 \fonte{Autor.}
@@ -218,29 +231,29 @@ Fator de Magnus & 1,2 & - \\
 
 \subsection{Condições Ambientais}\label{subsec:condicoes-ambientais}
 
-Respeitando o modelo da \citeonline{international1993manual}, existem algumas variáveis a saber no início do lançamento. Elas estão representadas no \autoref{quad:ICAOinputs}. A velocidade do vento foi desconsiderada porque o simulador necessitava criar confiabilidade antes de aumentar as incertezas, assim como os fatores de umidade foram desprezados pela mesma razão.
+Respeitando o modelo da ICAO \cite{international1993manual}, existem algumas variáveis a saber no início do lançamento. Elas estão representadas no \autoref{quad:ICAOinputs}. A velocidade do vento foi desconsiderada porque o simulador necessitava criar confiabilidade antes de aumentar as incertezas, assim como os fatores de umidade foram desprezados pela mesma razão.
 
 \begin{quadro}[htb]
 \caption{\label{quad:ICAOinputs}Dados Atmosféricos}
-\begin{tabular}{|c|c|c|}
+\begin{tabular}{|c|c|}
 \hline
-\textbf{Descrição} & \textbf{Valores} & \textbf{Unidade}\\
+\textbf{Descrição} & \textbf{Valores} \\
 \hline
-Temperatura ao nível do mar & 288,15 & K\\
+Temperatura ao nível do mar & \qty{288,15}{\kelvin} \\
 \hline
-Gradiente de Temperatura & $6,5 \times 10^{-3}$ & K$\cdot$m$^{-1}$\\
+Gradiente de Temperatura & \qty[per-mode = symbol, exponent-mode = scientific]{6,5e-3}{\kelvin\per\metre} \\
 \hline
-Pressão do ar ao nível do mar & $1,01325 \times 10^{5}$ & Pa\\
+Pressão do ar ao nível do mar & \qty[exponent-mode = scientific]{1,01325e5}{\pascal} \\
 \hline
-Densidade do ar ao nível do mar & 1,225 & kg$\cdot$m$^{-2}$ \\
+Densidade do ar ao nível do mar & \qty[per-mode = symbol]{1,225}{\kilogram\per\metre\cubed} \\
 \hline
-Razão de expansão adiabática do ar & 1,4 & - \\
+Razão de expansão adiabática do ar & 1,4 \\
 \hline
-Aceleração da gravidade ao nível do mar & 9,80665 & m$\cdot$s$^{-2}$\\
+Aceleração da gravidade ao nível do mar & \qty[per-mode=symbol]{9,80665}{\metre\per\second\squared} \\
 \hline
-Raio da Terra & $6,371 \times 10^{6}$ & m\\
+Raio da Terra & \qty[exponent-mode=scientific]{6,371e6}{\metre} \\
 \hline
-Velocidade angular da Terra & $7,292 \times 10^{-5}$ & rad$\cdot$s$^{-1}$ \\
+Velocidade angular da Terra & \qty[per-mode=symbol, exponent-mode = scientific]{7,292e-5}{\radian\per\second} \\
 \hline
 \end{tabular}
 \fonte{\citeonline{international1993manual}}

@@ -229,7 +229,7 @@ Sim
 % Text Node
 \draw (421.25,28.75) node [anchor=north west][inner sep=0.75pt]  [font=\small] [align=left] {Algoritmo acoplado};\
 \end{tikzpicture}
-\caption{Fluxogramas para algoritmo \textit{pressure-based} segregado e acoplado \cite{fluent2021ansys}}
+\caption[Fluxogramas para algoritmo \textit{pressure-based} segregado e acoplado.]{Fluxogramas para algoritmo \textit{pressure-based} segregado e acoplado \cite{fluent2021ansys}.}
 \label{flux:pressure-based}
 \end{figure}
 
@@ -238,7 +238,7 @@ Ambos os casos tem prós e contras, quando analisadas as convergências das solu
 \begin{table}[ht]
 \centering
 \vspace{0.5cm}
-\caption[Comparações entre os algoritmos segregados e acoplados]{Comparações entre os algoritmos segregados e acoplados}
+\caption[Comparações entre os algoritmos segregados e acoplados.]{Comparações entre os algoritmos segregados e acoplados.}
 \begin{tabular}[c]{c|c|c}
 Tipo de algoritmo & Convergência da solução & Uso de memória \\
 \hline
@@ -321,7 +321,7 @@ Sim
 \draw (280.5,32.75) node [anchor=north west][inner sep=0.75pt]  [font=\small] [align=left] {Algoritmo};
 
 \end{tikzpicture}
-\caption{Fluxograma para algoritmo \textit{density-based} \cite{fluent2021ansys}}
+\caption[Fluxograma para algoritmo \textit{density-based}]{Fluxograma para algoritmo \textit{density-based} \cite{fluent2021ansys}.}
 \label{fig:density-based}
 \end{figure}
 
@@ -350,7 +350,7 @@ sendo 0 e 1 os índices das células representadas na Figura \ref{fig:volume-ANS
 \begin{figure}[!ht] 
 	\centering
 	\includegraphics[width=0.5\textwidth]{foto01-volume-fluent.png}
-    \caption{Volume de controle usado para ilustrar a discretização da equação do transporte escalar \cite{fluent2021ansys}}
+    \caption[Volume de controle usado para ilustrar a discretização da equação do transporte escalar.]{Volume de controle usado para ilustrar a discretização da equação do transporte escalar \cite{fluent2021ansys}.}
 	\label{fig:volume-ANSYS-2021R2}
 \end{figure}
 
@@ -383,7 +383,7 @@ Considere $\phi_{c_0}$ o valor de $\phi$ na célula central. A equação \ref{eq
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{foto02-minimos-quadrados.png}
-	\caption{Avaliação do gradiente do volume de controle \cite{fluent2021ansys}}
+	\caption[Avaliação do gradiente do volume de controle]{Avaliação do gradiente do volume de controle \cite{fluent2021ansys}.}
 	\label{fig:minimos-quadrados}
 \end{figure}
  
@@ -399,7 +399,7 @@ O esquema QUICK \cite{Leonard1990} se baseia em uma média ponderada entre os es
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{foto03-quick-1d.png}  
-	\caption{Esquema QUICK para um escoamento unidimensional \cite{fluent2021ansys}}
+	\caption[Esquema QUICK para um escoamento unidimensional.]{Esquema QUICK para um escoamento unidimensional \cite{fluent2021ansys}.}
 	\label{fig:ansys-QUICK}
 \end{figure}
 
@@ -445,7 +445,7 @@ O resíduo normalizado $R^{\phi}$ da equação de transporte discretizada é cal
 
 \begin{equation}
 \label{eq:criterio-convergencia}
-	R^{\phi} = \frac{\sum_{células} \left[\sum_{nb}a_{nb}\phi_{nb}+b-a_{P}\phi_{P}\right] }{\sum_{células}\left[a_{P}\phi_{P}\right]}    
+	R^{\phi} = \frac{\sum_{células} \left[ \sum_{nb}a_{nb}\phi_{nb}+b-a_{P}\phi_{P}\right]}{\sum_{células}\left[a_{P}\phi_{P}\right]}    
 \end{equation}
 
 Assume-se que a solução está convergida quando $R^{\phi} < 10^{-6}$.
