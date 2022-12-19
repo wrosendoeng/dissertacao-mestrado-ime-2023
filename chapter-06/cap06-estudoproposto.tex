@@ -67,7 +67,7 @@ Para conseguir formular a abordagem numérica exigida pelo método de volumes fi
 	\label{fig12:autor-malha}
 \end{figure}
 
-E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de 1 polegada (25,4 mm).
+E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de 1 polegada (\qty{25,4}{\milli\metre}).
 
 \begin{table}[ht]
 \centering
@@ -78,14 +78,14 @@ E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-m
 \hline 
 Número da Malha & Quantidade de elementos \\ 
 \hline
-1 & 186500 \\
-2 & 380000
+1 & \num{186500} \\
+2 & \num{380000}
 \end{tabular}
 \label{tab:tabela-malhas-inicial}
 \fonte{Autor.}
 \end{table}
 
-A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a 50,8mm e a temperatura de saída com valor de 2306,15K. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com 380000 elementos para obtenção dos resultados finais.
+A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a \qty{50,8}{\milli\metre} e a temperatura de saída com valor de \qty{2306,15}{\kelvin}. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com \num{380000} elementos para obtenção dos resultados finais.
 
 \begin{table}[ht]
 \centering
@@ -96,10 +96,10 @@ A seguir a segunda fase de testes de convergência foi realizada, assumindo que 
 \hline 
 Número da Malha & Quantidade de elementos \\ 
 \hline
-1 & 380000 \\
-2 & 453600 \\
-3 & 514800 \\
-4 & 566550
+1 & \num{380000} \\
+2 & \num{453600} \\
+3 & \num{514800} \\
+4 & \num{566550}
 \end{tabular}
 \label{tab:tabela-malhas-secundaria}
 \fonte{Autor.}
@@ -112,27 +112,27 @@ Após a ratificação dos valores encontrados para o coeficiente de arrasto, ate
 \caption[Efeito \textit{Base Bleed} em função da temperatura]{Efeito \textit{Base Bleed} em função da temperatura}
 \vspace{0.5cm}
 \begin{tabular}{c|c}
-Diâmetro do Base Bleed (mm) & Temperatura (K)\\ 
+Diâmetro do Base Bleed & Temperatura\\ 
 \hline
-\multirow{3}*{25,4} & 300\\
-& 1500\\
-& 2306,15
+\multirow{3}*{\qty{25,4}{\milli\metre}} & \qty{300}{\kelvin}\\
+& \qty{1500}{\kelvin}\\
+& \qty{2306,15}{\kelvin}
 \end{tabular}
 \label{tab:tabela-vazoes-por-diametro}
 \fonte{Autor.}
 \end{table}
 
-Após esse passo, foram comparados dois diâmetros possíveis para saída da câmara geradora de gás (sistema BB) com a mesma temperatura (T = 2306,15K), conforme a Tabela \ref{tab:tabela-vazoes-por-diametro}.
+Após esse passo, foram comparados dois diâmetros possíveis para saída da câmara geradora de gás (sistema BB) com a mesma temperatura ($T_{BB} = \qty{2306,15}{\kelvin}$), conforme a Tabela \ref{tab:tabela-vazoes-por-diametro}.
 
 \begin{table}[ht]
 \centering
 \caption[Diâmetros testados para analisar o efeito \textit{Base Bleed}]{Diâmetros testados para analisar o efeito \textit{Base Bleed}}
 \vspace{0.5cm}
 \begin{tabular}{c|c|c}
-Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 (kg/s) & Vazão nº 2 (kg/s)\\ 
+Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 & Vazão nº 2\\ 
 \hline
-25,4 & 0,015 & 0,030\\
-50,8 & 0,030 & 0,060
+\qty{25,4}{\milli\metre} & \qty[per-mode = symbol]{0,015}{\kilogram\per\second} & \qty[per-mode = symbol]{0,030}{\kilogram\per\second}\\
+\qty{50,8}{\milli\metre} & \qty[per-mode = symbol]{0,030}{\kilogram\per\second} & \qty[per-mode = symbol]{0,060}{\kilogram\per\second}\\
 \end{tabular}
 \label{tab:tabela-vazoes-por-diametro}
 \fonte{Autor.}
@@ -140,11 +140,11 @@ Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 (kg/s) & Vazão nº 2 (kg/s)
 
 \section{Condições Iniciais e de Contorno}\label{sec:condicao-contorno}
 
-No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão p = 1 atm. A velocidade é prescrita conforme os valores de entrada do escoamento e a temperatura é determinada como T = 288,15 K pela condição ambiental predeterminada em tabelas de tiro.
+No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão $p = \qty{101,325}{\kilo\pascal}$ e a temperatura $T = \qty{288,15}{\kelvin}$ são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
 
 A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram impostas para descobrir a velocidade do escoamento nesta região, já que a pressão é definida a partir do gradiente nulo ($\nabla p = 0$) em respeito ao escoamento livre.
 
-No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que é igual ao valor encontrado no meio livre. A região da parede, que descreve o corpo sólido do projetil, possui a condição de não-deslizamento para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a 0,7 metros, aproximadamente o valor do comprimento do projetil.
+No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que é igual ao valor encontrado no meio livre. A região da parede, que descreve o corpo sólido do projetil, possui a condição de não-deslizamento para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a \qty{0,7}{\metre}, aproximadamente o valor do comprimento do projetil.
 
 \section{Método de Resolução das Simulações CFD}\label{sec:metodo-resolucao-cfd}
 
@@ -154,7 +154,7 @@ Para lidar com a compressibilidade existente no regime de voo desta munição es
 
 Para o cálculo dos gradientes foi utilizado o método dos Mínimos Quadrados e o esquema de avaliação do fluxo optou pelo ROE-FDS, pois demonstra bons resultados para problemas com escoamentos compressíveis \cite{nicolas-perez_accuracy_2017}. Para a resolução do sistema de equações lineares foi utilizada a técnica \textit{multigrid} \cite{Hutchinson1986}.
 
-O problema foi considerado convergido quando todos os resíduos forem menores que $1,0 \times 10^{-6}$. Um software comercial foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
+O problema foi considerado convergido quando todos os resíduos forem menores que $\num[exponent-mode = scientific]{1e-6}$. Um software comercial foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
 
 \section{Implementação do Modelo de Trajetória}\label{subsec:implementacao-trajetoria}
 
