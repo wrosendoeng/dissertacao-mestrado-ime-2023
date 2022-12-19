@@ -29,6 +29,7 @@
 \usepackage{microtype} 		% para melhorias de justificação
 \usepackage{setspace}       % para espacamento simples no resumo
 \usepackage{amsmath}
+\usepackage{siunitx}
 \usepackage{multirow}
 \usepackage{multicol}
 \usepackage[table,xcdraw]{xcolor}
@@ -39,11 +40,9 @@
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
-\usepackage{physics}
 \usepackage{mathdots}
 \usepackage{yhmath}
 \usepackage{cancel}
-\usepackage{siunitx}
 \usepackage{array}
 \usepackage{amssymb}
 \usepackage{gensymb}
@@ -53,6 +52,13 @@
 \usetikzlibrary{fadings, patterns, shadows.blur, shapes, arrows, positioning}
 % ---
 
+\sisetup{input-ignore={.},
+     group-separator = {.},
+     input-decimal-markers={,}, 
+     output-decimal-marker = {,},
+     group-minimum-digits=4
+     }
+    
 % ---
 % Pacotes adicionais, usados apenas no exemplo
 % ---

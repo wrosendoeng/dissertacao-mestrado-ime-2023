@@ -39,7 +39,7 @@ Para aplicar o conceito do parâmetro, $Inj$, é necessário olhar para a expres
 %
 onde $A_{b}$ significa a área da base do projetil. 
 
-Ao observar a equação \ref{eq:parametro-injecao}, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m}_{BB}$. Como o fluido de trabalho para as simulações CFD é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
+Ao observar a equação \ref{eq:parametro-injecao}, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil, pois o $Inj$ tem influência na equação \ref{eq:baseMPM}. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m}_{BB}$. Como o fluido de trabalho é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
 
 \begin{equation}\label{eq:vazao-massica-BB}
     \Dot{m}_{BB} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
@@ -67,7 +67,7 @@ Para conseguir formular a abordagem numérica exigida pelo método de volumes fi
 	\label{fig12:autor-malha}
 \end{figure}
 
-E com o domínio preparado, foram feitas 2 malhas (vide \autoref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de 1 polegada (25,4 mm).
+E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de 1 polegada (25,4 mm).
 
 \begin{table}[ht]
 \centering
@@ -85,7 +85,7 @@ Número da Malha & Quantidade de elementos \\
 \fonte{Autor.}
 \end{table}
 
-A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a 50,8mm e a temperatura de saída com valor de 2306,15K. Nesta etapa, foram testadas 4 malhas, de acordo com a \autoref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com 380000 elementos para obtenção dos resultados finais.
+A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a 50,8mm e a temperatura de saída com valor de 2306,15K. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com 380000 elementos para obtenção dos resultados finais.
 
 \begin{table}[ht]
 \centering
@@ -122,17 +122,17 @@ Diâmetro do Base Bleed (mm) & Temperatura (K)\\
 \fonte{Autor.}
 \end{table}
 
-Após esse passo, foram comparados dois diâmetros possíveis para saída da câmara geradora de gás (sistema BB) com a mesma temperatura, conforme a \autoref{tab:tabela-vazoes-por-diametro}.
+Após esse passo, foram comparados dois diâmetros possíveis para saída da câmara geradora de gás (sistema BB) com a mesma temperatura (T = 2306,15K), conforme a Tabela \ref{tab:tabela-vazoes-por-diametro}.
 
 \begin{table}[ht]
 \centering
-\caption[Diâmetros testados para analisar o efeito \textit{Base Bleed} ($T_{BB} = 2306,15 K$)]{Diâmetros testados para analisar o efeito \textit{Base Bleed} ($T_{BB} = 2306,15 K$)}
+\caption[Diâmetros testados para analisar o efeito \textit{Base Bleed}]{Diâmetros testados para analisar o efeito \textit{Base Bleed}}
 \vspace{0.5cm}
 \begin{tabular}{c|c|c}
 Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 (kg/s) & Vazão nº 2 (kg/s)\\ 
 \hline
-1" \hspace{2mm} 25,4 & 0,015 & 0,030\\
-2" \hspace{2mm} 50,8 & 0,030 & 0,060
+25,4 & 0,015 & 0,030\\
+50,8 & 0,030 & 0,060
 \end{tabular}
 \label{tab:tabela-vazoes-por-diametro}
 \fonte{Autor.}
@@ -140,9 +140,9 @@ Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 (kg/s) & Vazão nº 2 (kg/s)
 
 \section{Condições Iniciais e de Contorno}\label{sec:condicao-contorno}
 
-A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram impostas para descobrir a velocidade do escoamento nesta região, já que a pressão é definida a partir do gradiente nulo ($\nabla p = 0$) em respeito ao escoamento livre.
+No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão p = 1 atm. A velocidade é prescrita conforme os valores de entrada do escoamento e a temperatura é determinada como T = 288,15 K pela condição ambiental predeterminada em tabelas de tiro.
 
-No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão possui o valor de $1,01325 \times 10^{5}$ Pa (1 atm). A velocidade é prescrita conforme os valores de entrada do escoamento e a temperatura é determinada como $T = 288,15 \text{K}$ por razões de condições ambientais predeterminadas em tabelas de tiro.
+A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram impostas para descobrir a velocidade do escoamento nesta região, já que a pressão é definida a partir do gradiente nulo ($\nabla p = 0$) em respeito ao escoamento livre.
 
 No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que é igual ao valor encontrado no meio livre. A região da parede, que descreve o corpo sólido do projetil, possui a condição de não-deslizamento para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a 0,7 metros, aproximadamente o valor do comprimento do projetil.
 
