@@ -63,10 +63,17 @@ Arquivos podem ser incluídos no documento com o comando *\input{}*
 \input{nome-do-arquivo_sem-tex}
 ```
 
+ou se quiser usar o comando *\include{}*
+
+```
+\include{nome-do-arquivo_sem-tex}
+```
+
 Se o seu arquivo se chama resultados.tex, então:
 
 ```
 \input{resultados}
+\include{resultados}
 ```
 
 Para remover os arquivos de exemplo do seu documento procure pelas linhas abaixo no arquivo *main.tex*.
