@@ -93,7 +93,7 @@ Tenha cuidado para adicionar os elementos textuais, o apendice e o anexo nos loc
 
 ### Referências
 
-Nesta parte a bibliografia é inserida. Com o compilador de bibliografias *BibTex*, basta criar um arquivo *.bib* e escrever no arquivo *main.tex* (antes dos apêndices)
+Nesta parte a bibliografia é inserida. Com o compilador de bibliografias *BibTeX*, basta criar um arquivo *.bib* e escrever no arquivo *main.tex* (antes dos apêndices)
 
 ```
 \bibliography{arquivo-bibliografia_sem_ponto_bib}
