@@ -1,0 +1,23 @@
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\contentsline {table}{\numberline {1}{\ignorespaces Comparações entre os algoritmos segregados e acoplados.}}{47}{table.caption.28}%
+\contentsline {table}{\numberline {2}{\ignorespaces Constantes usadas no modelo Spalart-Allmaras.}}{58}{table.caption.34}%
+\contentsline {table}{\numberline {3}{\ignorespaces Constantes usadas no modelo $\kappa $-$\varepsilon $.}}{59}{table.caption.35}%
+\contentsline {table}{\numberline {4}{\ignorespaces Constantes usadas no modelo $\kappa $-$\omega $.}}{61}{table.caption.36}%
+\contentsline {table}{\numberline {5}{\ignorespaces Constantes usadas no modelo SST $\kappa $-$\omega $.}}{63}{table.caption.37}%
+\contentsline {table}{\numberline {6}{\ignorespaces Malhas desenvolvidas para o domínio computacional (sem \textit {Base Bleed})}}{72}{table.caption.39}%
+\contentsline {table}{\numberline {7}{\ignorespaces Malhas desenvolvidas para o domínio computacional (com \textit {Base Bleed})}}{73}{table.caption.40}%
+\contentsline {table}{\numberline {8}{\ignorespaces Efeito \textit {Base Bleed} em função da temperatura}}{73}{table.caption.41}%
+\contentsline {table}{\numberline {9}{\ignorespaces Diâmetros testados para analisar o efeito \textit {Base Bleed}}}{73}{table.caption.42}%
+\contentsline {table}{\numberline {10}{\ignorespaces Teste de convergência (com \textit {Base Bleed})}}{79}{table.caption.50}%
+\contentsline {table}{\numberline {11}{\ignorespaces Trajetória Balística com QE = \qty {711}{\milliradian } e v = \qty {878}{\metre \per Mestrado} $\left (\phi _{BB} = \qty {25,4}{\millimetre }\right )$}}{87}{table.caption.61}%
+\contentsline {table}{\numberline {12}{\ignorespaces Trajetória Balística com QE = \qty {800}{\milliradian } e v = \qty {878}{\metre \per Mestrado} $\left (\phi _{BB} = \qty {25,4}{\millimetre }\right )$}}{88}{table.caption.62}%
+\contentsline {table}{\numberline {13}{\ignorespaces Trajetória Balística com QE = \qty {711}{\milliradian } e v = \qty {878}{\metre \per Mestrado} $\left (\phi _{BB} = \qty {50,8}{\millimetre }\right )$}}{88}{table.caption.63}%
+\contentsline {table}{\numberline {14}{\ignorespaces Trajetória Balística com QE = \qty {800}{\milliradian } e v = \qty {878}{\metre \per Mestrado} $\left (\phi _{BB} = \qty {50,8}{\millimetre }\right )$}}{88}{table.caption.64}%
+\contentsline {table}{\numberline {15}{\ignorespaces Coeficientes Aerodinâmicos (sem \textit {Base Bleed})}}{98}{table.caption.69}%
+\contentsline {table}{\numberline {16}{\ignorespaces Coeficientes Aerodinâmicos (com Base Bleed - $T_{bb}$ = 300K)}}{99}{table.caption.70}%
+\contentsline {table}{\numberline {17}{\ignorespaces Coeficientes Aerodinâmicos (com Base Bleed - $T_{bb}$ = 1500K)}}{100}{table.caption.71}%
+\contentsline {table}{\numberline {18}{\ignorespaces Coeficientes Aerodinâmicos (com Base Bleed - $\phi _{bb}$ = 25,4mm, $\dot {m}_{bb}$ = 0,015 kg/s e $T_{bb}$ = 2306,15K)}}{101}{table.caption.72}%
+\contentsline {table}{\numberline {19}{\ignorespaces Coeficientes Aerodinâmicos (com Base Bleed - $\phi _{bb}$ = 25,4mm, $\dot {m}_{bb}$ = 0,030 kg/s e $T_{bb}$ = 2306,15K)}}{102}{table.caption.73}%
+\contentsline {table}{\numberline {20}{\ignorespaces Coeficientes Aerodinâmicos (com Base Bleed - $\phi _{bb}$ = 50,8mm, $\dot {m}_{bb}$ = 0,030 kg/s e $T_{bb}$ = 2306,15K)}}{103}{table.caption.74}%
+\contentsline {table}{\numberline {21}{\ignorespaces Coeficientes Aerodinâmicos (com Base Bleed - $\phi _{bb}$ = 50,8mm, $\dot {m}_{bb}$ = 0,060 kg/s e $T_{bb}$ = 2306,15K)}}{104}{table.caption.75}%

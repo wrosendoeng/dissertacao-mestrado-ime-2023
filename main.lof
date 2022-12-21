@@ -1,0 +1,34 @@
+\babel@toc {brazil}{}\relax 
+\babel@toc {brazil}{}\relax 
+\contentsline {figure}{\numberline {1}{\ignorespaces Técnicas de redução de arrasto, traduzido e adaptado.}}{24}{figure.caption.16}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Granada hipotética de calibre 155mm M107 HE.}}{25}{figure.caption.17}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Escoamento supersônico na base de um projetil com \textit {Base Bleed}.}}{25}{figure.caption.18}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Pressão na base por fluxo de massa.}}{26}{figure.caption.19}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Coeficiente de Arrasto em função do número de Mach para um projétil calibre 120mm obtido por testes de tiro, com ou sem \textit {Base Bleed}.}}{27}{figure.caption.20}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Malha computacional}}{29}{figure.caption.21}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Visualização experimental}}{30}{figure.caption.22}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Imagens computacionais baseadas no gradiente de densidade e contornos de velocidade adimensional em função do fluxo de ar no meio externo.}}{31}{figure.caption.23}%
+\contentsline {figure}{\numberline {9}{\ignorespaces Modelo computacional para um projétil 155mm.}}{32}{figure.caption.24}%
+\contentsline {figure}{\numberline {10}{\ignorespaces Campo de velocidade com M = 1,5 em diferentes modelos de turbulência.}}{34}{figure.caption.25}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Coeficiente de Arrasto versus Mach para o projetil com \textit {Base Bleed} pelas simulações CFD usando os modelos SST $\kappa -\omega $, Transição $\kappa -\kappa l-\kappa -\omega $ e RSM e comparando com resultados semi-empíricos.}}{40}{figure.caption.26}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Fluxogramas para algoritmo \textit {pressure-based} segregado e acoplado.}}{48}{figure.caption.27}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Fluxograma para algoritmo \textit {density-based}}}{48}{figure.caption.29}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Volume de controle usado para ilustrar a discretização da equação do transporte escalar.}}{49}{figure.caption.30}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Avaliação do gradiente do volume de controle}}{51}{figure.caption.31}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Esquema QUICK para um escoamento unidimensional.}}{51}{figure.caption.32}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Média temporal para turbulência estacionária para a velocidade instantânea $u_i(\textbf {x},t)$.}}{54}{figure.caption.33}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Domínio computacional\relax }}{72}{figure.caption.38}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Sistema de referência para o cálculo de trajetória}}{75}{figure.caption.44}%
+\contentsline {figure}{\numberline {20}{\ignorespaces Coeficiente de Arrasto $C_{D}$ em função do número de Mach (sem BB)\relax }}{78}{figure.caption.47}%
+\contentsline {figure}{\numberline {21}{\ignorespaces Projetil sob regime de velocidade igual a Mach \num {2}\relax }}{78}{figure.caption.48}%
+\contentsline {figure}{\numberline {22}{\ignorespaces Linhas de corrente para a velocidade sob regime M = \num {2,0}\relax }}{79}{figure.caption.49}%
+\contentsline {figure}{\numberline {23}{\ignorespaces Influência do diâmetro sobre o coeficiente de arrasto.\relax }}{80}{figure.caption.51}%
+\contentsline {figure}{\numberline {24}{\ignorespaces Projetil sob diferentes condições de vazão mássica sob regime M = \num {2,0} e diâmetro de saída do \textit {Base Bleed} de \qty {1}{\polegada } $\left (\phi _{BB} = \qty {25,4}{\millimetre }\right )$\relax }}{81}{figure.caption.52}%
+\contentsline {figure}{\numberline {25}{\ignorespaces Projetil sob diferentes condições de vazão mássica sob regime M = \num {2,0} e diâmetro de saída do \textit {Base Bleed} de 2 polegadas ($\phi _{BB} = \qty {50,8}{\millimetre }$)\relax }}{82}{figure.caption.53}%
+\contentsline {figure}{\numberline {26}{\ignorespaces Influência da vazão mássica do \textit {Base Bleed} sobre o coeficiente de arrasto com $T_{BB} = \qty {1500}{\kelvin }$\relax }}{83}{figure.caption.54}%
+\contentsline {figure}{\numberline {27}{\ignorespaces Projetil sob diferentes condições de vazão mássica sob regime M = \num {2,0}, diâmetro de saída do \textit {Base Bleed} de 2 polegadas ($\phi _{BB} = \qty {50,8}{\millimetre }$) e Temperatura prescrita ($T_{BB} = \qty {1500}{\kelvin }$)\relax }}{84}{figure.caption.55}%
+\contentsline {figure}{\numberline {28}{\ignorespaces Influência da temperatura do \textit {Base Bleed} sobre o coeficiente de arrasto com $\dot {m}_{BB} = \qty {0,060}{\kilogram \per Mestrado}$\relax }}{84}{figure.caption.56}%
+\contentsline {figure}{\numberline {29}{\ignorespaces Curvas de arrasto de acordo com modelos de turbulência RANS\relax }}{85}{figure.caption.57}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Projetil sob modelo Spalart-Allmaras\relax }}{86}{figure.caption.58}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Linhas de corrente para o modelo Spalart-Allmaras\relax }}{86}{figure.caption.59}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Projetil com diferentes saídas de bocal e diferentes vazões\relax }}{87}{figure.caption.60}%
