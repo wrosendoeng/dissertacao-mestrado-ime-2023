@@ -12,6 +12,7 @@ chapter-08/*.aux
 *.blg
 *.brf
 *.fls
+*.fdb_latexmk
 *.idx
 *.lof
 *.log
