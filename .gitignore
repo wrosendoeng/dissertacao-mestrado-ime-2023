@@ -1,7 +1,17 @@
+appendices/*.aux
+chapter-01/*.aux
+chapter-02/*.aux
+chapter-03/*.aux
+chapter-04/*.aux
+chapter-05/*.aux
+chapter-06/*.aux
+chapter-07/*.aux
+chapter-08/*.aux
 *.aux
 *.bbl
 *.blg
 *.brf
+*.fls
 *.idx
 *.lof
 *.log
