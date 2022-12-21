@@ -29,7 +29,7 @@ Sobre a força gravitacional $\boldsymbol{F}_{G}$ descreve a interação entre o
         \frac{Z}{R_{T}} \\
     \end{bmatrix} \\
     \label{eq:Gmag}
-    g_{0} = 9,80665[1 - 0,0026cos(2lat)] 
+    g_{0} = \num{9,80665}[1 - \num{0,0026}cos(2lat)] 
 \end{gather}
 
 Onde $X$, $Y$ e $Z$ são as coordenadas cartesianas com o referencial inercial da Terra. Como já citado, a latitude, $lat$, e o raio do planeta Terra, $R_{T}$, influenciam a força causada pela gravidade.
@@ -48,7 +48,7 @@ O Efeito de Coriolis $\boldsymbol{F}_{C}$ é usado em predições de trajetória
 \end{bmatrix}
 \end{gather}
 %
-onde $V_{x}$, $V_{y}$ e $V_{z}$ são coordenadas da velocidade em relação ao ar, $\boldsymbol{V}$. A constante $\varphi = 7,292115 \times 10^{-5}$ rad/s é a velocidade angular sobre seu próprio eixo polar.
+onde $V_{x}$, $V_{y}$ e $V_{z}$ são coordenadas da velocidade em relação ao ar, $\boldsymbol{V}$. A constante $\varphi$ = \qty{7,292e-5}{\radian\per\second} é a velocidade angular sobre seu próprio eixo polar.
 
 A força de arrasto $\boldsymbol{F}_{D}$ é a mais importante força aerodinâmica a ser calculada em um sistema de dinâmica de voo. Seu efeito é assunto de grande interesse pelas aplicações em extensão de alcance e otimização da dispersão. O arrasto pode ser representado pela equação \ref{eq:dragMPM}:
 
@@ -85,7 +85,7 @@ Embora o Base Bleed não tenha por objetivo produzir força de empuxo, a equaç�
 %
 \begin{equation}
 f(Inj) =\begin{cases}
-			Inj/Inj_{0}, & \text{se $Inj < Inj_{0}$}\\
+			\frac{Inj}{Inj_{0}}, & \text{se $Inj < Inj_{0}$}\\
             1, & \text{caso contrário}
 		 \end{cases}
 \end{equation}
@@ -141,40 +141,40 @@ onde $C_{m_{\alpha}}$ and $C_{m_{\alpha^3}}$ são, respectivamente, os coeficien
 \section{Modelo de Atmosfera}
 \label{sec:ICAOatm}
 
-Modelar as condições atmosféricas é de suma importância para cada problema que envolva sistemas dinâmicos de voo porque as forças aerodinâmicas são fortemente impactadas por elas. Por exemplo, a densidade atmosférica padrão proposta pela Organização Internacional de Aviação Civil (ICAO) \cite{international1993manual} na Troposfera (como também é conhecida a camada inferior da atmosfera) reduz-se em quase $75\%$ conforme o projétil avance desde o solo até o valor limítrofe da camada, em torno de 11 quilômetros de altura. Esse é um dos motivos que afetam diretamente a injeção de gases pelo gerador de \textit{Base Bleed}. Nesta convenção, o ar atmosférico é tratado como gás ideal nas camadas inferiores. 
+Modelar as condições atmosféricas é de suma importância para cada problema que envolva sistemas dinâmicos de voo porque as forças aerodinâmicas são fortemente impactadas por elas. Por exemplo, a densidade atmosférica padrão proposta pela Organização Internacional de Aviação Civil (ICAO) \cite{international1993manual} na Troposfera (como também é conhecida a camada inferior da atmosfera) reduz-se em quase \qty{75}{\percent} conforme o projétil avance desde o solo até o valor limítrofe da camada, em torno de \qty{11}{\kilo\metre} de altura. Esse é um dos motivos que afetam diretamente a injeção de gases pelo gerador de \textit{Base Bleed}. Nesta convenção, o ar atmosférico é tratado como gás ideal nas camadas inferiores. 
 
 \begin{equation}
 \label{eq:funcoesICAO}
 \begin{aligned}
 p(Y) &=\begin{cases}
-			p_{Y=0 m}\left[1+ \frac{\eta Y}{T_{B}} \right]^{\frac{-g_{0}}{\eta R}} , & \text{se $Y < 11000$ m}\\
-            p_{Y=11000 m} exp\left[-\frac{g_{0}}{RT}(Y-11000) \right], & \text{se $11000$ m $\leq Y < 20000$ m}
+			p_{Y=\qty{0}{\metre}}\left[1 + \frac{\eta Y}{T_{B}} \right]^{\frac{-g_{0}}{\eta R}} , & Y \qty{< 11000}{\metre}\\
+            p_{Y=\qty{11000}{\metre}} \exp\left[-\frac{g_{0}}{RT}(Y-\num{11000}) \right], & \qty{11000}{\metre} \leq Y \qty{< 20000}{\metre}
 		 \end{cases}
 \\
 T(Y) &=\begin{cases}
-			288,15 + \eta Y, & \text{se $Y < 11000$ m}\\
-            216,15, & \text{se $11000$ m $\leq Y < 20000$ m}
+			\num{288,15} + \eta Y, & Y < \qty{11000}{\metre}\\
+            \num{216,15}, & \qty{11000}{\metre} \leq Y < \qty{20000}{\metre}
 		 \end{cases}
 \\
 \rho &= \frac{p(Y)}{RT(Y)}
 \end{aligned}
 \end{equation}
 
-Onde $\eta = 6,5 \times 10^{-3}$ K/m é igual ao gradiente de temperatura e $R$ = 287,05 J/(K.kg) é a constante dos gases ideais. Deve-se atentar ao fato que as funções presentes na equação \ref{eq:funcoesICAO} são dependentes do deslocamento vertical, $Y$. Outra propriedade importante para predizer a trajetória é a viscosidade dinâmica, $\mu$. Pela lei de Sutherland, o valor local da viscosidade dinâmica é calculado em função da temperatura em certa altitude, $T(Y)$, a partir da seguinte equação \ref{eq:sutherICAO}:
+Onde $\eta$ = \qty{6,5e-3}{\kelvin\per\metre} é igual ao gradiente de temperatura e R = \qty{287,05}{\joule\per\kelvin\per\kilogram} é a constante dos gases ideais. Deve-se atentar ao fato que as funções presentes na equação \ref{eq:funcoesICAO} são dependentes do deslocamento vertical, Y. Outra propriedade importante para predizer a trajetória é a viscosidade dinâmica, $\mu$. Pela lei de Sutherland, o valor local da viscosidade dinâmica é calculado em função da temperatura em certa altitude, T(Y), a partir da seguinte equação \ref{eq:sutherICAO}:
 
 \begin{equation}
 \label{eq:sutherICAO}
 \mu = \frac{\beta_{S}T^{\frac{3}{2}}}{T + S}
 \end{equation}
 %
-Considere $\beta_{S} = 1,458 \times 10^{-6}$ kg/(m.s.$\text{K}^{\frac{1}{2}}$) e $S = 110,4$ K os valores para as constantes empíricas. Essa formulação ajuda a fechar as equações de Navier-Stokes, principalmente os casos compressíveis, assim como também permite determinar os coeficientes aerodinâmicos durante a trajetória a partir dos números de Reynolds, $Re$ e de Mach, $M$. Esses parâmetros adimensionais do escoamento podem ser vistos na equação a seguir:
+Considere $\beta_{S}$ = \qty{1,458e-6}{kg/(m.s.K^{1/2})} e S = \qty{110,4}{\kelvin} os valores para as constantes empíricas. Essa formulação ajuda a fechar as equações de Navier-Stokes, principalmente os casos compressíveis, assim como também permite determinar os coeficientes aerodinâmicos durante a trajetória a partir dos números de Reynolds, $Re$ e de Mach, $M$. Esses parâmetros adimensionais do escoamento podem ser vistos na equação a seguir:
 
 \begin{equation}
     Re = \frac{\rho V D}{\mu} \hspace{1cm}
     M = \frac{V}{\sqrt{\gamma RT(Y)}}
 \end{equation}
 %
-onde $\gamma = 1,4$, que é a razão de expansão adiabática do ar.
+onde $\gamma$ = \num{1,4}, que é a razão de expansão adiabática do ar.
 
 \section{Integração Numérica}
 \label{sec:numint}
@@ -207,11 +207,11 @@ As notações $\text{k}_{1}$, $\text{k}_{2}$, $\text{k}_{3}$, $\text{k}_{4}$ sã
     \label{eq:k1}
     k_{1} &= f(x_{i},y_{i}) \\
     \label{eq:k2}
-    k_{2} &= f(x_{i}+0,5h_{RK4},y_{i}+0,5h_{RK4}k_{1}) \\
+    k_{2} &= f(x_{i}+\num{0,5}h_{RK4},y_{i}+\num{0,5}h_{RK4}k_{1}) \\
     \label{eq:k3}
-    k_{3} &= f(x_{i}+0,5h_{RK4},y_{i}+0,5h_{RK4}k_{2}) \\
+    k_{3} &= f(x_{i}+\num{0,5}h_{RK4},y_{i}+\num{0,5}h_{RK4}k_{2}) \\
     \label{eq:k4}
-    k_{4} &= f(x_{i}+1,0h_{RK4},y_{i}+1,0h_{RK4}k_{3}) 
+    k_{4} &= f(x_{i}+\num{1,0}h_{RK4},y_{i}+\num{1,0}h_{RK4}k_{3}) 
 \end{align}
 \end{subequations}
 

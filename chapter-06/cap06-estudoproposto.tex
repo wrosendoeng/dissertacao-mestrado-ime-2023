@@ -31,7 +31,7 @@ onde $p_{\infty}$ é a pressão do meio livre. Quando os contornos de pressão i
 
 \subsection{Parâmetro de Injeção}
 
-Para aplicar o conceito do parâmetro, $Inj$, é necessário olhar para a expressão \eqref{eq:parametro-injecao}:
+Para aplicar o conceito do parâmetro, $Inj$, é necessário olhar para a equação \ref{eq:parametro-injecao}:
 
 \begin{equation}\label{eq:parametro-injecao}
     Inj = \frac{\Dot{m}_{BB}}{\rho VA_{b}}
@@ -67,14 +67,14 @@ Para conseguir formular a abordagem numérica exigida pelo método de volumes fi
 	\label{fig12:autor-malha}
 \end{figure}
 
-E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de 1 polegada (\qty{25,4}{\milli\metre}).
+E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de \qty{1}{\polegada} (\qty{25,4}{\millimetre}).
 
 \begin{table}[ht]
 \centering
 \caption[Malhas desenvolvidas para o domínio computacional (sem \textit{Base Bleed})]{Malhas desenvolvidas para o domínio computacional (sem \textit{Base Bleed})}
 \vspace{0.5cm}
 \begin{tabular}{c|c}
-\multicolumn{2}{c}{Primeiro Teste de Convergência} \\
+\multicolumn{2}{c}{1\textsuperscript{o} Teste de Convergência} \\
 \hline 
 Número da Malha & Quantidade de elementos \\ 
 \hline
@@ -85,14 +85,14 @@ Número da Malha & Quantidade de elementos \\
 \fonte{Autor.}
 \end{table}
 
-A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a \qty{50,8}{\milli\metre} e a temperatura de saída com valor de \qty{2306,15}{\kelvin}. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com \num{380000} elementos para obtenção dos resultados finais.
+A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a \qty{50,8}{\millimetre} e a temperatura de saída com valor de \qty{2306,15}{\kelvin}. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com \num{380000} elementos para obtenção dos resultados finais.
 
 \begin{table}[ht]
 \centering
 \caption[Malhas desenvolvidas para o domínio computacional (com \textit{Base Bleed})]{Malhas desenvolvidas para o domínio computacional (com \textit{Base Bleed})}
 \vspace{0.5cm}
 \begin{tabular}{c|c}
-\multicolumn{2}{c}{Segundo Teste de Convergência} \\
+\multicolumn{2}{c}{2\textsuperscript{o} Teste de Convergência} \\
 \hline 
 Número da Malha & Quantidade de elementos \\ 
 \hline
@@ -114,7 +114,7 @@ Após a ratificação dos valores encontrados para o coeficiente de arrasto, ate
 \begin{tabular}{c|c}
 Diâmetro do Base Bleed & Temperatura\\ 
 \hline
-\multirow{3}*{\qty{25,4}{\milli\metre}} & \qty{300}{\kelvin}\\
+\multirow{3}*{\qty{25,4}{\millimetre}} & \qty{300}{\kelvin}\\
 & \qty{1500}{\kelvin}\\
 & \qty{2306,15}{\kelvin}
 \end{tabular}
@@ -131,8 +131,8 @@ Após esse passo, foram comparados dois diâmetros possíveis para saída da câ
 \begin{tabular}{c|c|c}
 Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 & Vazão nº 2\\ 
 \hline
-\qty{25,4}{\milli\metre} & \qty[per-mode = symbol]{0,015}{\kilogram\per\second} & \qty[per-mode = symbol]{0,030}{\kilogram\per\second}\\
-\qty{50,8}{\milli\metre} & \qty[per-mode = symbol]{0,030}{\kilogram\per\second} & \qty[per-mode = symbol]{0,060}{\kilogram\per\second}\\
+\qty{25,4}{\millimetre} & \qty{0,015}{\kilogram\per\second} & \qty{0,030}{\kilogram\per\second}\\
+\qty{50,8}{\millimetre} & \qty{0,030}{\kilogram\per\second} & \qty{0,060}{\kilogram\per\second}\\
 \end{tabular}
 \label{tab:tabela-vazoes-por-diametro}
 \fonte{Autor.}
@@ -152,21 +152,28 @@ Há a referência para o eixo de simetria, a fim de se garantir que os cálculos
 
 \section{Método de Resolução das Simulações CFD}\label{sec:metodo-resolucao-cfd}
 
-Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos \cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de segunda ordem. 
+Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos \cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de 2\textsuperscript{a} ordem. 
 
-Para lidar com a compressibilidade existente no regime de voo desta munição estudada, o esquema \textit{density-based} totalmente implícito foi aplicado \cite{Weiss1995PreconditioningAT,Weiss1997IMPLICITSO,Weiss1999ImplicitSO}.
+Para lidar com a compressibilidade existente no regime de voo desta munição estudada, o esquema \textit{density-based} totalmente implícito foi aplicado \cite{Weiss1995PreconditioningAT,Weiss1997IMPLICITSO,Weiss1999ImplicitSO}. Em todos os casos simulados o regime estacionário foi considerado, portanto as propriedades calculadas não variam em função do tempo. 
 
 Para o cálculo dos gradientes foi utilizado o método dos Mínimos Quadrados e o esquema de avaliação do fluxo optou pelo ROE-FDS, pois demonstra bons resultados para problemas com escoamentos compressíveis \cite{nicolas-perez_accuracy_2017}. Para a resolução do sistema de equações lineares foi utilizada a técnica \textit{multigrid} \cite{Hutchinson1986}.
 
-O problema foi considerado convergido quando todos os resíduos forem menores que $\num[exponent-mode = scientific]{1e-6}$. Um software comercial foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
+O problema foi considerado convergido quando todos os resíduos forem menores que $\num{1e-6}$. Um software comercial foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
 
 \section{Implementação do Modelo de Trajetória}\label{subsec:implementacao-trajetoria}
 
-No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. Para maior esclarecimento, serão explicados nas subseções a posteriori.
+No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. A Figura \ref{fig:fluxograma-mpmtm} apresenta o fluxograma com as condições necessárias, que são apresentadas da \autoref{subsec:condicoes-geometricas} a \autoref{subsec:condicoes-aerodinamicas}, bem como a aplicação do integrador numérico Runge-Kutta de 4\textsuperscript{a} ordem, anteriormente explicado na \autoref{sec:numint}. Destaca-se três pontos importantes: as funções para o parâmetro de injeção e a guinada de repouso, pois são parâmetros essenciais ao projeto e permitem calcular o desempenho da munição com e sem \textit{Base Bleed}, além da definição da altura que o projetil atinge o solo, pois serve como limitador do processo iterativo. 
+
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\textwidth]{foto03-fluxograma-mpmtm.png}
+	\caption{Domínio computacional}
+	\label{fig:fluxograma-mpmtm}
+\end{figure}
 
 \subsection{Condições Geométricas}\label{subsec:condicoes-geometricas}
 
-O projetil de calibre \qty{155}{\milli\metre} possui um formato axissimétrico, portanto ele permite aplicar o modelo MPMTM. Isto é, o corpo rígido é tratado como um ponto material. Contudo, o Quadro \ref{quad:geo_inputs} apresenta quais informações são exigidas para implementação do código que calcula a trajetória, conforme previsto pela STANAG 4355.
+O projetil de calibre \qty{155}{\millimetre} possui um formato axissimétrico, portanto ele permite aplicar o modelo MPMTM. Isto é, o corpo rígido é tratado como um ponto material. Contudo, o Quadro \ref{quad:geo_inputs} apresenta quais informações são exigidas para implementação do código que calcula a trajetória, conforme previsto pela STANAG 4355.
 
 \begin{quadro}[htb]
 \caption{\label{quad:geo_inputs}Dados Geométricos}
@@ -182,9 +189,9 @@ O projetil de calibre \qty{155}{\milli\metre} possui um formato axissimétrico, 
     \hline
     Massa do propelente & \qty{0,5600}{\kilogram} \\ 
     \hline
-    Momento de inércia axial no início & \qty[per-mode = symbol]{0,14245}{\kilogram\per\square\metre} \\ 
+    Momento de inércia axial no início & \qty{0,14245}{\kilogram\per\square\metre} \\ 
     \hline
-    Momento de inércia axial após a queima & \qty[per-mode = symbol]{0,13730}{\kilogram\per\square\metre} \\
+    Momento de inércia axial após a queima & \qty{0,13730}{\kilogram\per\square\metre} \\
     \hline
     Centro de gravidade no início (a partir da ponta da ogiva) & \qty{0,45835}{\metre} \\
     \hline
@@ -203,7 +210,7 @@ O projetil de calibre \qty{155}{\milli\metre} possui um formato axissimétrico, 
 	\label{fig:traj-ref-mccoy2012}
 \end{figure}
 
-Neste sistema o canhão é centrado no eixo de referência da Terra em $O_{\text{XYZ}}$, conforme Figura \ref{fig:traj-ref-mccoy2012} e programado para lançar com ângulos de elevação de 40 e 45 graus a partir da horizontal, partindo com a mesma velocidade. Como citado na \autoref{quad:muzzle_inputs}, os fatores de arrasto e Magnus são constantes expressadas na STANAG 4355. A latitude do Rio de Janeiro foi considerada para vias de estudo.
+Neste sistema o canhão é centrado no eixo de referência da Terra em $O_{\text{XYZ}}$, conforme Figura \ref{fig:traj-ref-mccoy2012} e programado para lançar com ângulos de elevação (QE) de \qtylist{40;45}{\degree} (\qtylist{711,1;800,0}{\milliradian}) a partir da horizontal, partindo com a mesma velocidade (Mach aproximadamente \num{2,58}, a nível do mar). Como citado na \autoref{quad:muzzle_inputs}, os fatores de arrasto e Magnus são constantes expressadas na STANAG 4355. A latitude do Rio de Janeiro foi considerada para vias de estudo.
 
 \begin{quadro}[htb]
 \caption{\label{quad:muzzle_inputs}Dados Balísticos}
@@ -211,15 +218,15 @@ Neste sistema o canhão é centrado no eixo de referência da Terra em $O_{\text
 \hline
 \textbf{Descrição} & \textbf{Valores}\\
 \hline
-Velocidade de disparo & \qty[per-mode=symbol]{878}{\metre\per\second} \\
+Velocidade de disparo & \qty{878}{\metre\per\second} \\
 \hline
-Ângulo de elevação & \qtylist[parse-numbers=false]{2 \pi/9; \pi/4}{\radian} \\
+Ângulo de elevação & \qtylist{711,1;800,0}{\milliradian} \\
 \hline
 Latitude & \qty[parse-numbers=false]{-23 \pi/180}{\radian} \\
 \hline
 Azimute & \qty{0}{\radian} \\
 \hline
-Taxa de torção no disparo & \qty[per-mode=symbol]{25}{\calibers\per\revolution} \\
+Taxa de torção no disparo & \qty{25}{\calibers\per\revolution} \\
 \hline
 Fator de arrasto & 1,2 \\
 \hline
@@ -229,9 +236,9 @@ Fator de Magnus & 1,2 \\
 \fonte{Autor.}
 \end{quadro}
 
-\subsection{Condições Ambientais}\label{subsec:condicoes-ambientais}
+\subsection{Condições Atmosféricas}\label{subsec:condicoes-ambientais}
 
-Respeitando o modelo da ICAO \cite{international1993manual}, existem algumas variáveis a saber no início do lançamento. Elas estão representadas no \autoref{quad:ICAOinputs}. A velocidade do vento foi desconsiderada porque o simulador necessitava criar confiabilidade antes de aumentar as incertezas, assim como os fatores de umidade foram desprezados pela mesma razão.
+Respeitando o modelo da ICAO \cite{international1993manual}, existem algumas variáveis de interesse no início do lançamento. Elas estão representadas no \autoref{quad:ICAOinputs}. A velocidade do vento foi desconsiderada porque o simulador necessitava criar confiabilidade antes de aumentar as incertezas, assim como os fatores de umidade foram desprezados pela mesma razão.
 
 \begin{quadro}[htb]
 \caption{\label{quad:ICAOinputs}Dados Atmosféricos}
@@ -241,19 +248,19 @@ Respeitando o modelo da ICAO \cite{international1993manual}, existem algumas var
 \hline
 Temperatura ao nível do mar & \qty{288,15}{\kelvin} \\
 \hline
-Gradiente de Temperatura & \qty[per-mode = symbol, exponent-mode = scientific]{6,5e-3}{\kelvin\per\metre} \\
+Gradiente de Temperatura & \qty[exponent-mode=scientific]{6,5e-3}{\kelvin\per\metre} \\
 \hline
-Pressão do ar ao nível do mar & \qty[exponent-mode = scientific]{1,01325e5}{\pascal} \\
+Pressão do ar ao nível do mar & \qty[exponent-mode=scientific]{1,01325e5}{\pascal} \\
 \hline
-Densidade do ar ao nível do mar & \qty[per-mode = symbol]{1,225}{\kilogram\per\metre\cubed} \\
+Densidade do ar ao nível do mar & \qty{1,225}{\kilogram\per\metre\cubed} \\
 \hline
 Razão de expansão adiabática do ar & 1,4 \\
 \hline
-Aceleração da gravidade ao nível do mar & \qty[per-mode=symbol]{9,80665}{\metre\per\second\squared} \\
+Aceleração da gravidade ao nível do mar & \qty{9,80665}{\metre\per\second\squared} \\
 \hline
 Raio da Terra & \qty[exponent-mode=scientific]{6,371e6}{\metre} \\
 \hline
-Velocidade angular da Terra & \qty[per-mode=symbol, exponent-mode = scientific]{7,292e-5}{\radian\per\second} \\
+Velocidade angular da Terra & \qty[exponent-mode=scientific]{7,292e-5}{\radian\per\second} \\
 \hline
 \end{tabular}
 \fonte{\citeonline{international1993manual}}
@@ -261,16 +268,18 @@ Velocidade angular da Terra & \qty[per-mode=symbol, exponent-mode = scientific]{
 
 \subsection{Condições Aerodinâmicas}\label{subsec:condicoes-aerodinamicas}
 
-Com o suporte do PRODAS®, os coeficientes aerodinâmicos foram calculados usando formulações semi-empíricas a partir das propriedades geométricas e de massa do projétil. Essas variáveis adimensionais são funções do número de Mach e da guinada de repouso de acordo com cada força atuante no sistema. Os coeficientes são todos em função de um projetil sem alcance estendido, pela limitação do software comercial. 
+Com o suporte do PRODAS®, os coeficientes aerodinâmicos foram calculados usando formulações semi-empíricas a partir das propriedades geométricas e de massa do projétil sem alcance estendido. Essas variáveis adimensionais são funções do número de Mach e da guinada de repouso.
 
-A norma faz uma comparação entre os coeficientes aerodinâmicos da STANAG 4355 com o que a NACA (Comitê Nacional para Aconselhamento da Aeronáutica) oferece \cite{stanag4355}. Por esta razão, os coeficientes obtidos no PRODAS® são calculados em função dos eixos da munição, enquanto que os valores adimensionais de interesse são em respeito ao vetor de velocidade do centro de massa. Por esta razão, são feitas algumas transformações rotacionais para se chegar nos coeficientes desejados:
+A norma compara os coeficientes aerodinâmicos da STANAG 4355 com o que a NACA (Comitê Nacional para Aconselhamento da Aeronáutica) oferece \cite{stanag4355}. Os coeficientes obtidos no PRODAS® são calculados em função dos eixos da munição, enquanto que os valores adimensionais de interesse são em respeito ao vetor de velocidade do centro de massa. Logo, são feitas algumas transformações rotacionais para se chegar nos coeficientes desejados:
 
-\begin{align}
+\begin{equation}
+\begin{aligned}
     C_{D_{0}} &= C_{X_{0}} \\
     C_{D_{\alpha^2}} &= C_{X_{\alpha^2}} + C_{Z_{\alpha}} - \frac{1}{2}C_{X_{0}}\\
     C_{L_{\alpha}} &= C_{Z_{\alpha}} - C_{X_{0}} \\
     C_{mag-f} &= \frac{1}{2}C_{y_{pa}} \\
     C_{spin} &= \frac{1}{2}C_{l_{p}}
-\end{align}
+\end{aligned}
+\end{equation}
 %
 os valores dos coeficientes que foram aplicados ao modelo de trajetória podem ser vistos do \autoref{apend:apendice-sembb} ao \autoref{apend:apendice-combb-2pol-006}.
