@@ -1,6 +1,6 @@
 # Dissertação de Mestrado - IME 2023
 
-Este é o modelo LaTex de dissertação de pós-graduação do Instituto Militar de Engenharia para o Programa de Pós-Graduação em Engenharia Mecânica.
+Este é o modelo LaTeX de dissertação de pós-graduação do Instituto Militar de Engenharia para o Programa de Pós-Graduação em Engenharia Mecânica.
 
 Os objetivos deste trabalho são:
 
