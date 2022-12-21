@@ -60,54 +60,53 @@
 \contentsline {section}{\numberline {6.4}Método de Resolução das Simulações CFD}{74}{section.6.4}%
 \contentsline {section}{\numberline {6.5}Implementação do Modelo de Trajetória}{75}{section.6.5}%
 \contentsline {subsection}{\numberline {6.5.1}Condições Geométricas}{75}{subsection.6.5.1}%
-\contentsline {subsection}{\numberline {6.5.2}Condições Balísticas}{75}{subsection.6.5.2}%
-\contentsline {subsection}{\numberline {6.5.3}Condições Ambientais}{76}{subsection.6.5.3}%
-\contentsline {subsection}{\numberline {6.5.4}Condições Aerodinâmicas}{76}{subsection.6.5.4}%
+\contentsline {subsection}{\numberline {6.5.2}Condições Balísticas}{76}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.5.3}Condições Atmosféricas}{77}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.5.4}Condições Aerodinâmicas}{77}{subsection.6.5.4}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {7}\MakeUppercase {Resultados}}{78}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Projetil inerte (sem \textit {Base Bleed})}{78}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Projetil ativo (com \textit {Base Bleed})}{79}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Teste de convergência}{79}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Influência no diâmetro de saída do \textit {Base Bleed}}{80}{subsection.7.2.2}%
-\contentsline {subsection}{\numberline {7.2.3}Influência da vazão mássica no sistema \textit {Base Bleed}}{82}{subsection.7.2.3}%
-\contentsline {subsection}{\numberline {7.2.4}Influência da temperatura}{83}{subsection.7.2.4}%
-\contentsline {subsection}{\numberline {7.2.5}Influência da abordagem RANS}{85}{subsection.7.2.5}%
+\contentsline {subsection}{\numberline {7.2.1}Influência no diâmetro de saída do \textit {Base Bleed}}{80}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Influência da vazão mássica no sistema \textit {Base Bleed}}{83}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.3}Influência da temperatura}{84}{subsection.7.2.3}%
+\contentsline {subsection}{\numberline {7.2.4}Influência da abordagem RANS}{85}{subsection.7.2.4}%
 \contentsline {section}{\numberline {7.3}Resultados da Trajetória}{86}{section.7.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {8}\MakeUppercase {Comentários Finais}}{89}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conclusão}{90}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Recomendações}{91}{section.8.2}%
+\contentsline {chapter}{\chapternumberline {8}\MakeUppercase {Comentários Finais}}{90}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conclusão}{91}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Recomendações}{92}{section.8.2}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeUppercase {Refer\^encias}}{92}{section*.67}%
+\contentsline {chapter}{\MakeUppercase {Refer\^encias}}{93}{section*.68}%
 \renewcommand *{\cftappendixname }{AP\^ENDICE \space }
 \setlength {\cftpartindent }{\cftlastnumwidth } \setlength {\cftpartnumwidth }{2em}
 \cftinsert {A}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {A}\MakeUppercase {Coeficientes Aerodinâmicos - Sem Base Bleed}}{98}{appendix.A}%
+\contentsline {appendix}{\chapternumberline {A}\MakeUppercase {Coeficientes Aerodinâmicos - Sem Base Bleed}}{99}{appendix.A}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {B}\MakeUppercase {Coeficientes Aerodinâmicos - Temperatura de Saída 300K}}{99}{appendix.B}%
+\contentsline {appendix}{\chapternumberline {B}\MakeUppercase {Coeficientes Aerodinâmicos - Temperatura de Saída 300K}}{100}{appendix.B}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {C}\MakeUppercase {Coeficientes Aerodinâmicos - Temperatura de saída 1500K}}{100}{appendix.C}%
+\contentsline {appendix}{\chapternumberline {C}\MakeUppercase {Coeficientes Aerodinâmicos - Temperatura de saída 1500K}}{101}{appendix.C}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {D}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 1 polegada e Vazão 15 g/s}}{101}{appendix.D}%
+\contentsline {appendix}{\chapternumberline {D}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 1 polegada e Vazão 15 g/s}}{102}{appendix.D}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {E}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 1 Polegada e Vazão 30 g/s}}{102}{appendix.E}%
+\contentsline {appendix}{\chapternumberline {E}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 1 Polegada e Vazão 30 g/s}}{103}{appendix.E}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {F}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 2 polegadas e Vazão 30 g/s}}{103}{appendix.F}%
+\contentsline {appendix}{\chapternumberline {F}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 2 polegadas e Vazão 30 g/s}}{104}{appendix.F}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \cftinsert {A}
-\contentsline {appendix}{\chapternumberline {G}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 2 polegadas e Vazão 60 g/s}}{104}{appendix.G}%
+\contentsline {appendix}{\chapternumberline {G}\MakeUppercase {Coeficientes Aerodinâmicos - Diâmetro 2 polegadas e Vazão 60 g/s}}{105}{appendix.G}%
