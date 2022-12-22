@@ -2,7 +2,7 @@
 title: "BibTeX references in Markdown"
 author: "Wallace Rosendo"
 date: '2022-12-22'
-bibliography: refs.bib
+bibliography: [refs.bib]
 output: README.md
 ---
 
@@ -10,7 +10,7 @@ output: README.md
 
 Este é o modelo LaTeX de dissertação de pós-graduação do Instituto Militar de Engenharia para o Programa de Pós-Graduação em Engenharia Mecânica.
 
-Os objetivos deste trabalho são: 
+Os objetivos deste trabalho são:
 
 - Estudar a aerodinâmica de um projetil de calibre 155mm para desenvolver simulações CFD
 - Predizer a trajetória da munição para criar tabelas de tiro.
@@ -45,11 +45,11 @@ Nesta parte o objetivo é apresentar possíveis abordagens de discretização, c
 
 ### Capítulo 04 - Modelagem da Turbulência
 
-O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras (SPALART,P.R. and ALLMARAS, S.R.,1994), $\kappa-\epsilon$ padrão (JONES, W.P and LAUNDER, B.E., 1972; LAUNDER, B.E and SHARMA, B.I.,1974), $\kappa-\omega$ padrão (WILCOX, D.C., 1988) e *Shear-Stress Transport* (SST) $\kappa-\omega$ (MENTER, F.L, 1994).
+O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras (SPALART,P.R. and ALLMARAS, S.R.,1994), $\kappa-\epsilon$ padrão ([@JONES1972301; @launder1974; @LAUNDER1974269]), $\kappa-\omega$ padrão ([@Wilcox1988ReassessmentOT]) e *Shear-Stress Transport* (SST) $\kappa-\omega$ [@Menter1994TwoequationET;@Menter2003;@Menter2009].
 
 ### Capítulo 05 - Modelagem de Trajetória
 
-O modelo de trajetória implementado será o Modelo de Trajetória Ponto-Material (ou Ponto-Massa) Modificado (de sigla MPMTM, que vem do inglês *Modified Point-Mass Trajectory Model*), que foi deduzido na década de 60 (LIESKE, R.F. and REITER, M.L., 1966) e aprimorado (BARANOWSKI, L., 2013b). Neste modelo considera-se 3 graus de translação e apenas 1 para rotação, conhecido como *guinada de repouso*, cuja aplicação é restrita aos projetis axissimétricos estabilizados por rotação. Atualmente é padronizado pela OTAN através da norma STANAG 4355 (OTAN, 2009). Também é tratado neste capítulo os efeitos causados pela atmosfera e o método numérico implementado para predizer o voo da munição 155mm.
+O modelo de trajetória implementado será o Modelo de Trajetória Ponto-Material (ou Ponto-Massa) Modificado (de sigla MPMTM, que vem do inglês *Modified Point-Mass Trajectory Model*), que foi deduzido na década de 60 [@Lieske1966] e aprimorado [@Baranowski2013-1;@Baranowski2013-2;@Baranowski2013-3]. Neste modelo considera-se 3 graus de translação e apenas 1 para rotação, conhecido como *guinada de repouso*, cuja aplicação é restrita aos projetis axissimétricos estabilizados por rotação. Atualmente é padronizado pela OTAN através da norma STANAG 4355 [@stanag4355]. Também é tratado neste capítulo os efeitos causados pela atmosfera e o método numérico implementado para predizer o voo da munição 155mm.
 
 ### Capítulo 06 - Descrição do Estudo Proposto
 
