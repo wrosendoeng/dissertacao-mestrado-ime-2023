@@ -5,8 +5,6 @@ date: '2022-12-22'
 bibliography: refs.bib
 csl: associacao-brasileira-de-normas-tecnicas.csl
 output: html_document
-export_on_save:
-	pandoc:true
 ---
 
 # Dissertação de Mestrado - IME 2023
