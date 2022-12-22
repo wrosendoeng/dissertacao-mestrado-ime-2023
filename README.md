@@ -1,8 +1,16 @@
+---
+title: "BibTeX references in Markdown"
+author: "Wallace Rosendo"
+date: '2022-12-22'
+bibliography: refs.bib
+output: README.md
+---
+
 # Dissertação de Mestrado - IME 2023
 
 Este é o modelo LaTeX de dissertação de pós-graduação do Instituto Militar de Engenharia para o Programa de Pós-Graduação em Engenharia Mecânica.
 
-Os objetivos deste trabalho são:
+Os objetivos deste trabalho são: 
 
 - Estudar a aerodinâmica de um projetil de calibre 155mm para desenvolver simulações CFD
 - Predizer a trajetória da munição para criar tabelas de tiro.

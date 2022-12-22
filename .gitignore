@@ -20,3 +20,4 @@ chapter-08/*.aux
 *.gz
 *.toc
 *.pdf
+*.code-workspace
