@@ -2,9 +2,10 @@
 title: "BibTeX references in Markdown"
 author: "Wallace Rosendo"
 date: '2022-12-22'
-bibliography: refs.bib
+bibliography: [refs.bib]
 csl: associacao-brasileira-de-normas-tecnicas.csl
 output: html_document
+citeproc: true
 ---
 
 # Dissertação de Mestrado - IME 2023
@@ -46,7 +47,7 @@ Nesta parte o objetivo é apresentar possíveis abordagens de discretização, c
 
 ### Capítulo 04 - Modelagem da Turbulência
 
-O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras , $\kappa-\epsilon$ padrão [@JONES1972301;@launder1974; @LAUNDER1974269], $\kappa-\omega$ padrão [@Wilcox1988ReassessmentOT] e *Shear-Stress Transport* (SST) $\kappa-\omega$ [@Menter1994TwoequationET;@Menter2003;@Menter2009].
+O problema envolve um regime turbulento, logo são apresentadas possíveis abordagens para descrever a turbulência ao resolver as equações de governo (Navier-Stokes). Como o foco é se aprofundar nos modelos RANS, o problema de fechamento será tratado, seja para os casos incompressíveis ou compressíveis. Os modelos RANS tratados serão o Spalart-Allmaras [@Spalart1992], $\kappa-\epsilon$ padrão [@JONES1972301; @launder1974; @LAUNDER1974269], $\kappa-\omega$ padrão [@Wilcox1988ReassessmentOT] e *Shear-Stress Transport* (SST) $\kappa-\omega$ [@Menter1994TwoequationET; @Menter2003; @Menter2009].
 
 ### Capítulo 05 - Modelagem de Trajetória
 
