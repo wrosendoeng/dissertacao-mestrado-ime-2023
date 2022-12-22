@@ -1,11 +1,9 @@
 ---
 title: "BibTeX references in Markdown"
-author: "Wallace Rosendo"
-date: '2022-12-22'
 bibliography: [refs.bib]
 csl: associacao-brasileira-de-normas-tecnicas.csl
 output: html_document
-citeproc: true
+link-citations: true
 ---
 
 # Dissertação de Mestrado - IME 2023
