@@ -100,7 +100,7 @@ Para remover os arquivos de exemplo do seu documento procure pelas linhas abaixo
 
 Tenha cuidado para adicionar os elementos textuais, o apendice e o anexo nos locais onde estão no arquivo *main.tex*, pois a ordem e o local onde aparecem influi no documento final gerado.
 
-### Referências
+### Bibliografia
 
 Nesta parte a bibliografia é inserida. Com o compilador de bibliografias *BibTeX*, basta criar um arquivo *.bib* e escrever no arquivo *main.tex* (antes dos apêndices)
 
