@@ -6,6 +6,9 @@ output: html_document
 link-citations: true
 ---
 
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+
 # Dissertação de Mestrado - IME 2023
 
 Este é o modelo LaTeX de dissertação de pós-graduação do Instituto Militar de Engenharia para o Programa de Pós-Graduação em Engenharia Mecânica.
@@ -151,3 +154,5 @@ O sistema alfa-numério de citação, lista as referências na ordem que elas ap
 ```
 
 # Referências
+::: {#refs}
+:::
