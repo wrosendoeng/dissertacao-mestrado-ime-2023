@@ -4,7 +4,8 @@ csl: associacao-brasileira-de-normas-tecnicas.csl
 output: 
 	html_document:
 		md_extensions: tex_math_dollars
-citeproc: [refs.bib]
+bibliography: [refs.bib]
+citeproc: []
 ---
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
