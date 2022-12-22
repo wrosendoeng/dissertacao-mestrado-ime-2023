@@ -44,7 +44,7 @@ Antes de iniciar as validações das simulações que incluem o efeito \textit{B
 
 \section{Projetil ativo (com \textit{Base Bleed})}\label{sec:resultados-com-basebleed}
 
-A Tabela \ref{tab:tabela-malhas-secundaria}, presente na Seção \ref{sec:geracao-malha}, demonstra as malhas testadas para o projetil ativo. A malha com \num{380000} elementos foi utilizada como referência, tendo em vista a convergência dos resultados com valores de trabalhos anteriores \cite{Mahmoud2009}. Com estas malhas foram feitos testes de convergência, em dois regimes de velocidade (Mach igual a \numlist{1,0;2,0}), cujos resultados são apresentados na \autoref{tab:tabela-malhas-convergencia}. Em ambos os casos o modelo SST \(kappa-\omega\) foi usado para descrever a turbulência. A condição de contorno "Entrada do \textit{Base Bleed}"{} considerou a saída dos gases com a seguinte configuração: \(phi_{BB} = \qty{50,8}{\milli\metre}; \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}; T_{BB} = \qty{2306,15}{\kelvin}\).
+A Tabela \ref{tab:tabela-malhas-secundaria}, presente na Seção \ref{sec:geracao-malha}, demonstra as malhas testadas para o projetil ativo. A malha com \num{380000} elementos foi utilizada como referência, tendo em vista a convergência dos resultados com valores de trabalhos anteriores \cite{Mahmoud2009}. Com estas malhas foram feitos testes de convergência, em dois regimes de velocidade (Mach igual a \numlist{1,0;2,0}), cujos resultados são apresentados na \autoref{tab:tabela-malhas-convergencia}. Em ambos os casos o modelo SST \(\kappa-\omega\) foi usado para descrever a turbulência. A condição de contorno "Entrada do \textit{Base Bleed}"{} considerou a saída dos gases com a seguinte configuração: \(\phi_{BB} = \qty{50,8}{\milli\metre}; \Dot{m}_{BB} = \qty{0,030}{\kilogram\per\second}; T_{BB} = \qty{2306,15}{\kelvin}\).
 
 \begin{table}[ht]
 \centering
@@ -75,14 +75,14 @@ Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver 
 	\begin{subfigure}[b]{0.47\textwidth}
     	\centering
     	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-1pol.png}
-    	\caption{Saída do bocal - \(\phi_{m}_{BB}\) = \qty{25,4}{\millimetre}}
+    	\caption{Saída do bocal - \(\Dot{m}_{BB}\) = \qty{25,4}{\millimetre}}
     	\label{fig:comparacao-bb-diametro-1pol}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
     	\centering
     	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-2pol.png}
-    	\caption{Saída do bocal - \(\phi_{m}_{BB}\) = \qty{50,8}{\millimetre}}
+    	\caption{Saída do bocal - \(\Dot{m}_{BB}\) = \qty{50,8}{\millimetre}}
     	\label{fig:comparacao-bb-diametro-2pol}
     \end{subfigure}
 	\caption{Influência do diâmetro sobre o coeficiente de arrasto.}
@@ -100,42 +100,42 @@ As Figuras \ref{fig:corrente-velocidade-bb-1pol-vazao0015} e \ref{fig:corrente-v
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0015-1pol.png}
-        \caption{Contornos de Pressão - \(\Dot_{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
+        \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-1pol-vazao0015}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0030-1pol.png}
-        \caption{Contornos de Pressão - \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-1pol-vazao0030}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0015-1pol.png}
-        \caption{Cont. de Velocidade - \(\Dot_{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
+        \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-1pol-vazao0015}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0030-1pol.png}
-        \caption{Cont. de Velocidade - \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-1pol-vazao0030}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0015-1pol.png}
-        \caption{Linhas de corrente - \(\Dot_{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
+        \caption{Linhas de corrente - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-1pol-vazao0015}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0030-1pol.png}
-        \caption{Linhas de corrente - \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \caption{Linhas de corrente - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-1pol-vazao0030}
     \end{subfigure}
 	\caption{Projetil sob diferentes condições de vazão mássica sob regime M = \num{2,0} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
@@ -151,42 +151,42 @@ Seja na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0030} ou na \autoref{fig:
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0030-2pol.png}
-        \caption{Contornos de Pressão - \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-2pol-vazao-0030}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0060-2pol.png}
-        \caption{Contornos de Pressão - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-2pol-vazao-0060}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0030-2pol.png}
-        \caption{Cont. de Velocidade - \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-2pol-vazao-0030}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0060-2pol.png}
-        \caption{Cont. de Velocidade - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-2pol-vazao-0060}
     \end{subfigure}
 	\hfill
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0030-2pol.png}
-        \caption{Linhas de Corrente - \(\Dot_{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \caption{Linhas de Corrente - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-2pol-vazao-0030}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0060-2pol.png}
-        \caption{Linhas de Corrente - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Linhas de Corrente - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
 	\label{fig:corrente-velocidade-bb-2pol-vazao-0060}
     \end{subfigure}
 	\caption{Projetil sob diferentes condições de vazão mássica sob regime M = \num{2,0} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
@@ -197,12 +197,12 @@ Seja na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0030} ou na \autoref{fig:
 
 A \autoref{fig:comparacao-basebleed-vazao} demonstra a influência da vazão nos resultados obtidos nas simulações computacionais com o efeito \textit{Base Bleed} na base do projetil, assumindo que a temperatura de saída dos gases foi fixada em \qty{1500}{\kelvin} e o diâmetro de saída do \textit{Base Bleed} escolhido foi de \qty{2}{\polegada} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\). A escolha por esse diâmetro de saída se deve aos melhores resultados produzidos na \autoref{subsec:resultados-com-basebleed-diametros}.
 
-Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-vazao} uma redução dos valores conforme aumenta a vazão mássica, \(Dot{m}_{BB}\). As oscilações nos valores continuam aparecendo no regime subsônico, apesar de seguirem a mesma tendência, não importando qual vazão seja. O regime transônico reúne as maiores reduções do arrasto aerodinâmico, mas a redução do arrasto se faz menos efeito conforme aumenta a velocidade, passando pelo supersônico, especialmente quando M > \num{2,0}.
+Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-vazao} uma redução dos valores conforme aumenta a vazão mássica, \(\Dot{m}_{BB}\). As oscilações nos valores continuam aparecendo no regime subsônico, apesar de seguirem a mesma tendência, não importando qual vazão seja. O regime transônico reúne as maiores reduções do arrasto aerodinâmico, mas a redução do arrasto se faz menos efeito conforme aumenta a velocidade, passando pelo supersônico, especialmente quando M > \num{2,0}.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{cd-combasebleed-1500K-2pol.png}
-	\caption{Influência da vazão mássica do \textit{Base Bleed} - \T_{BB} = \qty{1500}{\kelvin}}
+	\caption{Influência da vazão mássica do \textit{Base Bleed} - \(T_{BB}\) = \qty{1500}{\kelvin}}
 	\label{fig:comparacao-basebleed-vazao}
 \end{figure}
 
@@ -211,41 +211,41 @@ Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-v
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth,height=5cm]{contorno-pressao-1500K-vazao-0030-2pol.png}
-        \caption{Contornos de Pressão - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-1500K-vazao0030}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth,height=5cm]{contorno-pressao-1500K-vazao-0060-2pol.png}
-        \caption{Contornos de Pressão - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-1500K-vazao0060}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth,height=5cm]{contorno-velocidade-1500K-vazao-0030-2pol.png}
-        \caption{Cont. de Velocidade - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-1500K-vazao0030}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth,height=5cm]{contorno-velocidade-1500K-vazao-0060-2pol.png}
-        \caption{Cont. de Velocidade - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-1500K-vazao0060}
     \end{subfigure}
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth,height=5cm]{corrente-velocidade-1500K-vazao-0030-2pol.png}
-        \caption{Linhas de Corrente - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Linhas de Corrente - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-1500K-vazao0030}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[width=\textwidth,height=5cm]{corrente-velocidade-1500K-vazao-0060-2pol.png}
-        \caption{Linhas de Corrente - \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \caption{Linhas de Corrente - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-1500K-vazao0060}
     \end{subfigure}
     \caption{Projetil sob diferentes condições de vazão mássica sob regime M = \num{2,0} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}; T_{BB} = \qty{1500}{\kelvin}\right)\)}
@@ -263,7 +263,7 @@ A \autoref{fig:comparacao-basebleed-temperatura} demonstra a influência da temp
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.5\textwidth]{cd-combasebleed-vazao006-2pol.png}
-	\caption{Influência da temperatura do \textit{Base Bleed} sobre o coeficiente de arrasto com \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+	\caption{Influência da temperatura do \textit{Base Bleed} sobre o coeficiente de arrasto com \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
 	\label{fig:comparacao-basebleed-temperatura}
 \end{figure}
 
@@ -271,7 +271,7 @@ Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-t
 
 \subsection{Influência da abordagem RANS}\label{subsec:resultados-com-basebleed-RANS}
 
-Conforme foi citado anteriormente, o modelo Spalart-Allmaras \cite{Spalart1992} foi manejado para atestar a eficiência de outra técnica RANS para descrição da turbulência além do que foi proposto por \citeauthor{Menter1994TwoequationET}. A comparação foi realizada somente para os seguintes valores na condição de contorno \textit{base bleed inlet}: - \(\phi_{m}_{BB}\) = \qty{50,8}{\millimetre}, \(T_{BB} = \qty{2306,15}{\kelvin}\) e \(\Dot_{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}.
+Conforme foi citado anteriormente, o modelo Spalart-Allmaras \cite{Spalart1992} foi manejado para atestar a eficiência de outra técnica RANS para descrição da turbulência além do que foi proposto por \citeauthor{Menter1994TwoequationET}. A comparação foi realizada somente para os seguintes valores na condição de contorno \textit{base bleed inlet}: - \(\Dot{m}_{BB}\) = \qty{50,8}{\millimetre}, \(T_{BB} = \qty{2306,15}{\kelvin}\) e \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}.
 
 Entretanto, é notório que o modelo Spalart-Allmaras (S-A) superestimou a curva de arrasto em todos os regimes de velocidade, relatado pela Figura \ref{fig:comparacao-bb-rans}.
 
@@ -334,28 +334,28 @@ De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \
 	\begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto1.png}
-        \caption{Trajetória com QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
+        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
         \label{fig:trajetoria-711mil-1pol}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto2.png}
-        \caption{Trajetória com QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
+        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
         \label{fig:trajetoria-800mil-1pol}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto3.png}
-        \caption{Trajetória com QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
+        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
         \label{fig:trajetoria-711mil-2pol}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto4.png}
-        \caption{Trajetória com QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
+        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
         \label{fig:trajetoria-800mil-2pol}
     \end{subfigure}
 	\caption{Projetil com diferentes saídas de bocal e diferentes vazões}
