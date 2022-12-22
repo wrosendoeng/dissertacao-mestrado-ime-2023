@@ -1,12 +1,36 @@
 ---
 title: "BibTeX references in Markdown"
-bibliography: [refs.bib]
 csl: associacao-brasileira-de-normas-tecnicas.csl
-output: html_document
-link-citations: true
+output: 
+	html_document:
+		md_extensions: tex_math_dollars
+citeproc: [refs.bib]
 ---
 
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [Dissertação de Mestrado - IME 2023](#dissertação-de-mestrado-ime-2023)
+  - [Capítulos](#capítulos)
+    - [Capítulo 01 - Introdução](#capítulo-01-introdução)
+    - [Capítulo 02 - Revisão Teórica](#capítulo-02-revisão-teórica)
+    - [Capítulo 03 - Métodos Numéricos](#capítulo-03-métodos-numéricos)
+    - [Capítulo 04 - Modelagem da Turbulência](#capítulo-04-modelagem-da-turbulência)
+    - [Capítulo 05 - Modelagem de Trajetória](#capítulo-05-modelagem-de-trajetória)
+    - [Capítulo 06 - Descrição do Estudo Proposto](#capítulo-06-descrição-do-estudo-proposto)
+    - [Capítulo 07 - Resultados](#capítulo-07-resultados)
+    - [Capítulo 08 - Considerações Finais](#capítulo-08-considerações-finais)
+  - [Criar e remover arquivos de conteúdo](#criar-e-remover-arquivos-de-conteúdo)
+    - [Bibliografia](#bibliografia)
+    - [Apêndices](#apêndices)
+  - [Outras informações](#outras-informações)
+- [Perguntas Frequentes](#perguntas-frequentes)
+    - [Como usar referências com nome e ano do autor (referência alfabética)](#como-usar-referências-com-nome-e-ano-do-autor-referência-alfabética)
+    - [Uso de citações em legendas (figuras, quadros ou tabelas)](#uso-de-citações-em-legendas-figuras-quadros-ou-tabelas)
+- [Referências](#referências)
+
+<!-- /code_chunk_output -->
 
 
 # Dissertação de Mestrado - IME 2023
