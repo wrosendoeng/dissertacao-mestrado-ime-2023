@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Se você usar esse material, cite como abaixo."
+authors:
+- family-names: "Ramos Rosendo da Silva"
+  given-names: "Wallace"
+  orcid: "https://orcid.org/0000-0003-3449-1744"
+title: "Análise aerodinâmica e estudo do alcance de um projétil de artilharia"
+version: 0.0.1
+doi: 10.5281/zenodo.1234
+date-released: 2022-12-22
+url: "https://github.com/wrosendoeng/dissertacao-mestrado-ime-2023"
