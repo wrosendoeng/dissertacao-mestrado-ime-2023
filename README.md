@@ -3,6 +3,8 @@ title: "BibTeX references in Markdown"
 csl: associacao-brasileira-de-normas-tecnicas.csl
 output: html_document
 bibliography: [refs.bib]
+citeproc: true
+standalone: true
 ---
 
 # Dissertação de Mestrado - IME 2023

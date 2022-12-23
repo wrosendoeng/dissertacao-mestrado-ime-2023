@@ -271,7 +271,7 @@ Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-t
 
 \subsection{Influência da abordagem RANS}\label{subsec:resultados-com-basebleed-RANS}
 
-Conforme foi citado anteriormente, o modelo Spalart-Allmaras \cite{Spalart1992} foi manejado para atestar a eficiência de outra técnica RANS para descrição da turbulência além do que foi proposto por \citeauthor{Menter1994TwoequationET}. A comparação foi realizada somente para os seguintes valores na condição de contorno \textit{base bleed inlet}: - \(\Dot{m}_{BB}\) = \qty{50,8}{\millimetre}, \(T_{BB} = \qty{2306,15}{\kelvin}\) e \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}.
+Conforme foi citado anteriormente, o modelo Spalart-Allmaras \cite{Spalart1992} foi manejado para atestar a eficiência de outra técnica RANS para descrição da turbulência além do que foi proposto por \citeauthor{Menter1994TwoequationET}. A comparação foi realizada somente para os seguintes valores na condição de contorno \textit{base bleed inlet}: \(\Dot{m}_{BB}\) = \qty{50,8}{\millimetre}, \(T_{BB} = \qty{2306,15}{\kelvin}\) e \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}.
 
 Entretanto, é notório que o modelo Spalart-Allmaras (S-A) superestimou a curva de arrasto em todos os regimes de velocidade, relatado pela Figura \ref{fig:comparacao-bb-rans}.
 
@@ -317,17 +317,40 @@ Para assegurar o que foi demonstrado na \autoref{fig:contorno-pressao-bb-2pol-RA
 A partir do momento em que há disponibilidade das condições citadas na \autoref{subsec:implementacao-trajetoria} e dos resultados das simulações de fluidodinâmica computacional, pode-se calcular a predição da trajetória MPMTM. Apesar do suporte do PRODAS® e das informações obtidas, algumas premissas foram consideradas:
 
 \begin{itemize}
-    \item Lançamento do Rio de Janeiro, logo a latitude é de \(ang{23}\);
+    \item Lançamento do Rio de Janeiro, logo a latitude é de \ang{23};
     \item Desprezando efeitos da umidade sobre a atmosfera;
     \item Sem velocidade do vento, assim como citado por \citeauthor{Rosendo2020};
     \item Vazão mássica do propelente é constante durante o acionamento do BB;
     \item Parâmetro ótimo de injeção \(\left(Inj_{0}\right)\) igual a \num{5e-3}, tal como descrito por \citeauthor{DAVENAS1993329};
-    \item Assumir que os coeficientes aerodinâmicos são linearmente dependentes do ângulo \(alpha_{e}\)
+    \item Assumir que os coeficientes aerodinâmicos são linearmente dependentes do ângulo \(\alpha_{e}\)
 \end{itemize}
 
 Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
+De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adequem à cada simulação realizada. 
 
-De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adéquem à cada simulação realizada. Os dados de entrada são comparados com os testes reais de tiro feito com os projetis. Contudo, o simulador desenvolvido neste trabalho comprovou que, mesmo não sendo utilizados em suas respectivas equações \ref{eq:liftMPM} e \ref{eq:baseMPM}, os valores finais de trajetória foram considerados com boa acurácia, se comparados aos lançamentos reais de projetis.
+Para averiguar a qualidade do código desenvolvido em MATLAB®, foram simuladas as condições ativa e inerte da munição (com e sem \textit{Base Bleed}) com ângulos de elevação (QE) entre \qtylist{440;1250}{\milliradian} (de \qtyrange{25}{72}{\degree}). A Figura \ref{fig:trajetoria-validacao} demonstra o projetil \qty{155}{\millimetre} sendo disparado.
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[!ht]{\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{trajetoria_validacao_sembasebleed.png}
+        \caption{Simulação sem Base Bleed}
+        \label{fig:trajetoria-avaliacao-sembasebleed}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[!ht]{\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{trajetoria_validacao_combasebleed.png}
+        \caption{Simulação com Base Bleed}
+        \label{fig:trajetoria-avaliacao-sembasebleed}
+    \end{subfigure}
+    \caption{Projetil com diferentes ângulos de elevação}
+	\label{fig:trajetoria-validacao}
+\end{figure}
+
+Os dados de entrada são comparados com os testes reais de tiro feito com os projetis. 
+Contudo, o simulador desenvolvido neste trabalho comprovou que, mesmo não sendo utilizados em suas respectivas equações \ref{eq:liftMPM} e \ref{eq:baseMPM}, os valores finais de trajetória foram considerados com boa acurácia, se comparados aos lançamentos reais de projetis.
 
 \begin{figure}[!ht]
 	\centering
