@@ -328,7 +328,134 @@ A partir do momento em que há disponibilidade das condições citadas na \autor
 Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
 De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adequem à cada simulação realizada. 
 
-Para averiguar a qualidade do código desenvolvido em MATLAB®, foram simuladas as condições ativa e inerte da munição (com e sem \textit{Base Bleed}) com ângulos de elevação (QE) entre \qtylist{440;1250}{\milliradian} (de \qtyrange{25}{72}{\degree}). A Figura \ref{fig:trajetoria-validacao} demonstra o projetil \qty{155}{\millimetre} sendo disparado.
+Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} \cite{Thallyo2022}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências.
+
+\begin{table}[ht]
+    \centering
+    \caption[Resultados obtidos durante a validação (munição \qty{155}{\millimetre} M107)]{Resultados obtidos durante a validação (munição \qty{155}{\millimetre} M107)}
+    \vspace{0.5cm}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{c|c|c|c|c|c|c|c}
+    \hline
+    \multicolumn{4}{c|}{PRODAS®} &
+      \multicolumn{4}{c}{Tabela de tiro} \\ \hline
+    \multicolumn{1}{c|}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Elevação \\ (\unit{\milliradian})\end{tabular}}} &
+      \multicolumn{2}{c|}{Alcance (\unit{\metre})} &
+      \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Erro \\ (\unit{\percent})\end{tabular}} &
+      \multicolumn{1}{c|}{\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Elevação \\ (\unit{\milliradian})\end{tabular}}} &
+      \multicolumn{2}{c|}{Alcance (\unit{\metre})} &
+      \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Erro \\ (\unit{\percent})\end{tabular}} \\ \cline{2-3} \cline{6-7}
+    \multicolumn{1}{c|}{} &
+      \multicolumn{1}{c|}{Esperado} &
+      \multicolumn{1}{c|}{Obtido} &
+       &
+      \multicolumn{1}{c|}{} &
+      \multicolumn{1}{c|}{Esperado} &
+      \multicolumn{1}{c|}{Obtido} &
+       \\ \hline
+    \num{58,9} &
+      \num{500,0} &
+      \num{501,2} &
+      \num{0,24} &
+      \num{58,9} &
+      \num{500,0} &
+      \num{501,2} &
+      \num{0,24} \\
+    \num{120,1} &
+      \num{1000,0} &
+      \num{1001,9} &
+      \num{0,19} &
+      \num{120,3} &
+      \num{1000,0} &
+      \num{1003,5} &
+      \num{0,35} \\
+    \num{184,7} &
+      \num{1500,0} &
+      \num{1501,7} &
+      \num{0,11} &
+      \num{185,3} &
+      \num{1500,0} &
+      \num{1506,2} &
+      \num{0,41} \\
+    \num{254,5} &
+      \num{2000,0} &
+      \num{2001,7} &
+      \num{0,09} &
+      \num{255,4} &
+      \num{2000,0} &
+      \num{2007,9} &
+      \num{0,40} \\
+    \num{332,1} &
+      \num{2500,0} &
+      \num{2501,1} &
+      \num{0,04} &
+      \num{333,5} &
+      \num{2500,0} &
+      \num{2509,5} &
+      \num{0,38} \\
+    \num{422,9} &
+      \num{3000,0} &
+      \num{2999,9} &
+      \num{0,00} &
+      \num{424,7} &
+      \num{3000,0} &
+      \num{3008,8} &
+      \num{0,29} \\
+    \num{541,9} &
+      \num{3500,0} &
+      \num{3498,9} &
+      \num{0,03} &
+      \num{543,8} &
+      \num{3500,0} &
+      \num{3505,3} &
+      \num{0,15} \\
+    \num{731,3} &
+      \num{3900,0} &
+      \num{3897,6} &
+      \num{0,06} &
+      \num{729,2} &
+      \num{3900,0} &
+      \num{3896,0} &
+      \num{0,11} \\
+    \num{838,4} &
+      \num{3900,0} &
+      \num{3898,3} &
+      \num{0,05} &
+      \num{846,2} &
+      \num{3900,0} &
+      \num{3891,9} &
+      \num{0,21} \\
+    \num{1027,5} &
+      \num{3500,0} &
+      \num{3504,3} &
+      \num{0,11} &
+      \num{1028,3} &
+      \num{3500,0} &
+      \num{3501,5} &
+      \num{0,03} \\
+    \num{1144,7} &
+      \num{3000,0} &
+      \num{3016,7} &
+      \num{0,53} &
+      \num{1141,1} &
+      \num{3000,0} &
+      \num{3034,3} &
+      \num{1,12} \\
+    \num{1231,4} &
+      \num{2500,0} &
+      \num{2539,9} &
+      \num{1,55} &
+      \num{1220,5} &
+      \num{2500,0} &
+      \num{2605,5} &
+      \num{4,18} \\ \hline
+    \end{tabular}%
+    }
+    \label{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107}
+    \fonte{\cite{Thallyo2022}}
+\end{table}
+
+com ângulos de elevação (QE) entre \qtylist{440;1250}{\milliradian} (de \qtyrange{25}{72}{\degree}). A Figura \ref{fig:trajetoria-validacao} demonstra o projetil \qty{155}{\millimetre} sendo disparado.
 
 \begin{figure}[!ht]
 	\centering
