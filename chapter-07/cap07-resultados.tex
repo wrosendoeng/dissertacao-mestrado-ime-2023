@@ -328,7 +328,7 @@ A partir do momento em que há disponibilidade das condições citadas na \autor
 Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
 De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adequem à cada simulação realizada. 
 
-Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{878}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} \cite{Thallyo2022}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências.
+Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{207,3}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} \cite{Thallyo2022}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências.
 
 \begin{table}[ht]
     \centering
@@ -455,9 +455,19 @@ Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados ob
     \fonte{\cite{Thallyo2022}}
 \end{table}
 
-O software autoral para a predição de trajetória também serviu para atestar incongruências existentes no código utilizado por \citeauthor{Rosendo2020} para suas simulações. Tais resultados podem ser observados na Figura \ref{fig:trajetoria-validacao}, em que se demonstra disparos de um projetil \qty{114}{\millimetre} com ângulos de elevação (QE) entre \qtylist{440;1250}{\milliradian} (de \qtyrange{25}{72}{\degree}).
+O software autoral para a predição de trajetória também serviu para atestar incongruências existentes no código utilizado por \citeauthor{Rosendo2020} para suas simulações. Tais resultados podem ser constatados na Figura \ref{fig:trajetoria-validacao-basebleed}, em que se demonstra disparos de um projetil \qty{114}{\millimetre} com \textit{Base Bleed} sob disparo com ângulos de elevação (QE) iguais a \qtylist{711,1;800}{\milliradian} (de \qtylist{40;45}{\degree}), com diferenças de alcance de até \qty{1000}{\metre} para um lançamento a QE = \qty{711,1}{\milliradian} e quase \qty{3000}{\metre} para uma elevação de \qty{800}{\milliradian}.
 
 \begin{figure}[!ht]
+	\centering
+    \includegraphics[width=0.7\textwidth]{trajetoria_thallyo2022_rosendo2020.png}
+    \caption[Simulação sem Base Bleed.]{Simulação sem Base Bleed \cite{Thallyo2022}}
+    \label{fig:trajetoria-validacao-basebleed}
+\end{figure}
+
+O software autoral permite observar pela Figura \ref{fig:trajetoria-disparos-440-1250mil} que as correções realizadas possibilitam disparos de um projetil \qty{114}{\millimetre} com ângulos de elevação (QE) entre \qtylist{440;1250}{\milliradian} (de \qtyrange{25}{72}{\degree}), que também se aplicaria ao caso deste trabalho.
+
+\begin{figure}[!ht]
+    \ContinuedFloat
 	\centering
 	\begin{subfigure}[!ht]{\textwidth}
         \centering
@@ -465,50 +475,17 @@ O software autoral para a predição de trajetória também serviu para atestar 
         \caption{Simulação sem Base Bleed}
         \label{fig:trajetoria-avaliacao-sembasebleed}
     \end{subfigure}
-    \hfill
+\end{figure}\clearpage
+\begin{figure}[!ht]
+    \ContinuedFloat
     \begin{subfigure}[!ht]{\textwidth}
         \centering
         \includegraphics[width=0.8\textwidth]{trajetoria_validacao_combasebleed.png}
         \caption{Simulação com Base Bleed}
         \label{fig:trajetoria-avaliacao-sembasebleed}
     \end{subfigure}
-    \caption{Projetil com diferentes ângulos de elevação}
-	\label{fig:trajetoria-validacao}
-\end{figure}
-
-Contudo, o simulador desenvolvido neste trabalho comprovou que, mesmo não sendo utilizados em suas respectivas equações \ref{eq:liftMPM} e \ref{eq:baseMPM}, os valores finais de trajetória foram considerados com boa precisão, se comparados aos lançamentos reais de projetis.
-
-\begin{figure}[!ht]
-	\centering
-	\begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto1.png}
-        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
-        \label{fig:trajetoria-711mil-1pol}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto2.png}
-        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
-        \label{fig:trajetoria-800mil-1pol}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto3.png}
-        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
-        \label{fig:trajetoria-711mil-2pol}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[height=5cm,width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto4.png}
-        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
-        \label{fig:trajetoria-800mil-2pol}
-    \end{subfigure}
-	\caption{Projetil com diferentes saídas de bocal e diferentes vazões}
-	\label{fig:trajetoria-1pol-2pol}
+    \caption[Projetil com diferentes ângulos de elevação.]{Projetil com diferentes ângulos de elevação \cite{Thallyo2022}.}
+	\label{fig:trajetoria-disparos-440-1250mil}
 \end{figure}
 
 A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-1pol-2pol} esclarece os resultados das predições de voo. Sobre a \autoref{fig:trajetoria-711mil-1pol}, os resultados não demonstraram um efeito positivo, seja sobre o alcance ou o apogeu, como visto na \autoref{tab:tabela-711mil-bb-1pol}. 
@@ -527,6 +504,7 @@ Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
 \label{tab:tabela-711mil-bb-1pol}
 \fonte{Autor.}
 \end{table}
+
 
 Acerca da \autoref{fig:trajetoria-800mil-1pol}, apesar de haver um aumento do alcance dos lançamentos sob efeito BB, os resultados também foram piores, quando comparados com o lançamento inerte. A \autoref{tab:tabela-800mil-bb-1pol} demonstra resultados percentuais muito próximos dos que foram apresentados na tabela anterior.
 
@@ -578,3 +556,36 @@ Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
 \label{tab:tabela-800mil-bb-2pol}
 \fonte{Autor.}
 \end{table}
+
+\begin{figure}[!ht]
+	\centering
+	\begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto1.png}
+        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
+        \label{fig:trajetoria-711mil-1pol}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto2.png}
+        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
+        \label{fig:trajetoria-800mil-1pol}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto3.png}
+        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
+        \label{fig:trajetoria-711mil-2pol}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto4.png}
+        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
+        \label{fig:trajetoria-800mil-2pol}
+    \end{subfigure}
+	\caption{Projetil com diferentes saídas de bocal e diferentes vazões}
+	\label{fig:trajetoria-1pol-2pol}
+\end{figure}
