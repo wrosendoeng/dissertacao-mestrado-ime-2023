@@ -75,14 +75,14 @@ Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver 
 	\begin{subfigure}[b]{0.47\textwidth}
     	\centering
     	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-1pol.png}
-    	\caption{Saída do bocal - \(\Dot{m}_{BB}\) = \qty{25,4}{\millimetre}}
+    	\caption{Saída do bocal - \(\phi_{BB}\) = \qty{25,4}{\millimetre}}
     	\label{fig:comparacao-bb-diametro-1pol}
     \end{subfigure}
     \hfill
 	\begin{subfigure}[b]{0.47\textwidth}
     	\centering
     	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-2pol.png}
-    	\caption{Saída do bocal - \(\Dot{m}_{BB}\) = \qty{50,8}{\millimetre}}
+    	\caption{Saída do bocal - \(\phi_{BB}\) = \qty{50,8}{\millimetre}}
     	\label{fig:comparacao-bb-diametro-2pol}
     \end{subfigure}
 	\caption{Influência do diâmetro sobre o coeficiente de arrasto.}
@@ -480,7 +480,7 @@ O software autoral permite observar pela Figura \ref{fig:trajetoria-disparos-440
     \ContinuedFloat
     \begin{subfigure}[!ht]{\textwidth}
         \centering
-        \includegraphics[width=0.8\textwidth]{trajetoria_validacao_combasebleed.png}
+        \includegraphics[width=0.78\textwidth]{trajetoria_validacao_combasebleed.png}
         \caption{Simulação com Base Bleed}
         \label{fig:trajetoria-avaliacao-sembasebleed}
     \end{subfigure}
@@ -488,7 +488,14 @@ O software autoral permite observar pela Figura \ref{fig:trajetoria-disparos-440
 	\label{fig:trajetoria-disparos-440-1250mil}
 \end{figure}
 
-A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-1pol-2pol} esclarece os resultados das predições de voo. Sobre a \autoref{fig:trajetoria-711mil-1pol}, os resultados não demonstraram um efeito positivo, seja sobre o alcance ou o apogeu, como visto na \autoref{tab:tabela-711mil-bb-1pol}. 
+A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-1pol-711mil} esclarece os resultados das predições de voo. A \autoref{tab:tabela-711mil-bb-1pol} mostra que houve redução do alcance e do apogeu.
+
+\begin{figure}[!ht]
+	\centering
+    \includegraphics[width=0.625\textwidth]{foto1-qe711mil-1pol.png}
+    \caption[QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)]{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
+    \label{fig:trajetoria-1pol-711mil}
+\end{figure}
 
 \begin{table}[ht]
 \centering
@@ -505,8 +512,14 @@ Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
 \fonte{Autor.}
 \end{table}
 
+Acerca da \autoref{fig:trajetoria-1pol-800mil}, apesar de haver um aumento do alcance dos lançamentos sob efeito BB, os resultados também foram piores, quando comparados com o lançamento inerte. A \autoref{tab:tabela-800mil-bb-1pol} demonstra resultados percentuais muito próximos dos que foram apresentados na tabela anterior.
 
-Acerca da \autoref{fig:trajetoria-800mil-1pol}, apesar de haver um aumento do alcance dos lançamentos sob efeito BB, os resultados também foram piores, quando comparados com o lançamento inerte. A \autoref{tab:tabela-800mil-bb-1pol} demonstra resultados percentuais muito próximos dos que foram apresentados na tabela anterior.
+\begin{figure}[!ht]
+	\centering
+    \includegraphics[width=0.625\textwidth]{foto2-qe800mil-1pol.png}
+    \caption[QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)]{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
+    \label{fig:trajetoria-1pol-800mil}
+\end{figure}
 
 \begin{table}[ht]
 \centering
@@ -523,7 +536,14 @@ Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
 \fonte{Autor.}
 \end{table}
 
-Ao verificar a \autoref{tab:tabela-711mil-bb-2pol}, percebe-se uma tendência positiva nos resultados da \autoref{fig:trajetoria-711mil-2pol}, sobretudo com a vazão mássica de \qty{0,060}{\kilogram\per\second}. Há o aumento do alcance de quase \qty{6}{\percent}, mesmo com um modelo simplificado para reproduzir o efeito BB.
+Ao verificar a \autoref{fig:trajetoria-2pol-711mil} percebe-se um aumento do alcance e do apogeu, atestado pela \autoref{tab:tabela-711mil-bb-2pol}. Há o aumento do alcance de quase \qty{6}{\percent} quando \(\Dot{m}_{BB} = \qty{0,060}{\kilogram\per\second}\).
+
+\begin{figure}[!ht]
+	\centering
+    \includegraphics[width=0.4\textwidth]{foto3-qe711mil-2pol.png}
+    \caption[QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)]{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
+    \label{fig:trajetoria-2pol-711mil}
+\end{figure}
 
 \begin{table}[ht]
 \centering
@@ -540,7 +560,14 @@ Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
 \fonte{Autor.}
 \end{table}
 
-Ao aumentar o ângulo de elevação de disparo houve um incremento percentual sobre o alcance e o apogeu também, como demonstrado na \autoref{fig:trajetoria-800mil-2pol}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-2pol} com a \autoref{tab:tabela-800mil-bb-2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
+Ao aumentar o ângulo de elevação para \qty{800}{\milliradian} houve um incremento percentual sobre o alcance e o apogeu também, como demonstrado na \autoref{fig:trajetoria-2pol-800mil}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-2pol} com a \autoref{tab:tabela-800mil-bb-2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
+
+\begin{figure}[!ht]
+	\centering
+    \includegraphics[width=0.625\textwidth]{foto4-qe800mil-2pol.png}
+    \caption[QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)]{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
+    \label{fig:trajetoria-2pol-800mil}
+\end{figure}
 
 \begin{table}[ht]
 \centering
@@ -556,36 +583,3 @@ Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
 \label{tab:tabela-800mil-bb-2pol}
 \fonte{Autor.}
 \end{table}
-
-\begin{figure}[!ht]
-	\centering
-	\begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto1.png}
-        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
-        \label{fig:trajetoria-711mil-1pol}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto2.png}
-        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
-        \label{fig:trajetoria-800mil-1pol}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto3.png}
-        \caption{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
-        \label{fig:trajetoria-711mil-2pol}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{trajetoria_thallyo_wallace_basebleed-foto4.png}
-        \caption{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
-        \label{fig:trajetoria-800mil-2pol}
-    \end{subfigure}
-	\caption{Projetil com diferentes saídas de bocal e diferentes vazões}
-	\label{fig:trajetoria-1pol-2pol}
-\end{figure}
