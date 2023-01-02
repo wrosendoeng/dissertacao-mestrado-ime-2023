@@ -40,7 +40,7 @@ Como pré-requisitos para transformar as equações analíticas em algébricas, 
 
 \section{Método dos Volumes Finitos}
 
-Supondo que $\phi$ seja uma variável referente a uma propriedade do fluido, o método de volumes finitos (MVF) se utiliza da forma integral da equação de transporte, como é apresentado na equação \ref{eq:volumes-finitos}.
+Supondo que \(\phi\) seja uma variável referente a uma propriedade do fluido, o método de volumes finitos (MVF) se utiliza da forma integral da equação de transporte, como é apresentado na equação \ref{eq:volumes-finitos}.
 
 \begin{equation}
     \label{eq:volumes-finitos}
@@ -56,14 +56,14 @@ A discretização geral das equações de conservação \ref{eq:volumes-finitos}
     \frac{\partial \rho\phi}{\partial t}\forall + \sum_{f}^{N_{faces}}\rho_{f}\phi_{f}\boldsymbol{u}_f\boldsymbol{A}_{f} = \sum_{f}^{N_{faces}}\Gamma_{\phi}\nabla\phi_{f}\boldsymbol{A}_{f} + S_{\phi}\forall
 \end{equation}
 %
-onde $N_{faces}$ é igual ao número de faces envolvendo a célula; $\phi_f$, o valor de $\phi$ convectada através da face f; $\rho_f\boldsymbol{u}_f\textbf{A}_f$ é o fluxo de massa através da face; $\textbf{A}_f$, o vetor da área da face; $\nabla\phi_f$ equivale ao gradiente de $\phi$ na face f e $\forall$ é o volume de controle arbitrário. A forma linearizada da equação \ref{eq:volumes-finitos-discreta} é apresentada em \ref{eq:forma-linear-mvf}:
+onde \(N_{faces}\) é igual ao número de faces envolvendo a célula; \(\phi_f\), o valor de \(\phi\) convectada através da face f; \(\rho_f\boldsymbol{u}_f\textbf{A}_f\) é o fluxo de massa através da face; \(\textbf{A}_f\), o vetor da área da face; \(\nabla\phi_f\) equivale ao gradiente de \(\phi\) na face f e \(\forall\) é o volume de controle arbitrário. A forma linearizada da equação \ref{eq:volumes-finitos-discreta} é apresentada em \ref{eq:forma-linear-mvf}:
 
 \begin{equation}
     \label{eq:forma-linear-mvf}
     a_{p}\phi = \sum_{nb}a_{nb}\phi_{nb} + b
 \end{equation}
 %
-onde o subscrito $nb$ se refere às células vizinhas, enquanto que $a_{p}$ e $a_{nb}$ são coeficientes linearizados de $\phi$ e $\phi_{nb}$. O número de vizinhos depende da topologia da malha, mas o resultado é um sistema de equações com matriz de coeficientes esparsos.
+onde o subscrito \(nb\) se refere às células vizinhas, enquanto que \(a_{p}\) e \(a_{nb}\) são coeficientes linearizados de \(\phi\) e \(\phi_{nb}\). O número de vizinhos depende da topologia da malha, mas o resultado é um sistema de equações com matriz de coeficientes esparsos.
 
 \subsection{Algoritmos de resolução de escoamentos}
 
@@ -79,8 +79,8 @@ Apesar de suas aplicações usuais, os métodos já foram reformulados para aten
 Seja qual for o método, serão resolvidas as equações de transporte para a continuidade e momentum, assim como para a energia, turbulência e espécies químicas, se houver necessidade. A maneira que as equações de governo são linearizadas podem resultar numa forma “implícita” ou “explícita”. Tal explicação é demonstrada a seguir:
 
 \begin{enumerate}
-    \item Implícita: para uma dada variável, o valor a descobrir em cada volume de controle $\forall$ é computado usando uma relação que inclui os valores existentes e desconhecidos das células vizinhas. Portanto, cada valor desejado aparecerá em mais de uma equação algébrica, onde essas equações devem ser resolvidas simultaneamente para obter o valores desconhecidos.
-    \item Explícita: para uma dada variável, o valor a descobrir lume de controle $\forall$ é computado usando uma relação que inclui só os valores existentes das células vizinhas. Portanto, cada valor desejado aparecerá em apenas uma equação algébrica, onde essas equações são resolvidas sequencialmente para obter o valores desconhecidos. 
+    \item Implícita: para uma dada variável, o valor a descobrir em cada volume de controle \(\forall\) é computado usando uma relação que inclui os valores existentes e desconhecidos das células vizinhas. Portanto, cada valor desejado aparecerá em mais de uma equação algébrica, onde essas equações devem ser resolvidas simultaneamente para obter o valores desconhecidos.
+    \item Explícita: para uma dada variável, o valor a descobrir lume de controle \(\forall\) é computado usando uma relação que inclui só os valores existentes das células vizinhas. Portanto, cada valor desejado aparecerá em apenas uma equação algébrica, onde essas equações são resolvidas sequencialmente para obter o valores desconhecidos. 
 \end{enumerate}
 
 \subsubsection{Algoritmo \textit{Pressure-Based}}
@@ -327,25 +327,25 @@ Sim
 
 \subsection{Discretização espacial}
 
-Assumindo que se trata de um problema em regime estacionário, o termo $\frac{\partial \rho\phi}{\partial t}\forall$ pode ser desconsiderado da equação \ref{eq:volumes-finitos}, resultando na equação \ref{eq:volumes-finitos-estacionaria}:
+Assumindo que se trata de um problema em regime estacionário, o termo \(\frac{\partial \rho\phi}{\partial t}\forall\) pode ser desconsiderado da equação \ref{eq:volumes-finitos}, resultando na equação \ref{eq:volumes-finitos-estacionaria}:
 
 \begin{equation}
     \label{eq:volumes-finitos-estacionaria}
     \int_{A} \rho\phi\boldsymbol{u}\cdot\boldsymbol{n}\hspace{0.5pt} dA = \int_{A} \Gamma_{\phi}\nabla\phi\cdot\boldsymbol{n}\hspace{0.5pt} dA + \int_{\forall} S_{\phi}\hspace{0.5pt} d\forall
 \end{equation}
 
-Os valores discretos de $\phi$ são obtidos no centros dos volumes de controle, mas os valores referentes às faces de $\phi$ são interpolados através dos valores centrais dos volumes de controle \cite{Rezende2009}. Os seguintes esquemas de discretização espacial serão tratados: diferenças centrais; \textit{upwind} de 1ª ordem e 2ª ordem e QUICK.
+Os valores discretos de \(\phi\) são obtidos no centros dos volumes de controle, mas os valores referentes às faces de \(\phi\) são interpolados através dos valores centrais dos volumes de controle \cite{Rezende2009}. Os seguintes esquemas de discretização espacial serão tratados: diferenças centrais; \textit{upwind} de 1\textsuperscript{a} ordem e 2\textsuperscript{a} ordem e QUICK.
 
 \subsubsection{Esquema de diferenças centrais}
 
-O valor da variável na face do volume de controle $\phi_{f}$ é calculado da seguinte forma no esquema de diferenças centrais (CDS), conforme equação \ref{eq:esquema-CDS} \cite{Rezende2009}.
+O valor da variável na face do volume de controle \(\phi_{f}\) é calculado da seguinte forma no esquema de diferenças centrais (CDS), conforme equação \ref{eq:esquema-CDS} \cite{Rezende2009}.
 
 \begin{equation}
     \label{eq:esquema-CDS}
     \phi_f = \frac{1}{2}\left(\phi_0+\phi_1\right)+\frac{1}{2}\left(\nabla\phi_0\cdot\overrightarrow{r_0}+\nabla\phi_1\cdot\overrightarrow{r_1}\right)
 \end{equation}
 
-sendo 0 e 1 os índices das células representadas na Figura \ref{fig:volume-ANSYS-2021R2}, sendo $\overrightarrow{r}$ o vetor deslocamento que liga o centro da célula a montante à face do volume de controle. A Figura \ref{fig:volume-ANSYS-2021R2} ilustra a discretização de uma célula triangular bidimensional como exemplo de volume de controle \cite{fluent2021ansys}.
+sendo 0 e 1 os índices das células representadas na Figura \ref{fig:volume-ANSYS-2021R2}, sendo \(\overrightarrow{r}\) o vetor deslocamento que liga o centro da célula a montante à face do volume de controle. A Figura \ref{fig:volume-ANSYS-2021R2} ilustra a discretização de uma célula triangular bidimensional como exemplo de volume de controle \cite{fluent2021ansys}.
 
 \begin{figure}[!ht] 
 	\centering
@@ -354,11 +354,11 @@ sendo 0 e 1 os índices das células representadas na Figura \ref{fig:volume-ANS
 	\label{fig:volume-ANSYS-2021R2}
 \end{figure}
 
-Portanto, esse esquema não reconhece a direção do escoamento ou a influência da convecção em relação à difusão \cite{malalasekera2007}. Ainda se tratando da mesma referência, o CDS não é um modelo mais indicado para resolver casos genéricos e, por esta razão, os esquemas \textit{upwind} de $1^{a}$ e $2^{a}$ ordem, além do QUICK serão apresentados.
+Portanto, esse esquema não reconhece a direção do escoamento ou a influência da convecção em relação à difusão \cite{malalasekera2007}. Ainda se tratando da mesma referência, o CDS não é um modelo mais indicado para resolver casos genéricos e, por esta razão, os esquemas \textit{upwind} de 1\textsuperscript{a} e 2\textsuperscript{a} ordem, além do QUICK serão apresentados.
 
 \subsubsection{Esquema \textit{upwind} de primeira ordem}
 
-Considerando que o esquema anterior tem uma dificuldade de identificar a direção do escoamento, o esquema \textit{upwind} de $1^{a}$ ordem (UDS-1) determina o valor de $\phi_f$ convectada na face $f$ a partir do valor $\phi_{up}$ a montante. A equação \ref{eq:esquema-upwind-1aordem} apresenta a aproximação inicial para as propriedades de interesse do fluido \cite{Rezende2009}.
+Considerando que o esquema anterior tem uma dificuldade de identificar a direção do escoamento, o esquema \textit{upwind} de 1\textsuperscript{a} ordem (UDS-1) determina o valor de \(\phi_f\) convectada na face \(f\) a partir do valor \(\phi_{up}\) a montante. A equação \ref{eq:esquema-upwind-1aordem} apresenta a aproximação inicial para as propriedades de interesse do fluido \cite{Rezende2009}.
 
 \begin{equation}\label{eq:esquema-upwind-1aordem}
 	\phi_f = \phi_{up}
@@ -368,13 +368,13 @@ Considerando que o esquema anterior tem uma dificuldade de identificar a direç�
 
 \subsubsection{Esquema \textit{upwind} de segunda ordem}
 
-Quando uma precisão de segunda ordem é requerida, apela-se à interpolação linear com mais de um elemento adjacente, onde a precisão de ordem elevada é atingida a partir da expansão por série de Taylor da solução no centroide do volume de controle \cite{Rezende2009}. O esquema \textit{upwind} de 2ª ordem (UDS-2) envolve dois valores a montante, resultando na seguinte equação \ref{eq:esquema-upwind-2aordem} para $\phi_f$:
+Quando uma precisão de segunda ordem é requerida, apela-se à interpolação linear com mais de um elemento adjacente, onde a precisão de ordem elevada é atingida a partir da expansão por série de Taylor da solução no centroide do volume de controle \cite{Rezende2009}. O esquema \textit{upwind} de 2ª ordem (UDS-2) envolve dois valores a montante, resultando na seguinte equação \ref{eq:esquema-upwind-2aordem} para \(\phi_f\):
 
 \begin{equation} \label{eq:esquema-upwind-2aordem}
     \phi_f = \phi_{c_0} + \left(\nabla\phi\cdot\overrightarrow{r}\right)_{up}
 \end{equation}
 
-Considere $\phi_{c_0}$ o valor de $\phi$ na célula central. A equação \ref{eq:esquema-upwind-2aordem} assume que o escoamento está na direção positiva, já que a face analisada está a leste, conforme o subscrito $e$ surge na variável $\phi$. Na direção negativa, o gradiente da função ainda terá a mesma magnitude, porém com sentido inverso. Para definir o gradiente de $\phi$, $\nabla\phi$, assume-se neste projeto que foi usado o método dos mínimos quadrados \cite{Anderson1994}, cuja proposta é admitir que a solução varia linearmente. Conforme demonstrado na equação \ref{eq:gradiente-minimos-quadrados}, espera-se que calcule os valores para as células $c0$ e $ci$ (ver \autoref{fig:minimos-quadrados})
+Considere \(\phi_{c_0}\) o valor de \(\phi\) na célula central. A equação \ref{eq:esquema-upwind-2aordem} assume que o escoamento está na direção positiva, já que a face analisada está a leste, conforme o subscrito \(e\) surge na variável \(\phi\). Na direção negativa, o gradiente da função ainda terá a mesma magnitude, porém com sentido inverso. Para definir o gradiente de \(\phi\), \(\nabla\phi\), assume-se neste projeto que foi usado o método dos mínimos quadrados \cite{Anderson1994}, cuja proposta é admitir que a solução varia linearmente. Conforme demonstrado na equação \ref{eq:gradiente-minimos-quadrados}, espera-se que calcule os valores para as células \(c0\) e \(ci\) (ver \autoref{fig:minimos-quadrados})
 
 \begin{equation} \label{eq:gradiente-minimos-quadrados}
     \left(\nabla\phi\right)_{c0} \cdot \Delta r_i = \phi_{ci} - \phi_{c0}
@@ -403,31 +403,31 @@ O esquema QUICK \cite{Leonard1990} se baseia em uma média ponderada entre os es
 	\label{fig:ansys-QUICK}
 \end{figure}
 
-A equação acima resulta no esquema CDS quando $\theta = 1$ e no UDS-2 quando $\theta = 0$. A versão tradicional do QUICK \cite{Leonard1979} considera $\theta = 1/8$. Comparado aos esquemas \textit{upwind} de 1ª ordem e diferenças centrais, é um modelo mais eficiente. A falsa difusão é baixa, mas deve-se levar em consideração de desvios nos resultados quando a geometria do problema for complexa \cite{Leonard1979}.
+A equação acima resulta no esquema CDS quando \(\theta = 1\) e no UDS-2 quando \(\theta = 0\). A versão tradicional do QUICK \cite{Leonard1979} considera \(\theta = 1/8\). Comparado aos esquemas \textit{upwind} de 1ª ordem e diferenças centrais, é um modelo mais eficiente. A falsa difusão é baixa, mas deve-se levar em consideração de desvios nos resultados quando a geometria do problema for complexa \cite{Leonard1979}.
 
 \subsection{Relaxação dos termos de alta ordem}
 
-A proposta da relaxação é melhorar a inicialização e o comportamento da solução geral das simulações do escoamento quando discretizações espaciais de ordem superior são utilizadas (acima de 1ª ordem) \cite{fluent2021ansys}. A sub-relaxação desses termos segue a equação \ref{eq:relaxacao-altaordem} para qualquer propriedade $\phi$:
+A proposta da relaxação é melhorar a inicialização e o comportamento da solução geral das simulações do escoamento quando discretizações espaciais de ordem superior são utilizadas (acima de 1ª ordem) \cite{fluent2021ansys}. A sub-relaxação desses termos segue a equação \ref{eq:relaxacao-altaordem} para qualquer propriedade \(\phi\):
 
 \begin{equation}
     \label{eq:relaxacao-altaordem}
     \phi_{novo} = \phi_{velho} + f(\phi_{novo} - \phi_{velho})
 \end{equation}
 
-Considera-se como padrão $f = 0,25$ em regime estacionário, foco deste presente trabalho.
+Considera-se como padrão \(f = 0,25\) em regime estacionário, foco deste presente trabalho.
 
 \subsection{Método Multigrid}
 
 O método \textit{Multigrid} \cite{Hutchinson1986} é usado no software desta pesquisa porque acelera a convergência através de uma sequência de correções em uma série de níveis de refino da malha. É um método bom para remover erros locais (alta frequência) e menos efetivo em erros globais (baixa frequência). Logo, o aumento no número de volumes de controle diminui o desempenho da técnica.
 
-O \textit{Multigrid} é bastante eficiente quando se trata do esquema \textit{density-based} para remover os erros de alta frequência. Ele trabalha com uma sequência de malhas $M_1$ até $M_n$, cada vez mais grossas, onde o erro pode ser suavizado. Considerando um sistema linear do seguinte tipo:
+O \textit{Multigrid} é bastante eficiente quando se trata do esquema \textit{density-based} para remover os erros de alta frequência. Ele trabalha com uma sequência de malhas \(M_1\) até \(M_n\), cada vez mais grossas, onde o erro pode ser suavizado. Considerando um sistema linear do seguinte tipo:
 
 \begin{equation}
     \label{eq:sistema-linear-multigrid}
     N_{ref}\phi + c = d
 \end{equation}
 
-Sendo $d$ um erro associado à solução aproximada $\phi$. Assumindo que $\phi_{ex} = \phi + \Psi$, onde $\phi_{ex}$ seria a solução exata e $\Psi$ um fator de correção do sistema linear acima \ref{eq:sistema-linear-multigrid}:
+Sendo \(d\) um erro associado à solução aproximada \(\phi\). Assumindo que \(\phi_{ex} = \phi + \Psi\), onde \(\phi_{ex}\) seria a solução exata e \(\Psi\) um fator de correção do sistema linear acima \ref{eq:sistema-linear-multigrid}:
 
 \begin{subequations}\label{eq:multigrid-corrigido} 
 \begin{align}
@@ -437,15 +437,15 @@ Sendo $d$ um erro associado à solução aproximada $\phi$. Assumindo que $\phi_
 \end{align}
 \end{subequations}
 
-A equação \ref{eq:multigrid-corrigido} serve para corrigir o operador original de nível de refino de malha $N_{ref}$ e o defeito $d$. Em cada etapa o valor de $\Psi$ será amortecido pelo esquema de relaxação e cada vez mais efetivo na próxima malha mais grosseira.
+A equação \ref{eq:multigrid-corrigido} serve para corrigir o operador original de nível de refino de malha \(N_{ref}\) e o defeito \(d\). Em cada etapa o valor de \(\Psi\) será amortecido pelo esquema de relaxação e cada vez mais efetivo na próxima malha mais grosseira.
 
 \subsection{Critério de Convergência}
 
-O resíduo normalizado $R^{\phi}$ da equação de transporte discretizada é calculado a partir da equação \ref{eq:forma-linear-mvf} \cite{Rezende2009}:
+O resíduo normalizado \(R^{\phi}\) da equação de transporte discretizada é calculado a partir da equação \ref{eq:forma-linear-mvf} \cite{Rezende2009}:
 
 \begin{equation}
 \label{eq:criterio-convergencia}
 	R^{\phi} = \frac{\sum_{células} \left[ \sum_{nb}a_{nb}\phi_{nb}+b-a_{P}\phi_{P}\right]}{\sum_{células}\left[a_{P}\phi_{P}\right]}    
 \end{equation}
 
-Assume-se que a solução está convergida quando $R^{\phi} < 10^{-6}$.
+Assume-se que a solução está convergida quando \(R^{\phi}\) < \num{1,0e-6}.

@@ -3,7 +3,7 @@
 
 Modelar uma trajetória para projetis estabilizados por rotação por ser uma tarefa complexa, principalmente pela obtenção de dados como o coeficiente de arrasto. A sugestão a seguir se propõe a reduzir os custos computacionais de modelos tradicionais como a dinâmica de corpo rígido em seis graus de liberdade \cite{McCoy2012}.
 
-\section{Modelo de Trajetória Ponto-Material Modificado - MTPMM}
+\section{Modelo de Trajetória Ponto-Material Modificado - MPMTM}
 \label{subsec:MPMTM}
 
 O modelo ponto-material modificado foi proposto por \citeauthor{Lieske1966} e revisto por \citeauthor{Baranowski2013-3}, sendo hoje um recurso disponível para os países membros da Organização do Tratado do Atlântico Norte (OTAN) \cite{stanag4355} por meio do acordo de padronização (STANAG) 4355, que analisa a dinâmica de voo através de 4 graus de liberdade, sendo três de translação e um por rotação. O objetivo deste modelo é oferecer um padrão a ser seguido para elaboração das tabelas de tiro dos projetis analisados \cite{McCoy2012,Carlucci2018}.
@@ -17,7 +17,7 @@ Neste modelo o corpo é tratado como um ponto material, embora haja estabilidade
 
 Para introduzir as descrições das forças na equação \ref{eq:MPMTM - translation}, é necessário frisar que as descrições seguintes das forças e das variáveis presentes que descrevem os movimentos translacional e rotacional advêm da norma proposta pela OTAN, isto é, respeitar um acordo que contempla toda a indústria de defesa e espaço.
 
-Sobre a força gravitacional $\boldsymbol{F}_{G}$ descreve a interação entre o corpo e o campo gravitacional da Terra, sendo igual ao produto da massa do projetil, m, com o vetor de aceleração pela gravidade, $\boldsymbol{g}$, cuja fórmula pode ser vista na equação \ref{gravMPM}. O vetor $\boldsymbol{g}$ considera o efeito da trajetória sobre uma aproximação esférica da Terra, bem como os efeitos de latitude. Tais questões são vistas nas equações \ref{eq:Gvec} e \ref{eq:Gmag}.
+Sobre a força gravitacional \(\boldsymbol{F}_{G}\) descreve a interação entre o corpo e o campo gravitacional da Terra, sendo igual ao produto da massa do projetil, m, com o vetor de aceleração pela gravidade, \(\boldsymbol{g}\), cuja fórmula pode ser vista na equação \ref{gravMPM}. O vetor \(\boldsymbol{g}\) considera o efeito da trajetória sobre uma aproximação esférica da Terra, bem como os efeitos de latitude. Tais questões são vistas nas equações \ref{eq:Gvec} e \ref{eq:Gmag}.
 
 \begin{gather}
     \label{gravMPM}
@@ -32,9 +32,9 @@ Sobre a força gravitacional $\boldsymbol{F}_{G}$ descreve a interação entre o
     g_{0} = \num{9,80665}[1 - \num{0,0026}cos(2lat)] 
 \end{gather}
 
-Onde $X$, $Y$ e $Z$ são as coordenadas cartesianas com o referencial inercial da Terra. Como já citado, a latitude, $lat$, e o raio do planeta Terra, $R_{T}$, influenciam a força causada pela gravidade.
+Onde \(X\), \(Y\) e \(Z\) são as coordenadas cartesianas com o referencial inercial da Terra. Como já citado, a latitude, \(lat\), e o raio do planeta Terra, \(R_{T}\), influenciam a força causada pela gravidade.
 
-O Efeito de Coriolis $\boldsymbol{F}_{C}$ é usado em predições de trajetória, pois seu efeito é significativo em deslocamentos horizontais relativamente longos, algo em torno de 20 km \cite{McCoy2012}. Sua equação \ref{eq:corioMPM} é resultante da relação entre os efeitos de rotação da Terra em torno de seu próprio eixo e a velocidade de deslocamento do projetil em relação ao ar, de tal maneira que a aproximação esférica deste planeta também se faz presente por conta dos efeitos de latitude ($lat$) e de azimute ($az$), como descrito na equação \ref{eq:lambda}.
+O Efeito de Coriolis \(\boldsymbol{F}_{C}\) é usado em predições de trajetória, pois seu efeito é significativo em deslocamentos horizontais relativamente longos, algo em torno de 20 km \cite{McCoy2012}. Sua equação \ref{eq:corioMPM} é resultante da relação entre os efeitos de rotação da Terra em torno de seu próprio eixo e a velocidade de deslocamento do projetil em relação ao ar, de tal maneira que a aproximação esférica deste planeta também se faz presente por conta dos efeitos de latitude, \(\left(lat\right)\), e de azimute, \(\left(az\right)\), como descrito na equação \ref{eq:lambda}.
 
 \begin{gather}
 \label{eq:corioMPM}
@@ -48,36 +48,36 @@ O Efeito de Coriolis $\boldsymbol{F}_{C}$ é usado em predições de trajetória
 \end{bmatrix}
 \end{gather}
 %
-onde $V_{x}$, $V_{y}$ e $V_{z}$ são coordenadas da velocidade em relação ao ar, $\boldsymbol{V}$. A constante $\varphi$ = \qty{7,292e-5}{\radian\per\second} é a velocidade angular sobre seu próprio eixo polar.
+onde \(V_{x}\), \(V_{y}\) e \(V_{z}\) são coordenadas da velocidade em relação ao ar, \(\boldsymbol{V}\). A constante \(\varphi\) = \qty{7,292e-5}{\radian\per\second} é a velocidade angular sobre seu próprio eixo polar.
 
-A força de arrasto $\boldsymbol{F}_{D}$ é a mais importante força aerodinâmica a ser calculada em um sistema de dinâmica de voo. Seu efeito é assunto de grande interesse pelas aplicações em extensão de alcance e otimização da dispersão. O arrasto pode ser representado pela equação \ref{eq:dragMPM}:
+A força de arrasto \(\boldsymbol{F}_{D}\) é a mais importante força aerodinâmica a ser calculada em um sistema de dinâmica de voo. Seu efeito é assunto de grande interesse pelas aplicações em extensão de alcance e otimização da dispersão. O arrasto pode ser representado pela equação \ref{eq:dragMPM}:
 
 \begin{gather}
     \label{eq:dragMPM}
     \boldsymbol{F}_{D} = -\frac{\pi \rho D^{2}}{8} (C_{D_{0}} + C_{D_{\alpha^{2}}} [Q_{D}\alpha_{e}]^{2})V\boldsymbol{V}
 \end{gather}
 
-Onde $\rho$ é a densidade do ar, D é o diâmetro de referência do projetil, $C_{D_{0}}$ é o coeficiente de arrasto aerodinâmico com ângulo de ataque nulo, $C_{D_{\alpha^{2}}}$ é o coeficiente de arrasto aerodinâmico proporcional ao quadrado do ângulo de ataque, $Q_{D}$ é uma constante que representa o fator de ajuste do arrasto em função do ângulo de ataque, $\alpha_{e}$ é a magnitude da guinada de repouso, $V$ é a magnitude da velocidade em respeito ao ar, e sua notação vetorial é reproduzida em $\boldsymbol{V}$.
+Onde \(\rho\) é a densidade do ar, D é o diâmetro de referência do projetil, \(C_{D_{0}}\) é o coeficiente de arrasto aerodinâmico com ângulo de ataque nulo, \(C_{D_{\alpha^{2}}}\) é o coeficiente de arrasto aerodinâmico proporcional ao quadrado do ângulo de ataque, \(Q_{D}\) é uma constante que representa o fator de ajuste do arrasto em função do ângulo de ataque, \(\alpha_{e}\) é a magnitude da guinada de repouso, \(V\) é a magnitude da velocidade em respeito ao ar, e sua notação vetorial é reproduzida em \(\boldsymbol{V}\).
 
-A força de sustentação $\boldsymbol{F}_{L}$ age perpendicularmente à voo, tendendo a ajustar o projetil na direção da ponta da ogiva \cite{McCoy2012}. Devido à forte relação com o ângulo de ataque, sem ângulo de ataque não existe sustentação, sendo esta força responsável por grande parte do deslocamento lateral. A equação \ref{eq:liftMPM} explica as variáveis envolvidas no processo.
+A força de sustentação \(\boldsymbol{F}_{L}\) age perpendicularmente à voo, tendendo a ajustar o projetil na direção da ponta da ogiva \cite{McCoy2012}. Devido à forte relação com o ângulo de ataque, sem ângulo de ataque não existe sustentação, sendo esta força responsável por grande parte do deslocamento lateral. A equação \ref{eq:liftMPM} explica as variáveis envolvidas no processo.
 
 \begin{equation}
     \label{eq:liftMPM}
     \boldsymbol{F}_{L} = \frac{\pi \rho D^{2} f_{L}}{8} (C_{L_{\alpha}}+C_{L_{\alpha^3}}\alpha_{e}^{2})V^{2} \boldsymbol{\alpha_{e}}
 \end{equation}
 
-Onde $C_{L\alpha}$ é o coeficiente de sustentação derivado do ângulo de ataque, $C_{L\alpha^{3}}$ é o coeficiente de sustentação derivado do cubo do ângulo de ataque, $f_{L}$ é o fator de sustentação e $\boldsymbol{\alpha_{e}}$ é o vetor guinada de repouso.
+Onde \(C_{L\alpha}\) é o coeficiente de sustentação derivado do ângulo de ataque, \(C_{L\alpha^{3}}\) é o coeficiente de sustentação derivado do cubo do ângulo de ataque, \(f_{L}\) é o fator de sustentação e \(\boldsymbol{\alpha_{e}}\) é o vetor guinada de repouso.
 
-A força de \textit{Magnus} $\boldsymbol{F}_{M}$ é produzida através da diferença de pressão em lados opostos de corpos em rotação. Neste caso, a viscosidade do ar interage com a superfície girando, contudo esta força interfere muito menos no sistema, se comparada ao arrasto e ao efeito gravitacional. A equação \ref{eq:magnusMPM} expressa esse efeito: 
+A força de \textit{Magnus} \(\boldsymbol{F}_{M}\) é produzida através da diferença de pressão em lados opostos de corpos em rotação. Neste caso, a viscosidade do ar interage com a superfície girando, contudo esta força interfere muito menos no sistema, se comparada ao arrasto e ao efeito gravitacional. A equação \ref{eq:magnusMPM} expressa esse efeito: 
 
 \begin{equation}
     \label{eq:magnusMPM}
     \boldsymbol{F}_{M} = -\frac{\pi \rho D^{3} Q_{M} \varrho C_{mag-f}}{8}(\boldsymbol{\alpha_{e}} \times \boldsymbol{V})
 \end{equation}
 
-Onde $C_{mag-f}$ é o coeficiente da força de Magnus, $Q_{M}$ é a constante que representa o fator de ajuste da força de Magnus e $\varrho$ é taxa de rotação axial do projetil.
+Onde \(C_{mag-f}\) é o coeficiente da força de Magnus, \(Q_{M}\) é a constante que representa o fator de ajuste da força de Magnus e \(\varrho\) é taxa de rotação axial do projetil.
 
-Embora o Base Bleed não tenha por objetivo produzir força de empuxo, a equação \ref{eq:baseMPM} demonstra a força $\textbf{F}_{BB}$ através do efeito causado pela injeção de gases na base do projetil, sempre na direção axial da trajetória. Este equacionamento permite entender como o alívio de pressão na base do projetil pode ser traduzido no movimento translacional.
+Embora o Base Bleed não tenha por objetivo produzir força de empuxo, a equação \ref{eq:baseMPM} demonstra a força \(\textbf{F}_{BB}\) através do efeito causado pela injeção de gases na base do projetil, sempre na direção axial da trajetória. Este equacionamento permite entender como o alívio de pressão na base do projetil pode ser traduzido no movimento translacional.
 
 \begin{equation} \label{eq:baseMPM}
     \boldsymbol{F}_{BB} = \frac{\pi \rho i_{BB} D^{2}}{8} f(Inj) C_{D_{BB}}V^{2} \left(\frac{\boldsymbol{V}cos(\alpha_{e})}{V} +\boldsymbol{\alpha_{e}}\right)
@@ -85,14 +85,14 @@ Embora o Base Bleed não tenha por objetivo produzir força de empuxo, a equaç�
 %
 \begin{equation}
 f(Inj) =\begin{cases}
-			\frac{Inj}{Inj_{0}}, & \text{se $Inj < Inj_{0}$}\\
+			\frac{Inj}{Inj_{0}}, & \text{se \(Inj < Inj_{0}\)}\\
             1, & \text{caso contrário}
 		 \end{cases}
 \end{equation}
 
-Onde $C_{D_{BB}}$ é o coeficiente da força produzida na base do equipamento, $i_{BB}$ é o fator de ajuste do arrasto em função do ângulo de elevação, $f(Inj)$ é a função que descreve a razão de injeção da queima do propelente com o valor ótimo de injeção $Inj_{0}$. Contudo, existe um valor ótimo de injeção devido a muitos fatores, seja pela geometria do armamento, pelo design da geradora de gás que produz o efeito BB ou pelas condições de tiro. A definição mais enxuta do parâmetro de injeção é entendê-la como uma relação adimensional entre o fluxo de massa dos gases resultante da queima do propelente e o escoamento do ar externo que percorre o corpo.
+Onde \(C_{D_{BB}}\) é o coeficiente da força produzida na base do equipamento, \(i_{BB}\) é o fator de ajuste do arrasto em função do ângulo de elevação, \(f(Inj)\) é a função que descreve a razão de injeção da queima do propelente com o valor ótimo de injeção \(Inj_{0}\). Contudo, existe um valor ótimo de injeção devido a muitos fatores, seja pela geometria do armamento, pelo design da geradora de gás que produz o efeito BB ou pelas condições de tiro. A definição mais enxuta do parâmetro de injeção é entendê-la como uma relação adimensional entre o fluxo de massa dos gases resultante da queima do propelente e o escoamento do ar externo que percorre o corpo.
 
-Em razão do movimento referencial e das condições atmosféricas que geram velocidades de vento, $\boldsymbol{W}$, há uma diferença de velocidades em respeito ao solo, $\boldsymbol{U}_{solo}$, e ao ar, $\boldsymbol{V}$. Essa relação pode ser vista nas equações \ref{eq:Vvel} e \ref{eq:Vmag}.
+Em razão do movimento referencial e das condições atmosféricas que geram velocidades de vento, \(\boldsymbol{W}\), há uma diferença de velocidades em respeito ao solo, \(\boldsymbol{U}_{solo}\), e ao ar, \(\boldsymbol{V}\). Essa relação pode ser vista nas equações \ref{eq:Vvel} e \ref{eq:Vmag}.
 
 \begin{gather}
     \label{eq:Vvel}
@@ -107,9 +107,9 @@ Em razão do movimento referencial e das condições atmosféricas que geram vel
     \end{bmatrix}
 \end{gather}
 %
-onde a velocidade $U_{disp}$ possui as condições iniciais de disparo, $QE$ é igual ao ângulo de elevação do canhão e $az$ representa o azimute de lançamento, sendo o ângulo nulo direcionado para o norte geográfico.
+onde a velocidade \(U_{disp}\) possui as condições iniciais de disparo, \(QE\) é igual ao ângulo de elevação do canhão e \(az\) representa o azimute de lançamento, sendo o ângulo nulo direcionado para o norte geográfico.
 
-Como todo projetil que usa a tecnologia BB deve ser dinamicamente estabilizado pela rotação, $\varrho$, a aceleração angular em torno de seu próprio eixo, $\dot{\varrho}$, pode ser explicada pela equação \ref{eq:movimento-rotacao}, donde se deduz a rotação do projetil durante o voo.
+Como todo projetil que usa a tecnologia BB deve ser dinamicamente estabilizado pela rotação, \(\varrho\), a aceleração angular em torno de seu próprio eixo, \(\dot{\varrho}\), pode ser explicada pela equação \ref{eq:movimento-rotacao}, donde se deduz a rotação do projetil durante o voo.
 
 \begin{equation}
     \label{eq:movimento-rotacao}
@@ -120,9 +120,9 @@ Como todo projetil que usa a tecnologia BB deve ser dinamicamente estabilizado p
     \varrho_{0} = \frac{2\pi U_{disp}}{t_{c}D} 
 \end{equation}
 
-A condição inicial da rotação prevista em $\varrho_{0}$ é calculada em função das características do canhão, como a taxa de torção, $t_c$; do diâmetro de referência do projetil, $D$, além da própria velocidade de disparo, $U_{disp}$. A variável $C_{spin}$ se refere ao coeficiente do momento de amortecimento da rotação (\textit{spin}).
+A condição inicial da rotação prevista em \(\varrho_{0}\) é calculada em função das características do canhão, como a taxa de torção, \(t_c\); do diâmetro de referência do projetil, \(D\), além da própria velocidade de disparo, \(U_{disp}\). A variável \(C_{spin}\) se refere ao coeficiente do momento de amortecimento da rotação (\textit{spin}).
 
-A guinada de repouso $\boldsymbol{\alpha}_{e}$ e os valores iniciais deste ângulo $\boldsymbol{\alpha}_{e_{0}}$ são demonstrados na equação \ref{eq:guinada-de-reposicao}
+A guinada de repouso \(\boldsymbol{\alpha}_{e}\) e os valores iniciais deste ângulo \(\boldsymbol{\alpha}_{e_{0}}\) são demonstrados na equação \ref{eq:guinada-de-reposicao}
 
 \begin{equation}
 	\label{eq:guinada-de-reposicao}
@@ -136,7 +136,7 @@ A guinada de repouso $\boldsymbol{\alpha}_{e}$ e os valores iniciais deste ângu
     \end{bmatrix}
 \end{equation}
 %
-onde $C_{m_{\alpha}}$ and $C_{m_{\alpha^3}}$ são, respectivamente, os coeficientes de momento de derrubada linear ao ângulo de ataque e proporcional ao cubo do ângulo de ataque.
+onde \(C_{m_{\alpha}}\) and \(C_{m_{\alpha^3}}\) são, respectivamente, os coeficientes de momento de derrubada linear ao ângulo de ataque e proporcional ao cubo do ângulo de ataque.
 
 \section{Modelo de Atmosfera}
 \label{sec:ICAOatm}
@@ -160,26 +160,26 @@ T(Y) &=\begin{cases}
 \end{aligned}
 \end{equation}
 
-Onde $\eta$ = \qty{6,5e-3}{\kelvin\per\metre} é igual ao gradiente de temperatura e R = \qty{287,05}{\joule\per\kelvin\per\kilogram} é a constante dos gases ideais. Deve-se atentar ao fato que as funções presentes na equação \ref{eq:funcoesICAO} são dependentes do deslocamento vertical, Y. Outra propriedade importante para predizer a trajetória é a viscosidade dinâmica, $\mu$. Pela lei de Sutherland, o valor local da viscosidade dinâmica é calculado em função da temperatura em certa altitude, T(Y), a partir da seguinte equação \ref{eq:sutherICAO}:
+Onde \(\eta\) = \qty{6,5e-3}{\kelvin\per\metre} é igual ao gradiente de temperatura e R = \qty{287,05}{\joule\per\kelvin\per\kilogram} é a constante dos gases ideais. Deve-se atentar ao fato que as funções presentes na equação \ref{eq:funcoesICAO} são dependentes do deslocamento vertical, Y. Outra propriedade importante para predizer a trajetória é a viscosidade dinâmica, \(\mu\). Pela lei de Sutherland, o valor local da viscosidade dinâmica é calculado em função da temperatura em certa altitude, \(T(Y)\), a partir da seguinte equação \ref{eq:sutherICAO}:
 
 \begin{equation}
 \label{eq:sutherICAO}
 \mu = \frac{\beta_{S}T^{\frac{3}{2}}}{T + S}
 \end{equation}
 %
-Considere $\beta_{S}$ = \qty{1,458e-6}{kg/(m.s.K^{1/2})} e S = \qty{110,4}{\kelvin} os valores para as constantes empíricas. Essa formulação ajuda a fechar as equações de Navier-Stokes, principalmente os casos compressíveis, assim como também permite determinar os coeficientes aerodinâmicos durante a trajetória a partir dos números de Reynolds, $Re$ e de Mach, $M$. Esses parâmetros adimensionais do escoamento podem ser vistos na equação a seguir:
+Considere \(\beta_{S}\) = \qty{1,458e-6}{kg/(m.s.K^{1/2})} e S = \qty{110,4}{\kelvin} os valores para as constantes empíricas. Essa formulação ajuda a fechar as equações de Navier-Stokes, principalmente os casos compressíveis, assim como também permite determinar os coeficientes aerodinâmicos durante a trajetória a partir dos números de Reynolds, \(Re\) e de Mach, \(M\). Esses parâmetros adimensionais do escoamento podem ser vistos na equação a seguir:
 
 \begin{equation}
     Re = \frac{\rho V D}{\mu} \hspace{1cm}
     M = \frac{V}{\sqrt{\gamma RT(Y)}}
 \end{equation}
 %
-onde $\gamma$ = \num{1,4}, que é a razão de expansão adiabática do ar.
+onde \(\gamma\) = \num{1,4}, que é a razão de expansão adiabática do ar.
 
 \section{Integração Numérica}
 \label{sec:numint}
 
-A solução numérica do modelo de trajetória de ponto-material modificado demanda certos recursos computacionais, o que significa que métodos de alta ordem precisam ser usados para resolver o problema. Uma boa aproximação dos resultados é usar o método Runge-Kutta de quarta-ordem (RK-4). Toda equação diferencial ordinária de primeira ordem pode ser expressa da seguinte forma \cite{ruggiero1996calculo}.
+A solução numérica do modelo de trajetória de ponto-material modificado demanda certos recursos computacionais, o que significa que métodos de alta ordem precisam ser usados para resolver o problema. Uma boa aproximação dos resultados é usar o método Runge-Kutta de quarta-ordem (RK-4). Toda equação diferencial ordinária de primeira ordem pode ser expressa da seguinte forma \cite{ruggiero1996calculo}:
 
 \begin{equation}
     \label{eq:rk4-pontoinicial}
@@ -193,14 +193,14 @@ Todas as forças e a guinada de repouso são inclusas nesta equação \ref{eq:rk
     y_{i+1} = y_{i} + h_{RK4}\psi(x_{i},y_{i},h)
 \end{equation}
 
-Cujo o subscrito \textbf{i} representa o índice do integrador, enquanto que x e y significam as variáveis dependentes a um i-ésimo tempo. A variável $h_{RK4}$ é definida como o passo do integrador e $\psi$ a função incremental, em outras palavras, uma função que ajusta $f(x,y)$ de tal maneira que cubra toda a região da integral definida. Método RK-4 completo pode ser visto a seguir na equação \ref{eq:rk4-completo}.
+Cujo o subscrito \textbf{i} representa o índice do integrador, enquanto que x e y significam as variáveis dependentes a um i-ésimo tempo. A variável \(h_{RK4}\) é definida como o passo do integrador e \(\psi\) a função incremental, em outras palavras, uma função que ajusta \(f(x,y)\) de tal maneira que cubra toda a região da integral definida. Método RK-4 completo pode ser visto a seguir na equação \ref{eq:rk4-completo}.
 
 \begin{equation}
     \label{eq:rk4-completo}
     y_{i+1} = y_{i} + \frac{h_{RK4}}{6}(k_{1}+2k_{2}+2k_{3}+k_{4})
 \end{equation}
 
-As notações $\text{k}_{1}$, $\text{k}_{2}$, $\text{k}_{3}$, $\text{k}_{4}$ são funções baseadas na função incremental, como as demonstrações feitas a seguir, das equações \ref{eq:k1} até \ref{eq:k4}:
+As notações \(\text{k}_{1}\), \(\text{k}_{2}\), \(\text{k}_{3}\), \(\text{k}_{4}\) são funções baseadas na função incremental, como as demonstrações feitas a seguir, das equações \ref{eq:k1} até \ref{eq:k4}:
 
 \begin{subequations}\label{eq:rk4-termos-k1-ate-k4}
 \begin{align}
