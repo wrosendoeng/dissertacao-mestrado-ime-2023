@@ -199,7 +199,7 @@
             \SingleSpacing
             \imprimirpreambulo \par
             \medskip
-            \parbox[t]{.3\linewidth}{Orientador(es):}
+            \parbox[t]{.3\linewidth}{Orientador:}
             \parbox[t]{.7\linewidth}{
                 \foreachitem \nome \in \listNomeOrientadores{
                     \listNomeOrientadores[\nomecnt] \listSobrenomeOrientadores[\nomecnt], \listTituloOrientadores[\nomecnt] \\
@@ -232,7 +232,7 @@
         \par\noindent
         É permitida a menção, reprodução parcial ou integral e a transmissão entre bibliotecas deste trabalho, sem modificação de seu texto, em qualquer meio que esteja ou venha a ser fixado, para pesquisa acadêmica, comentários e citações, desde que sem finalidade comercial e que seja feita a referência bibliográfica completa.
         \par\noindent
-        Os conceitos expressos neste trabalho são de responsabilidade do(s) autor(es) e do(s) orientador(es).
+        Os conceitos expressos neste trabalho são de responsabilidade do autor e do orientador.
     \end{normalsize}
     
     \vspace*{\fill}
@@ -252,7 +252,7 @@
             }\par
             \vspace{0.5cm}
             \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
-                Orientador(es): 
+                Orientador: 
                 \foreachitem \nome \in \listNomeOrientadores{\nome\ \listSobrenomeOrientadores[\nomecnt]\ifthenelse{\nomecnt<\listNomeOrientadoreslen}{\ifthenelse{\nomecnt<\number\numexpr\listNomeOrientadoreslen-1\relax}{, }{\ e }}{.}}
             }\par
             \vspace{0.5cm}
@@ -287,7 +287,7 @@
         \begin{minipage}{\textwidth}
             \imprimirpreambulo \par
             \smallskip
-            Orientador(es): 
+            Orientador: 
             \foreachitem \nome \in \listNomeOrientadores{\nome\ \listSobrenomeOrientadores[\nomecnt]\ifthenelse{\nomecnt<\listNomeOrientadoreslen}{\ifthenelse{\nomecnt<\number\numexpr\listNomeOrientadoreslen-1\relax}{, }{\ e }}{.}}
         \end{minipage}%
         \vspace*{\fill}
