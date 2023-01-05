@@ -455,39 +455,6 @@ Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados ob
     \fonte{\cite{Thallyo2022}}
 \end{table}
 
-O software autoral para a predição de trajetória também serviu para atestar incongruências existentes no código utilizado por \citeauthor{Rosendo2020} para suas simulações. Tais resultados podem ser constatados na Figura \ref{fig:trajetoria-validacao-basebleed}, em que se demonstra disparos de um projetil \qty{114}{\millimetre} com \textit{Base Bleed} sob disparo com ângulos de elevação (QE) iguais a \qtylist{711,1;800}{\milliradian} (de \qtylist{40;45}{\degree}), com diferenças de alcance de até \qty{1000}{\metre} para um lançamento a QE = \qty{711,1}{\milliradian} e quase \qty{3000}{\metre} para uma elevação de \qty{800}{\milliradian}.
-
-\begin{figure}[!ht]
-	\centering
-    \includegraphics[width=0.7\textwidth]{trajetoria_thallyo2022_rosendo2020.png}
-    \caption[Simulação sem Base Bleed.]{Simulação sem Base Bleed \cite{Thallyo2022}}
-    \label{fig:trajetoria-validacao-basebleed}
-\end{figure}
-
-O software autoral permite observar pela Figura \ref{fig:trajetoria-disparos-440-1250mil} que as correções realizadas possibilitam disparos de um projetil \qty{114}{\millimetre} com ângulos de elevação (QE) entre \qtylist{440;1250}{\milliradian} (de \qtyrange{25}{72}{\degree}), que também se aplicaria ao caso deste trabalho.
-
-\begin{figure}[!ht]
-    \ContinuedFloat
-	\centering
-	\begin{subfigure}[!ht]{\textwidth}
-        \centering
-        \includegraphics[width=0.8\textwidth]{trajetoria_validacao_sembasebleed.png}
-        \caption{Simulação sem Base Bleed}
-        \label{fig:trajetoria-avaliacao-sembasebleed}
-    \end{subfigure}
-\end{figure}\clearpage
-\begin{figure}[!ht]
-    \ContinuedFloat
-    \begin{subfigure}[!ht]{\textwidth}
-        \centering
-        \includegraphics[width=0.78\textwidth]{trajetoria_validacao_combasebleed.png}
-        \caption{Simulação com Base Bleed}
-        \label{fig:trajetoria-avaliacao-sembasebleed}
-    \end{subfigure}
-    \caption[Projetil com diferentes ângulos de elevação.]{Projetil com diferentes ângulos de elevação \cite{Thallyo2022}.}
-	\label{fig:trajetoria-disparos-440-1250mil}
-\end{figure}
-
 A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-1pol-711mil} esclarece os resultados das predições de voo. A \autoref{tab:tabela-711mil-bb-1pol} mostra que houve redução do alcance e do apogeu.
 
 \begin{figure}[!ht]
