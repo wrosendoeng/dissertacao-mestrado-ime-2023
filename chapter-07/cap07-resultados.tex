@@ -68,28 +68,16 @@ Para o projetil em velocidade sônica (M = \num{1,0}), a maior diferença percen
 
 \subsection{Influência no diâmetro de saída do \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-diametros}
 
-Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de \qtyrange{25,4}{50,8}{\millimetre} (de \qtyrange{1}{2}{\polegada}). A temperatura na condição de contorno "Entrada do \textit{Base Bleed}"{} foi fixada em \(T_{BB} = \qty{2306,15}{\kelvin}\). Desta forma, a Figura \ref{fig:comparacao-bb-diametro-2pol} demonstra uma redução do coeficiente de arrasto para um diâmetro de \qty{2}{\polegada}, enquanto que a Figura \ref{fig:comparacao-bb-diametro-1pol} mostrou que o diâmetro de \qty{1}{\polegada} aumentou o perfil de arrasto, se comparado ao sistema BB desativado.
+Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de \qtyrange{25,4}{50,8}{\millimetre} (de \qtyrange{1}{2}{\polegada}). A temperatura na condição de contorno "Entrada do \textit{Base Bleed}"{} foi fixada em \(T_{BB} = \qty{2306,15}{\kelvin}\). Desta forma, a Figura \ref{fig:comparacao-bb-diametro-1e2pol} demonstra uma redução do coeficiente de arrasto para um diâmetro de \qty{2}{\polegada}, enquanto que o diâmetro de \qty{1}{\polegada} aumentou o perfil de arrasto, se comparado ao sistema BB desativado.
 
 \begin{figure}[!ht]
 	\centering
-	\begin{subfigure}[b]{0.48\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-1pol.eps}
-    	\caption{Saída do bocal - \(\phi_{BB}\) = \qty{25,4}{\millimetre}}
-    	\label{fig:comparacao-bb-diametro-1pol}
-    \end{subfigure}
-    \hfill
-	\begin{subfigure}[b]{0.48\textwidth}
-    	\centering
-    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-2pol.eps}
-    	\caption{Saída do bocal - \(\phi_{BB}\) = \qty{50,8}{\millimetre}}
-    	\label{fig:comparacao-bb-diametro-2pol}
-    \end{subfigure}
+    \includegraphics[width=0.5\textwidth]{cd-combasebleed-diametro-1e2pol.eps}
 	\caption{Influência do diâmetro sobre o coeficiente de arrasto.}
-	\label{fig:comparacao-bb-diametro-vazoes}
+	\label{fig:comparacao-bb-diametro-1e2pol}
 \end{figure}
 
-Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa M < \num{0,8}. A escolha das vazões de \qty{0,015}{\kilogram\per\second} e \qty{0,060}{\kilogram\per\second} foi para garantir a conservação da velocidade ao aumentar em 4 vezes a área de saída dos gases do \textit{Base Bleed}. Ainda analisando os resultados pelas vazões mássicas, atesta-se da \autoref{fig:comparacao-bb-diametro-vazoes} que os coeficientes de arrasto sofreram redução em ambos os casos, embora pouco relevantes.
+Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa M < \num{0,8}. A escolha das vazões de \qty{0,015}{\kilogram\per\second} e \qty{0,060}{\kilogram\per\second} foi para garantir a conservação da velocidade ao aumentar em 4 vezes a área de saída dos gases do \textit{Base Bleed}. Ainda analisando os resultados pelas vazões mássicas, atesta-se da \autoref{fig:comparacao-bb-diametro-1e2pol} que os coeficientes de arrasto sofreram redução em ambos os casos, embora pouco relevantes.
 
 Para entender o que ocorreu para acrescentar o arrasto nos projetis com diâmetro de saída do \textit{Base Bleed} iguais a \qty{1}{"} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\), a \autoref{fig:influencia-diametro-vazao-1pol} apresenta os campos de pressão e velocidade sob regime M = \num{2,0}. Conforme esperado pela literatura, as Figuras \ref{fig:contorno-pressao-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-bb-1pol-vazao0030} demonstram o campo de pressão à jusante da base do projetil, que está abaixo do valor prescrito da região denominada "Escoamento livre"{} do domínio computacional. Tanto na \autoref{fig:contorno-pressao-bb-1pol-vazao0015} quanto na \autoref{fig:contorno-pressao-bb-1pol-vazao0030} não há um aumento significativo da pressão atmosférica na região, apesar da diferenciação do campo de velocidades ser demonstrada pelas Figuras \ref{fig:contorno-velocidade-bb-1pol-vazao0015} e \ref{fig:contorno-velocidade-bb-1pol-vazao0030}. Contudo, a apresentação do campo de velocidades da \autoref{fig:contorno-velocidade-bb-1pol-vazao0030} reflete uma vazão mássica excedente que aumenta a força de arrasto.
 
