@@ -7,7 +7,7 @@ Os valores encontrados para o coeficiente de arrasto aerodinâmico em um projeti
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.5\textwidth]{cd-sembasebleed-comparacao.png}
+	\includegraphics[width=0.75\textwidth]{cd-sembasebleed-comparacao.png}
 	\caption{Coeficiente de Arrasto \(C_{D}\) em função do número de Mach (sem BB)}
 	\label{fig:cd-sembasebleed-comparacao}
 \end{figure}
@@ -328,7 +328,7 @@ A partir do momento em que há disponibilidade das condições citadas na \autor
 Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
 De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adequem à cada simulação realizada. 
 
-Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{207,3}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} \cite{Thallyo2022}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências.
+Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{207,3}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} \cite{Thallyo2022}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências \cite{McCoy2012,Carlucci2018}.
 
 \begin{table}[ht]
     \centering
