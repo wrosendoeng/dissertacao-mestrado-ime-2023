@@ -7,7 +7,7 @@ Os valores encontrados para o coeficiente de arrasto aerodinâmico em um projeti
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.75\textwidth]{cd-sembasebleed-comparacao.png}
+	\includegraphics[width=0.5\textwidth]{cd-sembasebleed-comparacao.eps}
 	\caption{Coeficiente de Arrasto \(C_{D}\) em função do número de Mach (sem BB)}
 	\label{fig:cd-sembasebleed-comparacao}
 \end{figure}
@@ -72,16 +72,16 @@ Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver 
 
 \begin{figure}[!ht]
 	\centering
-	\begin{subfigure}[b]{0.47\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
     	\centering
-    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-1pol.png}
+    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-1pol.eps}
     	\caption{Saída do bocal - \(\phi_{BB}\) = \qty{25,4}{\millimetre}}
     	\label{fig:comparacao-bb-diametro-1pol}
     \end{subfigure}
     \hfill
-	\begin{subfigure}[b]{0.47\textwidth}
+	\begin{subfigure}[b]{0.48\textwidth}
     	\centering
-    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-2pol.png}
+    	\includegraphics[width=\textwidth]{cd-combasebleed-diametro-2pol.eps}
     	\caption{Saída do bocal - \(\phi_{BB}\) = \qty{50,8}{\millimetre}}
     	\label{fig:comparacao-bb-diametro-2pol}
     \end{subfigure}
@@ -201,7 +201,7 @@ Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-v
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.5\textwidth]{cd-combasebleed-1500K-2pol.png}
+	\includegraphics[width=0.5\textwidth]{cd-combasebleed-1500K-2pol.eps}
 	\caption{Influência da vazão mássica do \textit{Base Bleed} - \(T_{BB}\) = \qty{1500}{\kelvin}}
 	\label{fig:comparacao-basebleed-vazao}
 \end{figure}
@@ -262,12 +262,12 @@ A \autoref{fig:comparacao-basebleed-temperatura} demonstra a influência da temp
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=0.5\textwidth]{cd-combasebleed-vazao006-2pol.png}
+	\includegraphics[width=0.5\textwidth]{cd-combasebleed-vazao006-2pol.eps}
 	\caption{Influência da temperatura do \textit{Base Bleed} sobre o coeficiente de arrasto com \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
 	\label{fig:comparacao-basebleed-temperatura}
 \end{figure}
 
-Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-temperatura} uma redução dos valores conforme aumenta a temperatura, \(Dot{m}_{BB}\). As oscilações nos valores continuam aparecendo no regime subsônico, embora tenham valores discrepantes no início da curva no caso em que a temperatura é mais elevada \(T_{BB} = \qty{2306,15}{\kelvin}\). Mesmo assim, seguem a mesma tendência, não importando qual vazão seja. O regime transônico reúne as maiores reduções do arrasto aerodinâmico, mas a redução do arrasto também é considerável no regime supersônico, principalmente o valor de Mach entre \numrange{1,5}{2,0}. Após esse intervalo, a redução é mais gradual.
+Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-temperatura} uma redução dos valores conforme aumenta a temperatura, \(\Dot{m}_{BB}\). As oscilações nos valores continuam aparecendo no regime subsônico, embora tenham valores discrepantes no início da curva no caso em que a temperatura é mais elevada \(T_{BB} = \qty{2306,15}{\kelvin}\). Mesmo assim, seguem a mesma tendência, não importando qual vazão seja. O regime transônico reúne as maiores reduções do arrasto aerodinâmico, mas a redução do arrasto também é considerável no regime supersônico, principalmente o valor de Mach entre \numrange{1,5}{2,0}. Após esse intervalo, a redução é mais gradual.
 
 \subsection{Influência da abordagem RANS}\label{subsec:resultados-com-basebleed-RANS}
 
@@ -277,7 +277,7 @@ Entretanto, é notório que o modelo Spalart-Allmaras (S-A) superestimou a curva
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[width=0.5\textwidth]{cd-combasebleed-rans.png}
+    \includegraphics[width=0.5\textwidth]{cd-combasebleed-rans.eps}
  	\caption{Curvas de arrasto de acordo com modelos de turbulência RANS}
     \label{fig:comparacao-bb-rans}
 \end{figure}
