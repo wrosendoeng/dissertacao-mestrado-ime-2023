@@ -33,13 +33,25 @@ Através do que é demonstrado na Figura \autoref{fig:cd-sembasebleed-comparacao
 	\label{fig:contornos-pressao-velocidade-sembasebleed}
 \end{figure}
 
-Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, é necessário observar a \autoref{fig:contornos-pressao-velocidade-sembasebleed}, pois os contornos de pressão (\autoref{fig:contorno-pressao-sembasebleed}) e de velocidade (\autoref{fig:contorno-velocidade-sembasebleed}) demonstram o escoamento do ar em torno do projetil. Além da onda de choque causada pela velocidade supersônica (M = \num{2,0}), existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. Contudo, é a partir da \autoref{fig:corrente-velocidade-sembasebleed} que se examina com maiores detalhes o comportamento desta recirculação outrora citada.
+Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, é necessário observar a \autoref{fig:campos-pressao-velocidade-base-sembasebleed}, pois os contornos de pressão (\autoref{fig:contorno-pressao-base-sembasebleed}) e de velocidade (\autoref{fig:corrente-velocidade-base-sembasebleed}) demonstram o escoamento do ar na região a jusante do projetil. Além da onda de choque causada pela velocidade supersônica (M = \num{2,0}), existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. Contudo, é a partir da \autoref{fig:campos-pressao-velocidade-base-sembasebleed} que se examina com maiores detalhes o comportamento desta recirculação outrora citada.
 
 \begin{figure}[!ht]
     \centering
-    \includegraphics[height=5cm,width=0.5\textwidth]{corrente-velocidade-off.png}
-    \caption{Linhas de corrente para a velocidade sob regime M = \num{2,0}}
-    \label{fig:corrente-velocidade-sembasebleed}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-off.png}
+        \caption{Linhas de corrente de velocidade para a base do projetil}
+        \label{fig:corrente-velocidade-base-sembasebleed}    
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering    
+        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-INERTE.png}
+        \caption{Contornos de pressão para a base do projetil}
+        \label{fig:contorno-pressao-base-sembasebleed}
+    \end{subfigure}
+    \caption{Campos de pressão e velocidade para a base do projetil sob M = \num{2,0}}
+    \label{fig:campos-pressao-velocidade-base-sembasebleed}
 \end{figure}
 
 \section{Projetil ativo (com \textit{Base Bleed})}\label{sec:resultados-com-basebleed}
@@ -68,7 +80,7 @@ Para o projetil em velocidade sônica (M = \num{1,0}), a maior diferença percen
 
 \subsection{Influência no diâmetro de saída do \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-diametros}
 
-Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de \qtyrange{25,4}{50,8}{\millimetre} (de \qtyrange{1}{2}{\polegada}). A temperatura na condição de contorno "Entrada do \textit{Base Bleed}"{} foi fixada em \(T_{BB} = \qty{2306,15}{\kelvin}\). Desta forma, a Figura \ref{fig:comparacao-bb-diametro-1e2pol} demonstra uma redução do coeficiente de arrasto para um diâmetro de \qty{2}{\polegada}, enquanto que o diâmetro de \qty{1}{\polegada} aumentou o perfil de arrasto, se comparado ao sistema BB desativado.
+O primeiro parâmetro estudado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de \qtyrange{25,4}{50,8}{\millimetre} (de \qtyrange{1}{2}{\polegada}). A temperatura na condição de contorno "Entrada do \textit{Base Bleed}"{} foi fixada em \(T_{BB} = \qty{2306,15}{\kelvin}\), conforme apresentado em \cite{Gil2020}. Desta forma, a Figura \ref{fig:comparacao-bb-diametro-1e2pol} demonstra uma redução do coeficiente de arrasto para um diâmetro de \qty{2}{\polegada}, enquanto que o diâmetro de \qty{1}{\polegada} aumentou o perfil de arrasto, se comparado ao sistema BB desativado. Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa M < \num{0,8}.
 
 \begin{figure}[!ht]
 	\centering
@@ -77,108 +89,144 @@ Outro parâmetro considerado foi o aumento do diâmetro da saída do bocal (ver 
 	\label{fig:comparacao-bb-diametro-1e2pol}
 \end{figure}
 
-Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa M < \num{0,8}. A escolha das vazões de \qty{0,015}{\kilogram\per\second} e \qty{0,060}{\kilogram\per\second} foi para garantir a conservação da velocidade ao aumentar em 4 vezes a área de saída dos gases do \textit{Base Bleed}. Ainda analisando os resultados pelas vazões mássicas, atesta-se da \autoref{fig:comparacao-bb-diametro-1e2pol} que os coeficientes de arrasto sofreram redução em ambos os casos, embora pouco relevantes.
-
-Para entender o que ocorreu para acrescentar o arrasto nos projetis com diâmetro de saída do \textit{Base Bleed} iguais a \qty{1}{"} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\), a \autoref{fig:influencia-diametro-vazao-1pol} apresenta os campos de pressão e velocidade sob regime M = \num{2,0}. Conforme esperado pela literatura, as Figuras \ref{fig:contorno-pressao-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-bb-1pol-vazao0030} demonstram o campo de pressão à jusante da base do projetil, que está abaixo do valor prescrito da região denominada "Escoamento livre"{} do domínio computacional. Tanto na \autoref{fig:contorno-pressao-bb-1pol-vazao0015} quanto na \autoref{fig:contorno-pressao-bb-1pol-vazao0030} não há um aumento significativo da pressão atmosférica na região, apesar da diferenciação do campo de velocidades ser demonstrada pelas Figuras \ref{fig:contorno-velocidade-bb-1pol-vazao0015} e \ref{fig:contorno-velocidade-bb-1pol-vazao0030}. Contudo, a apresentação do campo de velocidades da \autoref{fig:contorno-velocidade-bb-1pol-vazao0030} reflete uma vazão mássica excedente que aumenta a força de arrasto.
-
-As Figuras \ref{fig:corrente-velocidade-bb-1pol-vazao0015} e \ref{fig:corrente-velocidade-bb-1pol-vazao0030} mostram as linhas de corrente para a velocidade nas duas condições impostas para o sistema BB com \qty{1}{\polegada}. Da \autoref{fig:corrente-velocidade-bb-1pol-vazao0015} se conclui que a injeção de gases nessa vazão mássica produz nenhum efeito significativo no que diz respeito ao deslocamento da região primária de recirculação e da formação da recirculação anular.
+Para entender o acréscimo de arrasto nos projetis com diâmetro de saída do \textit{Base Bleed} iguais a \qty{1}{"} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\), a \autoref{fig:influencia-diametro-vazao-1pol} apresenta os campos de pressão e velocidade sob regime M = \num{2,0}. Conforme esperado pela literatura, as Figuras \ref{fig:contorno-pressao-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-bb-1pol-vazao0030} demonstram o campo de pressão no entorno do projetil, cujo valores mínimos encontram-se na base do projetil. As Figuras \ref{fig:contorno-pressao-base-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-base-bb-1pol-vazao0030} apresentam como o coeficiente de pressão é maior na região a montante da munição. Acerca do campo de velocidades, a \autoref{fig:contorno-velocidade-bb-1pol-vazao0015} e \autoref{fig:contorno-velocidade-bb-1pol-vazao0030} mostram as ondas de choque presentes na interação do fluido com a parede e a região de menores velocidades causada pelas baixas pressões apresentadas anteriormente. Contudo, a apresentação do campo de velocidades da \autoref{fig:contorno-velocidade-bb-1pol-vazao0030} reflete uma vazão mássica excedente que aumenta a força de arrasto.
 
 \begin{figure}[!ht]
 	\centering
-	\begin{subfigure}[b]{0.47\textwidth}
+	\begin{subfigure}[b]{0.47\textwidth} % FOTO 1
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0015-1pol.png}
         \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-1pol-vazao0015}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 2
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0030-1pol.png}
         \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:contorno-pressao-bb-1pol-vazao0030}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 3
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0015-1pol.png}
         \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-1pol-vazao0015}
     \end{subfigure}
     \hfill
-	\begin{subfigure}[b]{0.47\textwidth}
+	\begin{subfigure}[b]{0.47\textwidth} % FOTO 4
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0030-1pol.png}
         \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:contorno-velocidade-bb-1pol-vazao0030}
     \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \caption{Campos de pressão e velocidade \(\left(\phi_{BB} = \qty{25,4}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
+	\label{fig:influencia-diametro-vazao-1pol}
+\end{figure}
+
+As Figuras \ref{fig:corrente-velocidade-bb-1pol-vazao0015} e \ref{fig:corrente-velocidade-bb-1pol-vazao0030} mostram as linhas de corrente para a velocidade nas duas condições impostas para o sistema BB com \qty{1}{\polegada}. Da \autoref{fig:corrente-velocidade-bb-1pol-vazao0015} se conclui que a injeção de gases nessa vazão mássica produz nenhum efeito significativo no que diz respeito ao deslocamento da região primária de recirculação e da formação da recirculação anular.
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 1
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0015-1pol.png}
         \caption{Linhas de corrente - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-1pol-vazao0015}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 2
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0030-1pol.png}
         \caption{Linhas de corrente - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
         \label{fig:corrente-velocidade-bb-1pol-vazao0030}
     \end{subfigure}
-	\caption{Projetil sob diferentes condições de vazão mássica sob regime M = \num{2,0} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
-	\label{fig:influencia-diametro-vazao-1pol}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 3
+        \centering
+        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-vazao0015-temp2306-diam1pol.png}
+        \caption{Contornos de pressão - \(\Dot{m}_{BB}\) = \qty{0,015}{\kilogram\per\second}}
+        \label{fig:contorno-pressao-base-bb-1pol-vazao0015}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 4
+        \centering
+        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-vazao0030-temp2306-diam1pol.png}
+        \caption{Contornos de pressão - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \label{fig:contorno-pressao-base-bb-1pol-vazao0030}
+    \end{subfigure}
+	\caption{Campos de pressão e velocidade a jusante do projetil \(\left(\phi_{BB} = \qty{25,4}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
+	\label{fig:influencia-base-diametro-vazao-1pol}
 \end{figure}
 
 O passo seguinte foi apresentar o escoamento no entorno do projetil assumindo que o diâmetro de saída do bocal, \(\phi_{BB}\), seja igual a 50,8 mm. Assim como na \autoref{fig:influencia-diametro-vazao-1pol}, a velocidade do meio livre foi definida como M = \num{2,0} para os contornos de pressão e de velocidade, além das linhas de corrente, sendo todos esses perfis vistos na \autoref{fig:influencia-diametro-vazao-2pol}.
 
-Seja na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0030} ou na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0060}, a formação da recirculação é bastante proeminente, acima de tudo no caso em que a vazão mássica é igual a \(\qty{0,060}{\kilogram\per\second}\). Todavia, não se relata nenhuma variação significativa no campo de pressão, como demonstrado nas Figuras \ref{fig:contorno-pressao-bb-2pol-vazao-0030} e \ref{fig:contorno-pressao-bb-2pol-vazao-0060}. No entanto, é com as Figuras \ref{fig:corrente-velocidade-bb-2pol-vazao-0030} e \ref{fig:corrente-velocidade-bb-2pol-vazao-0060} que se ratifica a influência do diâmetro do bocal. As linhas de corrente observadas na \autoref{fig:corrente-velocidade-bb-2pol-vazao-0060} se aproximam das referências \cite{Sahu1985,Mahmoud2009,Lucena2020}. Por esta razão acredita-se que houve a maior redução do arrasto na escolha do maior diâmetro de saída do sistema BB (\qty{2}{\polegada}).
-
 \begin{figure}[!ht]
 	\centering
-	\begin{subfigure}[b]{0.47\textwidth}
+	\begin{subfigure}[b]{0.47\textwidth} % FOTO 1
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0030-2pol.png}
         \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
-        \label{fig:contorno-pressao-bb-2pol-vazao-0030}
+        \label{fig:contorno-pressao-bb-2pol-vazao0030}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 2
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-pressao-2306K-vazao-0060-2pol.png}
         \caption{Contornos de Pressão - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
-        \label{fig:contorno-pressao-bb-2pol-vazao-0060}
+        \label{fig:contorno-pressao-bb-2pol-vazao0060}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 3
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0030-2pol.png}
         \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
-        \label{fig:contorno-velocidade-bb-2pol-vazao-0030}
+        \label{fig:contorno-velocidade-bb-2pol-vazao0030}
     \end{subfigure}
     \hfill
-	\begin{subfigure}[b]{0.47\textwidth}
+	\begin{subfigure}[b]{0.47\textwidth} % FOTO 4
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade-2306K-vazao-0060-2pol.png}
         \caption{Cont. de Velocidade - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
-        \label{fig:contorno-velocidade-bb-2pol-vazao-0060}
+        \label{fig:contorno-velocidade-bb-2pol-vazao0060}
     \end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.47\textwidth}
+    \caption{Campos de pressão e velocidade \(\left(\phi_{BB} = \qty{50,8}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
+	\label{fig:influencia-diametro-vazao-2pol}
+\end{figure}
+
+Seja na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0030} ou na \autoref{fig:contorno-velocidade-bb-2pol-vazao-0060}, a formação da recirculação é bastante proeminente, acima de tudo no caso em que a vazão mássica é igual a \(\qty{0,060}{\kilogram\per\second}\). Todavia, não se relata nenhuma variação significativa no campo de pressão, como demonstrado nas Figuras \ref{fig:contorno-pressao-bb-2pol-vazao-0030} e \ref{fig:contorno-pressao-bb-2pol-vazao-0060}. No entanto, é com as Figuras \ref{fig:corrente-velocidade-bb-2pol-vazao-0030} e \ref{fig:corrente-velocidade-bb-2pol-vazao-0060} que se ratifica a influência do diâmetro do bocal. As linhas de corrente observadas na \autoref{fig:corrente-velocidade-bb-2pol-vazao-0060} se aproximam das referências \cite{Sahu1985,Mahmoud2009,Lucena2020}. Por esta razão acredita-se que houve a maior redução do arrasto na escolha do maior diâmetro de saída do sistema BB (\qty{2}{\polegada}).
+
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 1
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0030-2pol.png}
-        \caption{Linhas de Corrente - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
-        \label{fig:corrente-velocidade-bb-2pol-vazao-0030}
+        \caption{Linhas de corrente - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \label{fig:corrente-velocidade-bb-2pol-vazao0030}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 2
         \centering
         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-2306K-vazao-0060-2pol.png}
-        \caption{Linhas de Corrente - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
-	\label{fig:corrente-velocidade-bb-2pol-vazao-0060}
+        \caption{Linhas de corrente - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \label{fig:corrente-velocidade-bb-2pol-vazao0060}
     \end{subfigure}
-	\caption{Projetil sob diferentes condições de vazão mássica sob regime M = \num{2,0} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
-	\label{fig:influencia-diametro-vazao-2pol}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 3
+        \centering
+        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-vazao0030-temp2306-diam2pol.png}
+        \caption{Contornos de pressão - \(\Dot{m}_{BB}\) = \qty{0,030}{\kilogram\per\second}}
+        \label{fig:contorno-pressao-base-bb-2pol-vazao0030}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth} % FOTO 4
+        \centering
+        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-vazao0060-temp2306-diam2pol.png}
+        \caption{Contornos de pressão - \(\Dot{m}_{BB}\) = \qty{0,060}{\kilogram\per\second}}
+        \label{fig:contorno-pressao-base-bb-2pol-vazao0030}
+    \end{subfigure}
+	\caption{Campos de pressão e velocidade na base do projetil \(\left(\phi_{BB} = \qty{50,8}{\millimetre}; T_{BB} = \qty{2306,15}{\kelvin}\right)\)}
+	\label{fig:influencia-base-diametro-vazao-2pol}
 \end{figure}
 
 \subsection{Influência da vazão mássica no sistema \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-vazao}
@@ -316,7 +364,7 @@ A partir do momento em que há disponibilidade das condições citadas na \autor
 Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
 De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adequem à cada simulação realizada. 
 
-Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{207,3}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} \cite{Thallyo2022}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências \cite{McCoy2012,Carlucci2018}.
+Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{207,3}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências \cite{McCoy2012,Carlucci2018}.
 
 \begin{table}[ht]
     \centering
@@ -440,14 +488,14 @@ Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados ob
     \end{tabular}%
     }
     \label{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107}
-    \fonte{\cite{Thallyo2022}}
+    \fonte{Autor.}
 \end{table}
 
 A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-1pol-711mil} esclarece os resultados das predições de voo. A \autoref{tab:tabela-711mil-bb-1pol} mostra que houve redução do alcance e do apogeu.
 
 \begin{figure}[!ht]
 	\centering
-    \includegraphics[width=0.7\textwidth]{foto1-qe711mil-1pol.png}
+    \includegraphics[width=0.5\textwidth]{foto1-qe711mil-1pol.eps}
     \caption[QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)]{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
     \label{fig:trajetoria-1pol-711mil}
 \end{figure}
@@ -471,7 +519,7 @@ Acerca da \autoref{fig:trajetoria-1pol-800mil}, apesar de haver um aumento do al
 
 \begin{figure}[!ht]
 	\centering
-    \includegraphics[width=0.7\textwidth]{foto2-qe800mil-1pol.png}
+    \includegraphics[width=0.5\textwidth]{foto2-qe800mil-1pol.eps}
     \caption[QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)]{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)}
     \label{fig:trajetoria-1pol-800mil}
 \end{figure}
@@ -495,7 +543,7 @@ Ao verificar a \autoref{fig:trajetoria-2pol-711mil} percebe-se um aumento do alc
 
 \begin{figure}[!ht]
 	\centering
-    \includegraphics[width=0.7\textwidth]{foto3-qe711mil-2pol.png}
+    \includegraphics[width=0.5\textwidth]{foto3-qe711mil-2pol.eps}
     \caption[QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)]{QE = \qty{711}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
     \label{fig:trajetoria-2pol-711mil}
 \end{figure}
@@ -519,7 +567,7 @@ Ao aumentar o ângulo de elevação para \qty{800}{\milliradian} houve um increm
 
 \begin{figure}[!ht]
 	\centering
-    \includegraphics[width=0.7\textwidth]{foto4-qe800mil-2pol.png}
+    \includegraphics[width=0.5\textwidth]{foto4-qe800mil-2pol.eps}
     \caption[QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)]{QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\)}
     \label{fig:trajetoria-2pol-800mil}
 \end{figure}
