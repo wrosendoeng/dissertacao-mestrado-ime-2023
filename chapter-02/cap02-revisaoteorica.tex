@@ -63,8 +63,8 @@ Considerando que o fluido é newtoniano, o tensor das tensões viscosas \(\left(
     \label{eq:tau-newtoniano}
     t_{ij} = \mu \left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) + \zeta\frac{\partial u_k}{\partial x_k}\delta_{ij}
 \end{equation}
-
-Onde \(\mu\) é a viscosidade dinâmica e \(\zeta\) é o coeficiente de dilatação da viscosidade para um gás monoatômico \(\left(\zeta = -(2/3)\mu\right)\) e \(\delta_{ij}\) é o delta de Kronecker. 
+%
+onde \(\mu\) é a viscosidade dinâmica e \(\zeta\) é o coeficiente de dilatação da viscosidade para um gás monoatômico \(\left(\zeta = -(2/3)\mu\right)\) e \(\delta_{ij}\) é o delta de Kronecker. 
 
 \subsection{Conservação de energia}
 
@@ -82,28 +82,21 @@ Para facilitar o cálculo da equação de energia, é necessário definir uma eq
     \rho = \frac{p}{RT}
 \end{equation}
 %
-cujo \(R\), presente na equação \ref{eq:densidade-ideal}, é a constante específica do gás. O termo \(e\) presente na equação \ref{eq:gov-energia} é a energia interna específica e \(h = e + p/\rho\) é a entalpia específica. O vetor de fluxo de calor é definido pela Lei de Fourier, então a equação \ref{eq:lei-fourier} fica
-
-\begin{equation}
-	\label{eq:lei-fourier}
-	q_j = -c_{T}\frac{\partial T}{\partial x_j}
-\end{equation}
-%
-sendo \(c_{T}\) a condutividade térmica do fluido; por aplicar a lei dos gases perfeitos, tanto a energia interna específica \(e\) e a entalpia específica \(h\) são definidas por
+cujo \(R\), presente na equação \ref{eq:densidade-ideal}, é a constante específica do gás. O termo \(h\) presente na equação \ref{eq:gov-energia} é a entalpia específica \(\left(h = e + p/\rho\right)\), cujo termo \(e\) é a energia interna específica. Por aplicar a lei dos gases perfeitos, tanto a energia interna e a entalpia específicas podem ser definidas por
 
 \begin{equation}
 	\label{eq:equacoes-entalpia-energiainterna-calores-especificos}
 	e = c_{v}T \hspace{0.5cm} \text{e} \hspace{0.5cm} h = c_{p}T
 \end{equation}
 %
-onde \(c_v\) e \(c_p\) são os calores específicos para volume e pressão constantes, respectivamente. Consequentemente, a lei de Fourier \ref{eq:lei-fourier} pode ser reescrita por
-%
+onde \(c_v\) e \(c_p\) são os calores específicos para volume e pressão constantes, respectivamente. Assumindo que o vetor de fluxo de calor é definido pela Lei de Fourier, para os gases ideais se resulta na equação \ref{eq:lei-fourier}
+
 \begin{equation}
-	\label{eq:lei-fourier-NOVA}
+	\label{eq:lei-fourier}
 	q_j = -c_T\frac{\partial T}{\partial x_j} = -\frac{\mu}{Pr_L}\frac{\partial h}{\partial x_j}
 \end{equation}
 %
-o termo \(Pr_L\) é o número de Prandtl laminar, definido por
+sendo \(c_{T}\) a condutividade térmica do fluido e o termo \(Pr_L\) é o número de Prandtl laminar, definido por
 
 \begin{equation}
 	Pr_L = \frac{c_{p}\mu}{c_T}
