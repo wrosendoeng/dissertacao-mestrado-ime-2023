@@ -344,7 +344,7 @@ O valor da variável na face do volume de controle \(\phi_{f}\) é calculado da 
     \label{eq:esquema-CDS}
     \phi_f = \frac{1}{2}\left(\phi_0+\phi_1\right)+\frac{1}{2}\left(\nabla\phi_0\cdot\overrightarrow{r_0}+\nabla\phi_1\cdot\overrightarrow{r_1}\right)
 \end{equation}
-
+%
 sendo 0 e 1 os índices das células representadas na Figura \ref{fig:volume-ANSYS-2021R2}, sendo \(\overrightarrow{r}\) o vetor deslocamento que liga o centro da célula a montante à face do volume de controle. A Figura \ref{fig:volume-ANSYS-2021R2} ilustra a discretização de uma célula triangular bidimensional como exemplo de volume de controle \cite{fluent2021ansys}.
 
 \begin{figure}[!ht] 
@@ -368,7 +368,7 @@ Considerando que o esquema anterior tem uma dificuldade de identificar a direç�
 
 \subsubsection{Esquema \textit{upwind} de segunda ordem}
 
-Quando uma precisão de segunda ordem é requerida, apela-se à interpolação linear com mais de um elemento adjacente, onde a precisão de ordem elevada é atingida a partir da expansão por série de Taylor da solução no centroide do volume de controle \cite{Rezende2009}. O esquema \textit{upwind} de 2ª ordem (UDS-2) envolve dois valores a montante, resultando na seguinte equação \ref{eq:esquema-upwind-2aordem} para \(\phi_f\):
+Quando uma precisão de segunda ordem é requerida, utiliza-se uma interpolação linear com mais de um elemento adjacente, onde a precisão de ordem elevada é atingida a partir da expansão por série de Taylor da solução no centroide do volume de controle \cite{Rezende2009}. O esquema \textit{upwind} de 2ª ordem (UDS-2) envolve dois valores a montante, resultando na seguinte equação \ref{eq:esquema-upwind-2aordem} para \(\phi_f\):
 
 \begin{equation} \label{eq:esquema-upwind-2aordem}
     \phi_f = \phi_{c_0} + \left(\nabla\phi\cdot\overrightarrow{r}\right)_{up}
