@@ -13,7 +13,7 @@ No âmbito da modelagem de turbulência computacional, existem três principais 
  
 \end{enumerate}
 
-Por exigir menor esforço computacional e apresentar resultados satisfatórios, a modelagem RANS tem ganhado notoriedade na comunidade de dinâmica dos fluidos computacional. No presente trabalho foram usados dois modelos de turbulência do tipo RANS, o modelo Spalart-Allmaras (S-A) \cite{Spalart1992} e o SST \(\kappa-\omega\) (\textit{Shear Stress Transport} \(\kappa-\omega\)) \cite{Menter1994TwoequationET}. 
+Por exigir menor esforço computacional e apresentar resultados satisfatórios, a modelagem RANS é a mais aplicada na comunidade de dinâmica dos fluidos computacional. No presente trabalho foram usados dois modelos de turbulência do tipo RANS, o modelo Spalart-Allmaras (S-A) \cite{Spalart1992} e o SST \(\kappa-\omega\) (\textit{Shear Stress Transport} \(\kappa-\omega\)) \cite{Menter1994TwoequationET}. 
 
 \section{O problema de fechamento}
 
@@ -67,7 +67,7 @@ Como o foco da decomposição de Reynolds é resolver os problemas incompressív
 	\label{eq:continuidade-decomposicao-reynolds}
 	\frac{\partial U_i}{\partial x_i} = 0 \\
 	\label{eq:momento-decomposicao-reynolds}
-	\rho\frac{\partial U_i}{\partial t} + \rho\frac{\partial}{\partial x_j}\left(U_{j}U_{i} + \overline{u'_j u'_i} \right) = -\frac{\partial P}{\partial x_i} + \frac{\partial}{\partial x_j}\left(2\mu S_{ji}\right)
+	\rho\frac{\partial}{\partial x_j}\left(U_{j}U_{i} + \overline{u'_j u'_i} \right) = -\frac{\partial P}{\partial x_i} + \frac{\partial}{\partial x_j}\left(2\mu S_{ji}\right)
 \end{gather}
 %
 o termo \(S_{ij}\), presente na equação \ref{eq:momento-decomposicao-reynolds}, se trata do valor médio do tensor taxa de deformação, dado por
@@ -80,7 +80,7 @@ o termo \(S_{ij}\), presente na equação \ref{eq:momento-decomposicao-reynolds}
 O maior problema da turbulência é prescrever o termo \(\overline{u'_{i}u'_{j}}\), mas ao reescrever a equação \ref{eq:momento-decomposicao-reynolds} conforme a equação RANS padrão \cite{Wilcox2006}:
 
 \begin{equation}
-	\rho\frac{\partial U_i}{\partial t} + \rho U_{j}\frac{\partial U_i}{\partial x_j} = -\frac{\partial P}{\partial x_i} + \frac{\partial}{\partial x_j}\left(2\mu S_{ji} - \rho\overline{u'_j u'_i} \right)
+	\rho U_{j}\frac{\partial U_i}{\partial x_j} = -\frac{\partial P}{\partial x_i} + \frac{\partial}{\partial x_j}\left(2\mu S_{ji} - \rho\overline{u'_j u'_i} \right)
 \end{equation}
 
 A quantidade \(-\rho\overline{u'_{i}u'_{j}}\) é conhecido por tensor tensão de Reynolds, também escrito como \(\rho\tau_{ij}\), logo \(\tau_{ij}\) é o tensor tensão de Reynolds específico dado por
@@ -125,11 +125,11 @@ as notações com til (ex: \(\tilde{u}_i\)) são médias pelas densidade, enquan
 
 \begin{gather}
     \label{eq:continuidade-favre}
-    \frac{\partial \overline{\rho}}{\partial t} + \frac{\partial}{\partial x_i} \left( \overline{\rho} \Tilde{u}_{i}\right) = 0 \\
+    \frac{\partial}{\partial x_i} \left( \overline{\rho} \Tilde{u}_{i}\right) = 0 \\
     \label{eq:momento-favre}
-    \frac{\partial}{\partial t}\left(\overline{\rho} \Tilde{u_i} \right) + \frac{\partial}{\partial x_j} (\overline{\rho}\Tilde{u_i}\Tilde{u_j}) = -\frac{\partial P}{\partial x_i} + \frac{\partial}{\partial x_j}\left[\overline{t_{ji}} + \overline{\rho}\tau_{ji}\right] \\
+    \frac{\partial}{\partial x_j} (\overline{\rho}\Tilde{u_i}\Tilde{u_j}) = -\frac{\partial P}{\partial x_i} + \frac{\partial}{\partial x_j}\left[\overline{t_{ji}} + \overline{\rho}\tau_{ji}\right] \\
     \label{eq:energia-favre} 
-    \frac{\partial}{\partial t}\left(\overline{\rho}E\right) + \frac{\partial}{\partial x_j}(\overline{\rho} \Tilde{u_{j}} H) 
+    \frac{\partial}{\partial x_j}(\overline{\rho} \Tilde{u_{j}} H) 
     = \frac{\partial}{\partial x_j}\left[-q_{L_{j}} - q_{T_{j}} + \overline{t_{ij}u''_i} - \overline{\rho u''_j\frac{1}{2}u''_i u''_i} \right] + \frac{\partial}{\partial x_j}\left[\Tilde{u_i}\left(\overline{t_{ij}} + \overline{\rho}\tau_{ij}\right)\right]
 \end{gather}
 
@@ -178,8 +178,8 @@ Esse modelo \cite{Spalart1992} envolve uma equação de transporte para a viscos
     \label{eq:visc-sa}
     \nu_t = \Tilde{\nu} f_{\nu 1} \hspace{5mm} f_{\nu 1} = \frac{\chi^3}{\chi^3 + c^{3}_{\nu 1}} \hspace{5mm} \chi = \frac{\Tilde{\nu}}{\nu}
 \end{equation}
-
-E \(\Tilde{\nu}\) obedece a equação de transporte \ref{eq22:transport-sa}
+%
+e \(\Tilde{\nu}\) obedece a equação de transporte \ref{eq22:transport-sa}
 
 \begin{equation}\label{eq22:transport-sa}
 \begin{split}
@@ -192,8 +192,8 @@ Considerando que
 \begin{equation}
     \Tilde{S} \equiv S + \frac{\Tilde{\nu}}{\kappa^2d_{S-A}^2}f_{v2} \hspace{5mm} f_{v2} = 1 - \frac{\chi}{1 + \chi f_{v1}}
 \end{equation}
-
-Onde \(S\) é a vorticidade e \(d_{S-A}\) a distância até a parede mais próxima para este modelo de turbulência. Já a função \(f_{w}\) é dada por
+%
+onde \(S\) é a vorticidade e \(d_{S-A}\) a distância até a parede mais próxima para este modelo de turbulência. Já a função \(f_{w}\) é dada por
 
 \begin{equation}
     f_w = g\left[\frac{1 + c^{6}_{w3}}{g^6 + c^{6}_{w3}} \right]^{1/6} \hspace{5mm} g = r + c_{w2}(r^6 - r) \hspace{5mm} r \equiv \frac{\Tilde{\nu}}{\Tilde{S}\kappa^2d^2}
@@ -211,7 +211,7 @@ A última função \(f_{t1}\) que aparece na equação \ref{eq22:transport-sa} p
     \label{eq:ft1-sa}
     f_{t1} = c_{t1}g_{t} \exp{\left(-c_{t2}\frac{\omega_{t}^{2}}{\Delta U^2}\left[d^{2} + g_{t}^{2}d_{t}^{2}\right]\right)} \hspace{5mm} g_t \equiv min(0,1, \Delta U/\omega_t \Delta x_t)
 \end{equation}
-
+%
 onde \(\Delta x_t\) é o espaçamento ao longo da malha. As constantes utilizadas das equações \ref{eq:visc-sa} até \ref{eq:ft1-sa} podem ser vistas na Tabela \ref{tab:tabela-constantes-spalart-allmaras}. Os resultados obtidos mostraram a baixa influência da variação de densidade ao estudar os regimes supersônico \cite{Spalart1992}.
 
 \begin{table}[ht]
@@ -252,10 +252,10 @@ O modelo \(\kappa-\varepsilon\) \cite{JONES1972301,LAUNDER1974269,launder1974} a
 Em altos números de Reynolds, as propriedades envolvidas possuem suas equações de transporte para a energia cinética turbulenta \ref{eq:transporte-k-modelo-k-epsilon} e para a taxa de dissipação específica \ref{eq:transporte-eps-modelo-k-epsilon} a serem resolvidas \cite{Wilcox2006}
 
 \begin{gather}
-    \frac{\partial \kappa}{\partial t} + U_{j} \frac{\partial \kappa}{\partial x_j} = \tau_{ij}\frac{\partial U_i}{\partial x_j} - \varepsilon + \frac{\partial}{\partial x_j}\left[\left(\nu + \nu_{t}/\sigma_{\kappa}\right)\frac{\partial \kappa}{\partial x_j}\right]
+    U_{j} \frac{\partial \kappa}{\partial x_j} = \tau_{ij}\frac{\partial U_i}{\partial x_j} - \varepsilon + \frac{\partial}{\partial x_j}\left[\left(\nu + \nu_{t}/\sigma_{\kappa}\right)\frac{\partial \kappa}{\partial x_j}\right]
     \label{eq:transporte-k-modelo-k-epsilon}
     \\
-   	\frac{\partial \varepsilon}{\partial t} + U_{j} \frac{\partial \varepsilon}{\partial x_j} = C_{1}\frac{\varepsilon}{\kappa}\tau_{ij}\frac{\partial U_i}{\partial x_j} - C_{2}\frac{\varepsilon^{2}}{\kappa} + \frac{\partial}{\partial x_j}\left[\left(\nu + \nu_{t}/\sigma_{\varepsilon}\right)\frac{\partial \varepsilon}{\partial x_j}\right]
+   	U_{j} \frac{\partial \varepsilon}{\partial x_j} = C_{1}\frac{\varepsilon}{\kappa}\tau_{ij}\frac{\partial U_i}{\partial x_j} - C_{2}\frac{\varepsilon^{2}}{\kappa} + \frac{\partial}{\partial x_j}\left[\left(\nu + \nu_{t}/\sigma_{\varepsilon}\right)\frac{\partial \varepsilon}{\partial x_j}\right]
     \label{eq:transporte-eps-modelo-k-epsilon}
 \end{gather}
 	
@@ -315,10 +315,10 @@ As vantagens de escolher esse modelo em vez do \(\kappa-\varepsilon\) padrão s�
 As equações de transporte para a energia cinética turbulenta, \(\kappa\), \ref{eq:transporte-k-modelo-k-omega} e para a taxa específica de dissipação de energia, \(\omega\), \ref{eq:transporte-w-modelo-k-omega} são apresentadas abaixo \cite{Wilcox1988ReassessmentOT,Wilcox2006,Wilcox2008}
 
 \begin{gather}
-    \frac{\partial\rho\kappa}{\partial t} + \frac{\partial \rho u_{j}\kappa}{\partial x_j} = \rho\tau_{ij}\frac{\partial u_i}{\partial x_j} - \beta^{*}\rho\kappa\omega + \frac{\partial}{\partial x_j}\left[\left(\mu + \sigma^{*}\frac{\rho\kappa}{\omega}\right)\frac{\partial\kappa}{\partial x_j}\right]
+    \frac{\partial \rho u_{j}\kappa}{\partial x_j} = \rho\tau_{ij}\frac{\partial u_i}{\partial x_j} - \beta^{*}\rho\kappa\omega + \frac{\partial}{\partial x_j}\left[\left(\mu + \sigma^{*}\frac{\rho\kappa}{\omega}\right)\frac{\partial\kappa}{\partial x_j}\right]
     \label{eq:transporte-k-modelo-k-omega}
     \\
-   	\frac{\partial \rho\omega}{\partial t} + \frac{\partial\rho u_j\omega}{\partial x_j} = \alpha\frac{\omega}{\kappa}\rho\tau_{ij}\frac{\partial u_i}{\partial x_j} - \beta\rho\omega^{2} + \sigma_{d}\frac{\rho}{\omega}\frac{\partial\kappa}{\partial x_j}\frac{\partial\omega}{\partial x_j} + \frac{\partial}{\partial x_j}\left[\left(\mu + \sigma\frac{\rho\kappa}{\omega}\right)\frac{\partial\omega}{\partial x_j}\right]
+   	\frac{\partial\rho u_j\omega}{\partial x_j} = \alpha\frac{\omega}{\kappa}\rho\tau_{ij}\frac{\partial u_i}{\partial x_j} - \beta\rho\omega^{2} + \sigma_{d}\frac{\rho}{\omega}\frac{\partial\kappa}{\partial x_j}\frac{\partial\omega}{\partial x_j} + \frac{\partial}{\partial x_j}\left[\left(\mu + \sigma\frac{\rho\kappa}{\omega}\right)\frac{\partial\omega}{\partial x_j}\right]
     \label{eq:transporte-w-modelo-k-omega}
 \end{gather}
 
@@ -374,10 +374,10 @@ Com respeito a casos de escoamentos com camada limite, o modelo \(\kappa-\omega\
 Logo, o modelo SST \(\kappa-\omega\) trata-se da combinação robusta e precisa do modelo \(\kappa-\omega\) na região próxima das paredes com a independência da corrente livre do modelo \(\kappa-\varepsilon\) fora da camada limite. Para isso, o modelo \(\kappa-\varepsilon\) é escrito em termos da taxa de dissipação específica, \(\omega\). Em seguida, o modelo \(\kappa-\omega\) padrão e o modelo \(\kappa-\varepsilon\) modificado são multiplicados por uma função de mistura e somados. As equações de transporte são desenvolvidas como a seguir em \ref{eq:transporte-k-modelo-sst-k-omega} e \ref{eq:transporte-w-modelo-sst-k-omega}.
 
 \begin{gather}
-    \frac{\partial}{\partial t}(\rho\kappa) +\frac{\partial}{\partial x_i}(\rho u_i \kappa) = \tilde{P}_\kappa - \beta^{*}\rho\kappa\omega + \frac{\partial}{\partial x_i}\left[(\mu + \sigma_{\kappa}\mu_t)\frac{\partial \kappa}{\partial x_i}\right]
+    \frac{\partial}{\partial x_i}(\rho u_i \kappa) = \tilde{P}_\kappa - \beta^{*}\rho\kappa\omega + \frac{\partial}{\partial x_i}\left[(\mu + \sigma_{\kappa}\mu_t)\frac{\partial \kappa}{\partial x_i}\right]
     \label{eq:transporte-k-modelo-sst-k-omega}
     \\
-   	\frac{\partial}{\partial t}(\rho\omega) +\frac{\partial}{\partial x_i}(\rho u_i \omega)  = \alpha\frac{1}{\nu_t}\tilde{P}_\kappa - \beta\rho\omega^{2} + \frac{\partial}{\partial x_i}\left[(\mu + \sigma_{\omega}\mu_t)\frac{\partial \omega}{\partial x_i}\right] + 2(1 - F_1)\rho\sigma_{w2}\frac{1}{\omega}\frac{\partial\kappa}{\partial x_i}\frac{\partial \omega}{\partial x_i}
+   	\frac{\partial}{\partial x_i}(\rho u_i \omega)  = \alpha\frac{1}{\nu_t}\tilde{P}_\kappa - \beta\rho\omega^{2} + \frac{\partial}{\partial x_i}\left[(\mu + \sigma_{\omega}\mu_t)\frac{\partial \omega}{\partial x_i}\right] + 2(1 - F_1)\rho\sigma_{w2}\frac{1}{\omega}\frac{\partial\kappa}{\partial x_i}\frac{\partial \omega}{\partial x_i}
     \label{eq:transporte-w-modelo-sst-k-omega}
 \end{gather}
 %
@@ -426,7 +426,7 @@ Para a viscosidade cinemática turbulenta, \(\nu_t\), a equação \ref{eq:visc-s
 \end{split}
 \end{equation}
 %
-onde \(a_1 = 0,31\). O termo \(\tilde{P}_{\kappa}\) também significa a produção de energia cinética turbulenta, mas usada neste modelo para prevenir o crescimento da turbulência em regiões de estagnação \cite{Menter2009}. A equação \ref{eq:producao-tilde-k-modelo-sst-k-omega} se refere a esse ajuste do modelo SST
+onde \(a_1 = 0,31\). O termo \(\tilde{P}_{\kappa}\) também significa a produção de energia cinética turbulenta, mas usada neste modelo para prevenir o crescimento da turbulência em regiões de estagnação \cite{Menter2009}. A equação \ref{eq:producao-tilde-k-modelo-sst-k-omega} se refere a esse ajuste do modelo SST \(\kappa-\omega\).
 
 \begin{equation}
 	\label{eq:producao-tilde-k-modelo-sst-k-omega}
@@ -457,4 +457,4 @@ Constante (\(\Gamma_1\)) 	& Valor  		 & Constante (\(\Gamma_2\)) & Valor \\
 \fonte{\cite{Menter1994TwoequationET,Menter2003,Menter2009}}
 \end{table}
 
-O modelo SST \(\kappa-\omega\) levou a uma grande melhoria, se comparado aos modelos \(\kappa-\omega\) e \(\kappa-\varepsilon\), para todos os escoamentos que envolvem gradientes adversos de pressão e \citeauthor{Menter1994TwoequationET} sugere que seja a técnica mais utiliza quando se trata de problemas de aerodinâmica. Outro fato importante é que nenhum outro método de duas equações para descrever a turbulência conseguiu predizer com acurácia a separação da pressão induzida e a interação viscosa-invíscida do escoamento.
+O modelo SST \(\kappa-\omega\) levou a uma grande melhoria, se comparado aos modelos \(\kappa-\omega\) e \(\kappa-\varepsilon\), para todos os escoamentos que envolvem gradientes adversos de pressão e \citeauthor{Menter1994TwoequationET} sugere que seja a técnica mais utilizada quando se trata de problemas de aerodinâmica. Outro fato importante é que nenhum outro método de duas equações para descrever a turbulência conseguiu predizer com acurácia a separação da pressão induzida e a interação viscosa-invíscida do escoamento.

@@ -67,16 +67,16 @@ onde o subscrito \(nb\) se refere às células vizinhas, enquanto que \(a_{p}\) 
 
 \subsection{Algoritmos de resolução de escoamentos}
 
-Há dois tipos principais de algoritmos para resolver as equações de transporte de continuidade, momentum e energia:
+Há dois tipos principais de algoritmos para resolver as equações de transporte de continuidade, momento linear e energia:
 
 \begin{enumerate}
     \item \textit{Pressure-based}: costumam atender os casos de baixas velocidades e em regime incompressível.
     \item \textit{Density-based}: costumam ser usados em escoamentos compressíveis a altas velocidades.
 \end{enumerate}
 
-Apesar de suas aplicações usuais, os métodos já foram reformulados para atender uma variedade de condições além do que foram propostos a fazer. Em ambos os casos, o campo de velocidade é obtido pela equação de momentum, enquanto que no algoritmo \textit{density-based} resolve a densidade pela conservação de massa e o campo de pressão a partir de uma equação de estado. Por outro lado, na abordagem \textit{pressure-based}, o campo de pressão é resolvido por uma equação para a pressão ou o ajuste desta propriedade que é obtida pela manipulação das equações de continuidade e momentum.
+Apesar de suas aplicações usuais, os métodos já foram reformulados para atender uma variedade de condições além do que foram propostos a fazer. Em ambos os casos, o campo de velocidade é obtido pela equação de momento linear, enquanto que no algoritmo \textit{density-based} resolve a densidade pela conservação de massa e o campo de pressão a partir de uma equação de estado. Por outro lado, na abordagem \textit{pressure-based}, o campo de pressão é resolvido por uma equação para a pressão ou o ajuste desta propriedade que é obtida pela manipulação das equações de continuidade e momento linear.
 
-Seja qual for o método, serão resolvidas as equações de transporte para a continuidade e momentum, assim como para a energia, turbulência e espécies químicas, se houver necessidade. A maneira que as equações de governo são linearizadas podem resultar numa forma “implícita” ou “explícita”. Tal explicação é demonstrada a seguir:
+Seja qual for o método, serão resolvidas as equações de transporte para a continuidade e momento linear, assim como para a energia, turbulência e espécies químicas, se houver necessidade. A maneira que as equações de governo são linearizadas podem resultar numa forma “implícita” ou “explícita”. Tal explicação é demonstrada a seguir:
 
 \begin{enumerate}
     \item Implícita: para uma dada variável, o valor a descobrir em cada volume de controle \(\forall\) é computado usando uma relação que inclui os valores existentes e desconhecidos das células vizinhas. Portanto, cada valor desejado aparecerá em mais de uma equação algébrica, onde essas equações devem ser resolvidas simultaneamente para obter o valores desconhecidos.
@@ -85,7 +85,7 @@ Seja qual for o método, serão resolvidas as equações de transporte para a co
 
 \subsubsection{Algoritmo \textit{Pressure-Based}}
 
-O campo de velocidade é calculado após resolver uma equação para o campo de pressão (ou o ajuste da pressão). Essa equação é derivada das conservações de massa e momentum, onde o campo de velocidade também satisfaz a continuidade \cite{Chorin68}. Por ser um sistema altamente não-linear e acoplado, necessita-se de um processo iterativo até atingir a convergência da solução. Há duas possibilidades de algoritmos \textit{pressure-based}, como mostra a Figura \ref{flux:pressure-based}. 
+O campo de velocidade é calculado após resolver uma equação para o campo de pressão (ou o ajuste da pressão). Essa equação é derivada das conservações de massa e momento linear, onde o campo de velocidade também satisfaz a continuidade \cite{Chorin68}. Por ser um sistema altamente não-linear e acoplado, necessita-se de um processo iterativo até atingir a convergência da solução. Há duas possibilidades de algoritmos \textit{pressure-based}, como mostra a Figura \ref{flux:pressure-based}. 
 
 \begin{figure}[!ht]
 \centering
@@ -223,7 +223,7 @@ Não
 Sim
 \end{minipage}};
 % Text Node
-\draw (404.6,130.25) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {Resolver juntas as equa-\\ções de momentum e con-\\tinuidade baseados na\\pressão};
+\draw (404.6,130.25) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {Resolver juntas as equa-\\ções de momento linear e\\ continuidade baseados\\ na pressão};
 % Text Node
 \draw (96,28.75) node [anchor=north west][inner sep=0.75pt]  [font=\small] [align=left] {Algoritmo segregado};
 % Text Node
@@ -252,7 +252,7 @@ As comparações da \autoref{tab:esquema-comparacao-segregado-acoplado} são bas
 
 \subsubsection{Algoritmo \textit{Density-Based}}
 
-Esse algoritmo busca resolver as equações de transporte para a conservação da massa, momentum e energia simultaneamente \cite{Weiss1995PreconditioningAT, Weiss1997IMPLICITSO, Weiss1999ImplicitSO}. As equações adicionais de turbulência e espécies químicas (se houver) são resolvidas sequencialmente. Assim como o método \textit{pressure-based}, há a necessidade de se resolver iterativamente até atingir a convergência da solução. Na Figura \ref{fig:density-based} é apresentado o fluxograma para a compreensão do método \cite{fluent2021ansys}.
+Esse algoritmo busca resolver as equações de transporte para a conservação da massa, momento linear e energia simultaneamente \cite{Weiss1995PreconditioningAT, Weiss1997IMPLICITSO, Weiss1999ImplicitSO}. As equações adicionais de turbulência e espécies químicas (se houver) são resolvidas sequencialmente. Assim como o método \textit{pressure-based}, há a necessidade de se resolver iterativamente até atingir a convergência da solução. Na Figura \ref{fig:density-based} é apresentado o fluxograma para a compreensão do método \cite{fluent2021ansys}.
 
 \begin{figure}[!ht]
     \centering
@@ -297,7 +297,7 @@ Esse algoritmo busca resolver as equações de transporte para a conservação d
 % Text Node
 \draw (234,63.5) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {Atualizar as propriedades};
 % Text Node
-\draw (234,116) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {Resolver simultaneamente\\as equações de conservação \\de massa, momentum, ener-\\gia e espécies químicas};
+\draw (234,116) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {Resolver simultaneamente\\as equações de conservação \\de massa, momento linear,\\ energia e espécies químicas};
 % Text Node
 \draw (234,214.92) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {Resolver as equações das\\propriedades escalares};
 % Text Node
@@ -418,7 +418,7 @@ Considera-se como padrão \(f = 0,25\) em regime estacionário, foco deste prese
 
 \subsection{Método Multigrid}
 
-O método \textit{Multigrid} \cite{Hutchinson1986} é usado no software desta pesquisa porque acelera a convergência através de uma sequência de correções em uma série de níveis de refino da malha. É um método bom para remover erros locais (alta frequência) e menos efetivo em erros globais (baixa frequência). Logo, o aumento no número de volumes de controle diminui o desempenho da técnica.
+O método \textit{Multigrid} \cite{Hutchinson1986} é usado porque acelera a convergência através de uma sequência de correções em uma série de níveis de refino da malha. É um método bom para remover erros locais (alta frequência) e menos efetivo em erros globais (baixa frequência).
 
 O \textit{Multigrid} é bastante eficiente quando se trata do esquema \textit{density-based} para remover os erros de alta frequência. Ele trabalha com uma sequência de malhas \(M_1\) até \(M_n\), cada vez mais grossas, onde o erro pode ser suavizado. Considerando um sistema linear do seguinte tipo:
 
@@ -447,5 +447,5 @@ O resíduo normalizado \(R^{\phi}\) da equação de transporte discretizada é c
 \label{eq:criterio-convergencia}
 	R^{\phi} = \frac{\sum_{células} \left[ \sum_{nb}a_{nb}\phi_{nb}+b-a_{P}\phi_{P}\right]}{\sum_{células}\left[a_{P}\phi_{P}\right]}    
 \end{equation}
-
-Assume-se que a solução está convergida quando \(R^{\phi}\) < \num{1,0e-6}.
+%
+assume-se que a solução está convergida quando \(R^{\phi}\) < \num{1,0e-6}.

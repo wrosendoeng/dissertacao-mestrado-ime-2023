@@ -56,7 +56,7 @@ Antes de iniciar as validações das simulações que incluem o efeito \textit{B
 
 \section{Projetil ativo (com \textit{Base Bleed})}\label{sec:resultados-com-basebleed}
 
-A Tabela \ref{tab:tabela-malhas-secundaria}, presente na Seção \ref{sec:geracao-malha}, demonstra as malhas testadas para o projetil ativo. A malha com \num{380000} elementos foi utilizada como referência, tendo em vista a convergência dos resultados com valores de trabalhos anteriores \cite{Mahmoud2009}. Com estas malhas foram feitos testes de convergência, em dois regimes de velocidade (Mach igual a \numlist{1,0;2,0}), cujos resultados são apresentados na \autoref{tab:tabela-malhas-convergencia}. Em ambos os casos o modelo SST \(\kappa-\omega\) foi usado para descrever a turbulência. A condição de contorno "Entrada do \textit{Base Bleed}"{} considerou a saída dos gases com a seguinte configuração: \(\phi_{BB} = \qty{50,8}{\milli\metre}; \Dot{m}_{BB} = \qty{0,030}{\kilogram\per\second}; T_{BB} = \qty{2306,15}{\kelvin}\).
+A Tabela \ref{tab:tabela-malhas-secundaria}, presente na Seção \ref{sec:geracao-malha}, demonstra as malhas testadas para o projetil ativo. A malha com \num{380000} elementos foi utilizada como referência, tendo em vista a convergência dos resultados com valores de trabalhos anteriores \cite{Mahmoud2009}. Com estas malhas foram feitos testes de convergência, em dois regimes de velocidade (Mach igual a \numlist{1,0;2,0}), cujos resultados são apresentados na \autoref{tab:tabela-malhas-convergencia}. Em ambos os casos o modelo SST \(\kappa-\omega\) foi usado para descrever a turbulência. A condição de contorno "Saída do \textit{Base Bleed}"{} considerou a saída dos gases com a seguinte configuração: \(\phi_{BB} = \qty{50,8}{\milli\metre}; \Dot{m}_{BB} = \qty{0,030}{\kilogram\per\second}; T_{BB} = \qty{2306,15}{\kelvin}\).
 
 \begin{table}[ht]
 \centering
@@ -80,7 +80,7 @@ Para o projetil em velocidade sônica (M = \num{1,0}), a maior diferença percen
 
 \subsection{Influência no diâmetro de saída do \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-diametros}
 
-O primeiro parâmetro estudado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de \qtyrange{25,4}{50,8}{\millimetre} (de \qtyrange{1}{2}{\polegada}). A temperatura na condição de contorno "Entrada do \textit{Base Bleed}"{} foi fixada em \(T_{BB} = \qty{2306,15}{\kelvin}\), conforme apresentado em \cite{Gil2020}. Desta forma, a Figura \ref{fig:comparacao-bb-diametro-1e2pol} demonstra uma redução do coeficiente de arrasto para um diâmetro de \qty{2}{\polegada}, enquanto que o diâmetro de \qty{1}{\polegada} aumentou o perfil de arrasto, se comparado ao sistema BB desativado. Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa M < \num{0,8}.
+O primeiro parâmetro estudado foi o aumento do diâmetro da saída do bocal (ver \autoref{tab:tabela-vazoes-por-diametro}), de \qtyrange{25,4}{50,8}{\millimetre} (de \qtyrange{1}{2}{\polegada}). A temperatura na condição de contorno "Saída do \textit{Base Bleed}"{} foi fixada em \(T_{BB} = \qty{2306,15}{\kelvin}\), conforme apresentado em \cite{Gil2020}. Desta forma, a Figura \ref{fig:comparacao-bb-diametro-1e2pol} demonstra uma redução do coeficiente de arrasto para um diâmetro de \qty{2}{\polegada}, enquanto que o diâmetro de \qty{1}{\polegada} aumentou o perfil de arrasto, se comparado ao sistema BB desativado. Há de se notar uma oscilação presente nas curvas de arrasto no regime subsônico com o \textit{base bleed} funcionando, especialmente na faixa M < \num{0,8}.
 
 \begin{figure}[!ht]
 	\centering
@@ -362,7 +362,7 @@ A \autoref{fig:influencia-RANS-bb} apresenta o comportamento do \textit{Base Ble
 
 \section{Resultados da Trajetória}\label{sec:resultados-trajetoria}
 
-A partir do momento em que há disponibilidade das condições citadas na \autoref{subsec:implementacao-trajetoria} e dos resultados das simulações de fluidodinâmica computacional, pode-se calcular a predição da trajetória MPMTM. Apesar do suporte do PRODAS® e das informações obtidas, algumas premissas foram consideradas:
+A partir do momento em que há disponibilidade das condições citadas na \autoref{subsec:implementacao-trajetoria} e dos resultados das simulações de fluidodinâmica computacional, pode-se calcular a predição da trajetória MPMTM. Apesar do suporte do PRODAS® e das informações obtidas, algumas premissas foram consideradas a partir dos trabalhos \cite{Rosendo2020,ThallyoENCIT2022,RosendoCILAMCE2022}:
 
 \begin{itemize}
     \item Lançamento do Rio de Janeiro, logo a latitude é de \ang{23};
