@@ -39,15 +39,9 @@ Para aplicar o conceito do parâmetro, $Inj$, é necessário olhar para a equaç
 %
 onde $A_{b}$ significa a área da base do projetil. 
 
-Ao observar a equação \ref{eq:parametro-injecao}, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil, pois o $Inj$ tem influência na equação \ref{eq:baseMPM}. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m}_{BB}$. Como o fluido de trabalho é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
+Ao observar a equação \ref{eq:parametro-injecao}, o maior desafio é obter valores razoáveis para a injeção de gases na base do projetil, pois o $Inj$ tem influência na equação \ref{eq:baseMPM}. Para isto, deve-se ter em mãos os valores de vazão mássica do propelente injetado pelo sistema BB, $\Dot{m}_{BB}$. 
 
-\begin{equation}\label{eq:vazao-massica-BB}
-    \Dot{m}_{BB} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
-\end{equation}
-%
-Sejam $p_{c}$ e $p_{t}$ as pressões na câmara geradora de gás e na saída do sistema, respectivamente. Os termos $\rho_{t}$, $V_{t}$ e $A_{t}$ se referem a densidade, a velocidade e a área na saída do \textit{Base Bleed}. 
-
-Como requisitos das simulações de dinâmica dos fluidos computacional, a temperatura e velocidade de saída dos gases (em função do número de Mach) são computadas com base na pressão da câmara, que é obtida a partir da equação \ref{eq:vazao-massica-BB}. Como o gás é isentrópico, as equações para essas propriedades são as seguintes:
+Como requisitos das simulações de dinâmica dos fluidos computacional, a temperatura e velocidade de saída dos gases (em função do número de Mach) são computadas com base na pressão da câmara e da garganta (\(p_{c}\) e \(p_{t}\), respectivamente), que é obtida a partir das equações \ref{eq:temperatura-BB} e \ref{eq:velocidade-mach-BB} \cite{Gil2020}:
 
 \begin{align}
     \label{eq:temperatura-BB}
@@ -55,6 +49,14 @@ Como requisitos das simulações de dinâmica dos fluidos computacional, a tempe
     \label{eq:velocidade-mach-BB}
     M_{t} = \sqrt{\frac{2}{\gamma - 1}\left[\left(\frac{p_c}{p_t}\right)^{(\gamma - 1)/\gamma}-1\right]}
 \end{align}
+
+% Como o fluido de trabalho é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
+
+% \begin{equation}\label{eq:vazao-massica-BB}
+%     \Dot{m}_{BB} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
+% \end{equation}
+%
+% Sejam $p_{c}$ e $p_{t}$ as pressões na câmara geradora de gás e na saída do sistema, respectivamente. Os termos $\rho_{t}$, $V_{t}$ e $A_{t}$ se referem a densidade, a velocidade e a área na saída do \textit{Base Bleed}. 
 
 \section{Geração de malha}\label{sec:geracao-malha}
 
@@ -140,7 +142,7 @@ Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 & Vazão nº 2\\
 
 \section{Condições de Contorno}\label{sec:condicao-contorno}
 
-No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento e, como requisito do software comercial utilizado, se fez necessário tratar o fluido (ar) como gás ideal. A pressão $p = \qty{101,325}{\kilo\pascal}$ e a temperatura $T = \qty{288,15}{\kelvin}$ são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
+No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento, donde se fez necessário tratar o fluido (ar) como gás ideal. A pressão $p = \qty{101,325}{\kilo\pascal}$ e a temperatura $T = \qty{288,15}{\kelvin}$ são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
 
 A região denominada "Saída do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram prescritas para descobrir a velocidade do escoamento nesta região. A pressão na saída dos gases BB é definida como sendo igual a pressão no "Escoamento livre"{} $\left(\nabla p = 0\right)$.
 
@@ -162,7 +164,7 @@ O problema foi considerado convergido quando todos os resíduos forem menores qu
 
 \section{Implementação do Modelo de Trajetória}\label{subsec:implementacao-trajetoria}
 
-No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. A Figura \ref{fig:fluxograma-mpmtm} apresenta o fluxograma com as condições necessárias, que são apresentadas da \autoref{subsec:condicoes-geometricas} a \autoref{subsec:condicoes-aerodinamicas}, bem como a aplicação do integrador numérico Runge-Kutta de 4\textsuperscript{a} ordem, anteriormente explicado na \autoref{sec:numint}. Destaca-se três pontos importantes: as funções para o parâmetro de injeção e a guinada de repouso, pois são parâmetros essenciais ao projeto e permitem calcular o desempenho da munição com e sem \textit{Base Bleed}, além da definição da altura que o projetil atinge o solo, pois serve como limitador do processo iterativo. 
+No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. A Figura \ref{fig:fluxograma-mpmtm} apresenta o fluxograma com as condições necessárias, que são apresentadas da \autoref{subsec:condicoes-geometricas} a \autoref{subsec:condicoes-aerodinamicas}, bem como a aplicação do integrador numérico Runge-Kutta de 4\textsuperscript{a} ordem, anteriormente explicado na \autoref{sec:numint}. Destacaram-se três pontos importantes: as funções para o parâmetro de injeção e a guinada de repouso, pois são parâmetros essenciais ao projeto e permitem calcular o desempenho da munição com e sem \textit{Base Bleed}, além da definição da altura que o projetil atinge o solo, pois serve como limitador do processo iterativo. 
 
 \begin{figure}[!ht]
 	\centering

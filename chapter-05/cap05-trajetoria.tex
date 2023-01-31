@@ -17,7 +17,7 @@ Neste modelo o corpo é tratado como um ponto material, embora haja estabilidade
 
 Para introduzir as descrições das forças na equação \ref{eq:MPMTM - translation}, é necessário frisar que as descrições seguintes das forças e das variáveis presentes que descrevem os movimentos translacional e rotacional advêm da norma proposta pela OTAN, isto é, respeitar um acordo que contempla toda a indústria de defesa e espaço.
 
-Sobre a força gravitacional \(\boldsymbol{F}_{G}\) descreve a interação entre o corpo e o campo gravitacional da Terra, sendo igual ao produto da massa do projetil, m, com o vetor de aceleração pela gravidade, \(\boldsymbol{g}\), cuja fórmula pode ser vista na equação \ref{gravMPM}. O vetor \(\boldsymbol{g}\) considera o efeito da trajetória sobre uma aproximação esférica da Terra, bem como os efeitos de latitude. Tais questões são vistas nas equações \ref{eq:Gvec} e \ref{eq:Gmag}.
+Sobre a força gravitacional \(\boldsymbol{F}_{G}\) descreve a interação entre o corpo e o campo gravitacional da Terra, sendo igual ao produto da massa do projetil, m, com o vetor de aceleração pela gravidade, \(\boldsymbol{g}\), que pode ser vista na equação \ref{gravMPM}. O vetor \(\boldsymbol{g}\) considera o efeito da trajetória sobre uma aproximação esférica da Terra, bem como os efeitos de latitude. Tais questões são vistas nas equações \ref{eq:Gvec} e \ref{eq:Gmag}.
 
 \begin{gather}
     \label{gravMPM}
@@ -59,14 +59,14 @@ A força de arrasto \(\boldsymbol{F}_{D}\) é a mais importante força aerodinâ
 
 Onde \(\rho\) é a densidade do ar, D é o diâmetro de referência do projetil, \(C_{D_{0}}\) é o coeficiente de arrasto aerodinâmico com ângulo de ataque nulo, \(C_{D_{\alpha^{2}}}\) é o coeficiente de arrasto aerodinâmico proporcional ao quadrado do ângulo de ataque, \(Q_{D}\) é uma constante que representa o fator de ajuste do arrasto em função do ângulo de ataque, \(\alpha_{e}\) é a magnitude da guinada de repouso, \(V\) é a magnitude da velocidade em respeito ao ar, e sua notação vetorial é reproduzida em \(\boldsymbol{V}\).
 
-A força de sustentação \(\boldsymbol{F}_{L}\) age perpendicularmente à voo, tendendo a ajustar o projetil na direção da ponta da ogiva \cite{McCoy2012}. Devido à forte relação com o ângulo de ataque, sem ângulo de ataque não existe sustentação, sendo esta força responsável por grande parte do deslocamento lateral. A equação \ref{eq:liftMPM} explica as variáveis envolvidas no processo.
+A força de sustentação \(\boldsymbol{F}_{L}\) age perpendicularmente ao voo, tendendo a ajustar o projetil na direção da ponta da ogiva \cite{McCoy2012}. Esta força é responsável por grande parte do deslocamento lateral. A equação \ref{eq:liftMPM} explica as variáveis envolvidas no processo.
 
 \begin{equation}
     \label{eq:liftMPM}
     \boldsymbol{F}_{L} = \frac{\pi \rho D^{2} f_{L}}{8} (C_{L_{\alpha}}+C_{L_{\alpha^3}}\alpha_{e}^{2})V^{2} \boldsymbol{\alpha_{e}}
 \end{equation}
-
-Onde \(C_{L\alpha}\) é o coeficiente de sustentação derivado do ângulo de ataque, \(C_{L\alpha^{3}}\) é o coeficiente de sustentação derivado do cubo do ângulo de ataque, \(f_{L}\) é o fator de sustentação e \(\boldsymbol{\alpha_{e}}\) é o vetor guinada de repouso.
+%
+onde \(C_{L\alpha}\) é o coeficiente de sustentação derivado do ângulo de ataque, \(C_{L\alpha^{3}}\) é o coeficiente de sustentação derivado do cubo do ângulo de ataque, \(f_{L}\) é o fator de sustentação e \(\boldsymbol{\alpha_{e}}\) é o vetor guinada de repouso.
 
 A força de \textit{Magnus} \(\boldsymbol{F}_{M}\) é produzida através da diferença de pressão em lados opostos de corpos em rotação. Neste caso, a viscosidade do ar interage com a superfície girando, contudo esta força interfere muito menos no sistema, se comparada ao arrasto e ao efeito gravitacional. A equação \ref{eq:magnusMPM} expressa esse efeito: 
 
@@ -89,16 +89,18 @@ f(Inj) =\begin{cases}
             1, & \text{caso contrário}
 		 \end{cases}
 \end{equation}
-
-Onde \(C_{D_{BB}}\) é o coeficiente da força produzida na base do equipamento, \(i_{BB}\) é o fator de ajuste do arrasto em função do ângulo de elevação, \(f(Inj)\) é a função que descreve a razão de injeção da queima do propelente com o valor ótimo de injeção \(Inj_{0}\). Contudo, existe um valor ótimo de injeção devido a muitos fatores, seja pela geometria do armamento, pelo design da geradora de gás que produz o efeito BB ou pelas condições de tiro. A definição mais enxuta do parâmetro de injeção é entendê-la como uma relação adimensional entre o fluxo de massa dos gases resultante da queima do propelente e o escoamento do ar externo que percorre o corpo.
+%
+onde \(C_{D_{BB}}\) é o coeficiente da força de arrasto produzida na base do equipamento; a variável \(i_{BB}\) é o fator de ajuste do arrasto em função do ângulo de elevação; \(f(Inj)\) é a função do parâmetro de injeção, \(Inj\), cujo objetivo é relacionar este parâmetro com o valor ótimo de injeção, \(Inj_{0}\) \cite{DAVENAS1993329}.
 
 Em razão do movimento referencial e das condições atmosféricas que geram velocidades de vento, \(\boldsymbol{W}\), há uma diferença de velocidades em respeito ao solo, \(\boldsymbol{U}_{solo}\), e ao ar, \(\boldsymbol{V}\). Essa relação pode ser vista nas equações \ref{eq:Vvel} e \ref{eq:Vmag}.
 
 \begin{gather}
     \label{eq:Vvel}
     V = |\boldsymbol{U}_{solo} - \boldsymbol{W}| \\ 
+    \nonumber\\
     \label{eq:Vmag}
     V = \sqrt{(U_{x_{solo}}-W_{x})^2 + (U_{y_{solo}}-W_{y})^2 + (U_{z_{solo}}-W_{z})^2} \\
+    \nonumber\\
     \label{eq:Uvec}
     \boldsymbol{U}_{solo} = \begin{bmatrix} 
         U_{disp}cos(QE)cos(az) \\
