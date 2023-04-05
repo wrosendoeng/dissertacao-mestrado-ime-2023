@@ -305,7 +305,7 @@ Acerca do coeficiente de arrasto, nota-se na \autoref{fig:comparacao-basebleed-v
 
 Assume-se o regime M = \num{2,0} para os campos de pressão e velocidade da \autoref{fig:influencia-vazao-bb}. Conforme aumenta a vazão, há um acréscimo de pressão, como pode ser visto tanto na \autoref{fig:contorno-pressao-base-bb-1500K-vazao0030} e \autoref{fig:contorno-pressao-base-bb-1500K-vazao0060}. Os contornos de velocidade, presentes na \autoref{fig:contorno-velocidade-bb-1500K-vazao0030} e \autoref{fig:contorno-velocidade-bb-1500K-vazao0060}, apresentam o deslocamento da região primária de recirculação, além do aumento da esteira turbulenta. Pelas Figuras \ref{fig:corrente-velocidade-bb-1500K-vazao0030} e \ref{fig:corrente-velocidade-bb-1500K-vazao0060} se observam as linhas de corrente para a velocidade. Em ambos os casos há a formação da recirculação anular, mas essa zona secundária de recirculação é mais proeminente conforme o aumento da vazão. A \autoref{fig:corrente-velocidade-bb-1500K-vazao0060} apresenta com maior clareza um valor mais próximo do que se espera ocorrer na região, dentro do que a literatura demonstrou em trabalhos anteriores \cite{Sahu1985,Andersson1976}.
 
-\subsection{Influência da temperatura}
+\subsection{Influência da temperatura} \label{subsec:resultados-com-basebleed-temperatura}
 
 A \autoref{fig:comparacao-basebleed-temperatura} demonstra a influência da temperatura nos resultados obtidos nas simulações computacionais com o efeito \textit{Base Bleed} na base do projetil, assumindo que a vazão mássica de saída dos gases foi fixada em \qty{0,060}{\kilogram\per\second} e o diâmetro de saída do \textit{Base Bleed} escolhido foi de \qty{2}{\polegada} \(\left(\phi_{BB} = \qty{50,8}{\millimetre}\right)\). A escolha por esse diâmetro de saída se deve aos melhores resultados produzidos na \autoref{subsec:resultados-com-basebleed-diametros}. A escolha pela vazão de \qty{0,060}{\kilogram\per\second} se baseou nos resultados das \autoref{subsec:resultados-com-basebleed-vazao}, em que a redução do coeficiente de arrasto foi mais significativo quando comparado ao projetil inerte.
 
@@ -368,21 +368,20 @@ A \autoref{fig:influencia-RANS-bb} apresenta o comportamento do \textit{Base Ble
 
 \section{Resultados da Trajetória}\label{sec:resultados-trajetoria}
 
-A partir do momento em que há disponibilidade das condições citadas na \autoref{subsec:implementacao-trajetoria} e dos resultados das simulações de fluidodinâmica computacional, pode-se calcular a predição da trajetória MPMTM. Apesar do suporte do PRODAS® e das informações obtidas, algumas premissas foram consideradas a partir dos trabalhos \cite{Rosendo2020,ThallyoENCIT2022,RosendoCILAMCE2022}:
+Os resultados encontrados nas simulações CFD do efeito \textit{Base Bleed} sobre a força de arrasto permitiram a implementação do modelo de trajetória com 4 graus de liberdade, o MPMTM. As curvas de arrasto escolhidas foram extraídas da \autoref{subsec:resultados-com-basebleed-diametros} por apresentarem diferenças que evidenciam a influência da vazão e do diâmetro de saída. Soma-se a esse fato os dados disponíveis na \autoref{subsec:implementacao-trajetoria} e do suporte do PRODAS® (ver Apêndices \ref{apend:apendice-sembb} a \ref{apend:apendice-combb-2pol-006}) para obter todas as informações necessárias, embora algumas premissas foram consideradas a partir de trabalhos anteriores \cite{Rosendo2020,ThallyoENCIT2022,DAVENAS1993329,RosendoCILAMCE2022}:
 
 \begin{itemize}
     \item Lançamento do Rio de Janeiro, logo a latitude é de \ang{23};
-    \item Desprezando efeitos da umidade sobre a atmosfera;
-    \item Sem velocidade do vento, assim como citado por \citeauthor{Rosendo2020};
-    \item Vazão mássica do propelente é constante durante o acionamento do BB;
-    \item Parâmetro ótimo de injeção \(\left(Inj_{0}\right)\) igual a \num{5e-3}, tal como descrito por \citeauthor{DAVENAS1993329};
-    \item Assumir que os coeficientes aerodinâmicos são linearmente dependentes do ângulo \(\alpha_{e}\)
+    \item Os efeitos da umidade sobre a atmosfera são desprezíveis;
+    \item Sem velocidade do vento;
+    \item Vazão mássica do \textit{Base Bleed} é constante durante o acionamento;
+    \item Parâmetro ótimo de injeção \(\left(Inj_{0}\right)\) igual a \num{5e-3};
+    \item Os coeficientes aerodinâmicos são linearmente dependentes do ângulo \(\alpha_{e}\).
 \end{itemize}
 
-Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores.
-De acordo com o STANAG 4355 \cite{stanag4355}, é necessário obter os fatores \(f_{L}\) e \(i_{BB}\) tais que se adequem à cada simulação realizada. 
+Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores. O mesmo também vale para os fatores \(f_{L}\) e \(i_{BB}\), que servem de ajustes às equações \ref{eq:liftMPM} e \ref{eq:baseMPM}.
 
-Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados obtidos de acordo com as condições de um projetil \qty{155}{\millimetre} a velocidade de disparo v = \qty{207,3}{\metre\per\second} foram analisadas tanto em função do PRODAS® quanto para uma tabela de tiro. Como pode ser visto na \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107}, os erros foram superiores a \qty{1}{\percent} somente para trajetórias de grandes elevações, em que a literatura prevê inconsistências \cite{McCoy2012,Carlucci2018}.
+A \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} serve para validar o código desenvolvido em MATLAB®. Os resultados de alcance foram comparados com o PRODAS® e uma tabela de tiro de acordo com ângulos de elevação. Os erros superiores a \qty{1}{\percent} foram vistos em grandes elevações (QE \(\approx\) \qty{1200}{\milliradian}), donde se espera inconsistências~\cite{McCoy2012,Carlucci2018}.
 
 \begin{table}[ht]
     \centering
@@ -413,15 +412,18 @@ Para averiguar a qualidade do código desenvolvido em MATLAB®, os resultados ob
         \hline
     \end{tabular}%
     }
-    \label{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107}
+    \label{tab:tabela-validacao-PRODAS-e-tabelaS-de-tiro-M107}
     \fonte{Autor.}
 \end{table}
 
-A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-711mil-comparacao} esclarece os resultados das predições de voo para uma munição a \(QE = \qty{711}{\milliradian}\) e \(v = \qty{878}{\metre\per\second}\) (M = \num{2,58} a nível do mar). Os valores máximos de alcance horizontal e apogeu são expostos na  \autoref{tab:tabela-711mil-bb-1e2pol}.
+A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-711mil-comparacao} esclarece os resultados das predições de voo para uma munição a QE = \qty{711}{\milliradian} e v = \qty{878}{\metre\per\second} (M = \num{2,58} a nível do mar). Os valores máximos de alcance horizontal e apogeu são expostos na  \autoref{tab:tabela-711mil-bb-1e2pol}.
 
-Ao observar as predições de trajetória expostos na \autoref{fig:trajetoria-711mil-comparacao} percebe-se que o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\) provoca uma redução de desempenho, se comparado aos resultados do projetil inerte. Por outro lado, o aumento do diâmetro de \num{25,4} para \qty{50,8}{\millimetre} resulta no aumento de desempenho, seja no deslocamento horizontal ou vertical. Além disso, verifica-se que há uma relação direta entre a vazão mássica e a extensão de alcance da munição.
-
-Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução de desempenho ao implementar o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\).  A \autoref{tab:tabela-800mil-bb-1e2pol} descreve os resultados. Para o alcance a maior diferença ficou em aproximadamente \qty{1312}{\metre}, enquanto que para o apogeu o menor valor foi de \qty{202,7}{\metre}.
+\begin{figure}[!htpb]
+	\centering
+    \includegraphics[width=0.75\textwidth]{foto1-qe711mil-comparacao.eps}
+    \caption[QE = \qty{711}{\milliradian}]{QE = \qty{711}{\milliradian}}
+    \label{fig:trajetoria-711mil-comparacao}
+\end{figure}
 
 \begin{table}[!htpb]
     \centering
@@ -442,12 +444,18 @@ Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução 
     \fonte{Autor.}   
 \end{table}
 
+Ao observar as predições de trajetória expostos na \autoref{fig:trajetoria-711mil-comparacao} percebe-se que o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\) provoca uma redução de desempenho, se comparado aos resultados do projetil inerte. Por outro lado, o aumento do diâmetro de \num{25,4} para \qty{50,8}{\millimetre} resulta no aumento de desempenho, seja no deslocamento horizontal ou vertical. Além disso, verifica-se que há uma relação direta entre a vazão mássica e a extensão de alcance da munição.
+
+Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução de desempenho ao implementar o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\).  A \autoref{tab:tabela-800mil-bb-1e2pol} descreve os resultados. Para o alcance a maior diferença ficou em aproximadamente \qty{1312}{\metre}, enquanto que para o apogeu o menor valor foi de \qty{202,7}{\metre}.
+
 \begin{figure}[!htpb]
 	\centering
-    \includegraphics[width=0.75\textwidth]{foto1-qe711mil-comparacao.eps}
-    \caption[QE = \qty{711}{\milliradian}]{QE = \qty{711}{\milliradian}}
-    \label{fig:trajetoria-711mil-comparacao}
+    \includegraphics[width=0.75\textwidth]{foto2-qe800mil-comparacao.eps}
+    \caption[QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)]{QE = \qty{800}{\milliradian}}
+    \label{fig:trajetoria-800mil-comparacao}
 \end{figure}
+
+Ao verificar os resultados do projetil com \(\phi_{BB} = \qty{50,8}{\millimetre}\), percebe-se um aumento do alcance e do apogeu, atestado nas Tabelas \ref{tab:tabela-711mil-bb-1e2pol} e \ref{tab:tabela-800mil-bb-1e2pol}. Há o aumento do alcance de quase \qty{6}{\percent} quando \(\Dot{m}_{BB} = \qty{0,060}{\kilogram\per\second}\). Ao aumentar o ângulo de elevação para \qty{800}{\milliradian} houve um incremento percentual sobre o alcance e o apogeu também, como demonstrado na \autoref{fig:trajetoria-800mil-comparacao}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-1e2pol} com a \autoref{tab:tabela-800mil-bb-1e2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
 
 \begin{table}[!htpb]
     \centering
@@ -468,11 +476,3 @@ Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução 
     \fonte{Autor.}
 \end{table}
 
-\begin{figure}[!htpb]
-	\centering
-    \includegraphics[width=0.75\textwidth]{foto2-qe800mil-comparacao.eps}
-    \caption[QE = \qty{800}{\milliradian} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\)]{QE = \qty{800}{\milliradian}}
-    \label{fig:trajetoria-800mil-comparacao}
-\end{figure}
-
-Ao verificar os resultados do projetil com \(\phi_{BB} = \qty{50,8}{\millimetre}\), percebe-se um aumento do alcance e do apogeu, atestado nas Tabelas \ref{tab:tabela-711mil-bb-1e2pol} e \ref{tab:tabela-800mil-bb-1e2pol}. Há o aumento do alcance de quase \qty{6}{\percent} quando \(\Dot{m}_{BB} = \qty{0,060}{\kilogram\per\second}\). Ao aumentar o ângulo de elevação para \qty{800}{\milliradian} houve um incremento percentual sobre o alcance e o apogeu também, como demonstrado na \autoref{fig:trajetoria-800mil-comparacao}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-1e2pol} com a \autoref{tab:tabela-800mil-bb-1e2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
