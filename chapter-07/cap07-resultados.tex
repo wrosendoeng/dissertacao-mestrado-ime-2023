@@ -3,7 +3,7 @@
 
 O programa FLUENT 2021R2 \cite{fluent2021ansys} foi utilizado para implementação de malha, resolução do sistema de equações algébricas e pós-processamento das simulações de dinâmica dos fluidos computacional. As simulações CFD analisam as configurações com e sem \textit{Base Bleed} (ativo e inerte, respectivamente), assim como três parâmetros do projetil ativo: o diâmetro de saída; a vazão mássica e a temperatura. Também é verificada a diferença entre os resultados das análises feitas a partir de dois modelos RANS de turbulência (Spalart-Allmaras e SST \(\kappa-\omega\)) para a munição ativa numa configuração específica.
 
-Os valores encontrados para as curvas de arrasto em função do número de Mach foram acoplados a um código desenvolvido em MATLAB® para fazer a predição de trajetória. A validação do programa foi desenvolvida pela comparação dos resultados de uma tabela de tiro para uma munição \qty{155}{\millimetre} e do PRODAS®. Deste ponto em diante foram elaboradas trajetórias com dois ângulos de elevação (\qtylist{711;800}{\milliradian}) para averiguar a extensão de alcance para um projetil ativo sobre o caso inerte.
+Os valores encontrados para as curvas de arrasto em função do número de Mach foram acoplados a um código desenvolvido em MATLAB® para fazer a predição de trajetória. A validação do programa foi realizada pela comparação dos resultados de uma tabela de tiro para uma munição \qty{155}{\millimetre} e do PRODAS®. Deste ponto em diante foram elaboradas trajetórias com dois ângulos de elevação (\qtylist{40;45}{\degree} ou \qtylist{711;800}{\milliradian}, respectivamente) para averiguar a extensão de alcance para um projetil ativo sobre o caso inerte.
 
 \section{Projetil inerte (sem \textit{Base Bleed})}\label{sec:resultados-sem-basebleed}
 
@@ -16,7 +16,9 @@ Os valores encontrados para o coeficiente de arrasto aerodinâmico em um projeti
 	\label{fig:cd-sembasebleed-comparacao}
 \end{figure}
 
-Através do que é demonstrado na \autoref{fig:cd-sembasebleed-comparacao}, percebe-se que a curva referente a malha com \num{380000} elementos (380K) se aproximou consideravelmente da referência. Por esta razão, a implementação do domínio computacional serviu para validação geral das próximas análises com a tecnologia \textit{Base Bleed} como condição de contorno.
+Através do que é demonstrado na \autoref{fig:cd-sembasebleed-comparacao}, percebe-se que a curva referente a malha com \num{380000} elementos (380K) se aproximou consideravelmente da referência. A malha com \num{187000} elementos apresentou uma mudança na curva de arrasto em M > 2,0 porque o esquema de interpolação \textit{upwind} de 1\textsuperscript{a} ordem foi utilizado em razão da divergência dos resultados ao implementar o esquema de 2\textsuperscript{a} ordem. Por esta razão, a implementação do domínio computacional serviu para validação geral das próximas análises com a tecnologia \textit{Base Bleed} como condição de contorno.
+
+Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, observou-se a onda de choque da \autoref{fig:contornos-pressao-velocidade-sembasebleed}, que é causada pela velocidade supersônica (M = 2,0). Além disso, há a separação da fluido com a parede na região a jusante do projetil, onde existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. A \autoref{fig:campos-pressao-velocidade-base-sembasebleed} apresenta o detalhamento na região de maior interesse, pois a tecnologia \textit{Base Bleed} procura reduzir o arrasto total através da diminuição do arrasto causado pela pressão atmosférica na base do projetil. Na \autoref{fig:corrente-velocidade-base-sembasebleed} se atesta as linhas de corrente para verificar a formação da bolha de recirculação, enquanto que o campo de pressão é relatado na \autoref{fig:contorno-pressao-base-sembasebleed} para analisar a influência do gradiente existente sob a região.
 
 \begin{figure}[!htpb]
 	\centering
@@ -27,36 +29,48 @@ Através do que é demonstrado na \autoref{fig:cd-sembasebleed-comparacao}, perc
         \label{fig:contorno-pressao-sembasebleed}
     \end{subfigure}
     \hfill
-	\begin{subfigure}[b]{0.47\textwidth}
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering    
+        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-INERTE.png}
+        \caption{Contornos de pressão - base do projetil}
+        \label{fig:contorno-pressao-base-sembasebleed}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.47\textwidth}
         \centering
         \includegraphics[height=5cm,width=\textwidth]{contorno-velocidade.png}
         \caption{Contornos de velocidade}
         \label{fig:contorno-velocidade-sembasebleed}
     \end{subfigure}
+    \hfill    
+    \begin{subfigure}[b]{0.47\textwidth}
+        \centering
+        \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-off.png}
+        \caption{Linhas de corrente de velocidade}
+        \label{fig:corrente-velocidade-base-sembasebleed}    
+    \end{subfigure}
 	\caption{Projetil sob regime de velocidade igual a Mach \num{2}}
 	\label{fig:contornos-pressao-velocidade-sembasebleed}
 \end{figure}
 
-Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, observou-se a onda de choque da \autoref{fig:contornos-pressao-velocidade-sembasebleed}, que é causada pela velocidade supersônica (M = \num{2,0}). Além disso, há a separação da fluido com a parede na região a jusante do projetil, onde existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. A \autoref{fig:campos-pressao-velocidade-base-sembasebleed} apresenta o detalhamento na região de maior interesse, pois a tecnologia \textit{Base Bleed} procura reduzir o arrasto total através da diminuição do arrasto causado pela pressão atmosférica na base do projetil. Na \autoref{fig:corrente-velocidade-base-sembasebleed} se atesta as linhas de corrente para verificar a formação da bolha de recirculação, enquanto que o campo de pressão é relatado na \autoref{fig:contorno-pressao-base-sembasebleed} para analisar a influência do gradiente existente sob a região.
-
-\begin{figure}[!htpb]
-    \centering
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering
-        \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-off.png}
-        \caption{Linhas de corrente de velocidade para a base do projetil}
-        \label{fig:corrente-velocidade-base-sembasebleed}    
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.47\textwidth}
-        \centering    
-        \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-INERTE.png}
-        \caption{Contornos de pressão para a base do projetil}
-        \label{fig:contorno-pressao-base-sembasebleed}
-    \end{subfigure}
-    \caption{Campos de pressão e velocidade para a base do projetil sob M = \num{2,0}}
-    \label{fig:campos-pressao-velocidade-base-sembasebleed}
-\end{figure}
+% \begin{figure}[!htpb]
+%     \centering
+%     \begin{subfigure}[b]{0.47\textwidth}
+%         \centering
+%         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-off.png}
+%         \caption{Linhas de corrente de velocidade para a base do projetil}
+%         \label{fig:corrente-velocidade-base-sembasebleed}    
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.47\textwidth}
+%         \centering    
+%         \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-INERTE.png}
+%         \caption{Contornos de pressão para a base do projetil}
+%         \label{fig:contorno-pressao-base-sembasebleed}
+%     \end{subfigure}
+%     \caption{Campos de pressão e velocidade para a base do projetil sob M = \num{2,0}}
+%     \label{fig:campos-pressao-velocidade-base-sembasebleed}
+% \end{figure}
 
 \section{Projetil ativo (com \textit{Base Bleed})}\label{sec:resultados-com-basebleed}
 
@@ -80,14 +94,14 @@ Número de elementos & \(C_{D}\) (M = \num{1}) & Diferença & \(C_{D}\) (M = \nu
 \fonte{Autor.}
 \end{table}
 
-Para o projetil em velocidade sônica (M = \num{1,0}), a maior diferença percentual ficou na ordem de \qty{0,85}{\percent}, enquanto que para M = \num{2,0} o maior desvio foi de aproximadamente \qty{0,7}{\percent}, o que denota quase nenhuma diferença nos resultados mesmo aumentando significativamente o número de elementos. Desta forma, o custo computacional para resolver a malha com \num{380000} elementos é suficiente para predizer o coeficiente de arrasto.
+Para o projetil em velocidade sônica (M = \num{1,0}), a maior diferença percentual ficou na ordem de \qty{0,85}{\percent}, enquanto que para M = \num{2,0} o maior desvio foi de aproximadamente \qty{0,7}{\percent}, o que denota quase nenhuma diferença nos resultados mesmo aumentando significativamente o número de elementos. Desta forma, o custo computacional para resolver a malha com \num{380000} elementos é suficiente para predizer o coeficiente de arrasto também para o projetil ativo.
 
 \subsection{Influência no diâmetro de saída do \textit{Base Bleed}} \label{subsec:resultados-com-basebleed-diametros}
 
 \begin{figure}[!htpb]
 	\centering
     \includegraphics[width=0.5\textwidth]{cd-combasebleed-diametro-1e2pol.eps}
-	\caption{Influência do diâmetro do \textit{Base Bleed}}
+	\caption{Influência do diâmetro e da vazão mássica do \textit{Base Bleed}}
 	\label{fig:comparacao-bb-diametro-1e2pol}
 \end{figure}
 
@@ -95,7 +109,7 @@ O primeiro parâmetro estudado foi o aumento do diâmetro da saída do bocal (ve
 
 Para entender o acréscimo de arrasto nos projetis com diâmetro de saída do \textit{Base Bleed} iguais a \qty{1}{\polegada} \(\left(\phi_{BB} = \qty{25,4}{\millimetre}\right)\), a \autoref{fig:influencia-diametro-vazao-1pol} apresenta os campos de pressão e velocidade sob regime M = \num{2,0}. As Figuras \ref{fig:contorno-pressao-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-bb-1pol-vazao0030} demonstram o campo de pressão no entorno do projetil, cujos valores mínimos encontram-se na base do projetil. As Figuras \ref{fig:contorno-pressao-base-bb-1pol-vazao0015} e \ref{fig:contorno-pressao-base-bb-1pol-vazao0030} apresentam o campo de pressão a jusante do projetil, onde se relata valores mais baixos para a pressão na \autoref{fig:contorno-pressao-base-bb-1pol-vazao0030}.  
 
-As consequências desses campos de pressão podem ser observados nos campos de velocidades, representados ao longo de toda a munição (ver Figuras \ref{fig:contorno-velocidade-bb-1pol-vazao0015} e \ref{fig:contorno-velocidade-bb-1pol-vazao0030}) e especificamente para a base deste projetil (ver Figuras \ref{fig:corrente-velocidade-bb-1pol-vazao0015} e \ref{fig:corrente-velocidade-bb-1pol-vazao0030}). As linhas de corrente permitem concluir que formaram-se zonas de recirculação, como as previstas por \cite{Sahu1985}, mas a Figura~\ref{fig:corrente-velocidade-bb-1pol-vazao0030} apresenta uma concentração de momento linear localizada na saída dos gases. Deste fato conclui-se que há necessidade de controlar a injeção de gases de acordo com o diâmetro de saída, ou seja, um valor ideal para a vazão mássica para reduzir o arrasto, assim como foi estabelecido em referências anteriores \cite{Andersson1976,Gunners1988}. 
+As consequências desses campos de pressão podem ser observados nos campos de velocidades, representados ao longo de toda a munição (ver Figuras \ref{fig:contorno-velocidade-bb-1pol-vazao0015} e \ref{fig:contorno-velocidade-bb-1pol-vazao0030}) e especificamente para a base deste projetil (ver Figuras \ref{fig:corrente-velocidade-bb-1pol-vazao0015} e \ref{fig:corrente-velocidade-bb-1pol-vazao0030}). As linhas de corrente permitem concluir que formaram-se zonas de recirculação, como as previstas por \cite{Sahu1985}, mas a Figura~\ref{fig:corrente-velocidade-bb-1pol-vazao0030} apresenta uma concentração de movimento linear localizada na saída dos gases. Deste fato conclui-se que há necessidade de controlar a injeção de gases de acordo com o diâmetro de saída, ou seja, um valor ideal para a vazão mássica para reduzir o arrasto, assim como foi estabelecido em referências anteriores \cite{Andersson1976,Gunners1988}. 
 
 %%% EFEITO DIAMETRO - TEMPERATURA DE 2306K PARA O BASE BLEED 1 POLEGADA
 
@@ -381,7 +395,7 @@ Os resultados encontrados nas simulações CFD do efeito \textit{Base Bleed} sob
 
 Pela última condição assumida, logo \(C_{L\alpha^{3}}\) e \(C_{m\alpha^{3}}\) não interferem significativamente as equações \ref{eq:liftMPM} e \ref{eq:guinada-de-reposicao}. Embora a ignição seja um tópico relevante no desempenho, a dificuldade em modelar adequadamente à realidade tornou o assunto um caso a ser tratado em estudos posteriores. O mesmo também vale para os fatores \(f_{L}\) e \(i_{BB}\), que servem de ajustes às equações \ref{eq:liftMPM} e \ref{eq:baseMPM}.
 
-A \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} serve para validar o código desenvolvido em MATLAB®. Os resultados de alcance foram comparados com o PRODAS® e uma tabela de tiro de acordo com ângulos de elevação. Os erros superiores a \qty{1}{\percent} foram vistos em grandes elevações (QE \(\approx\) \qty{1200}{\milliradian}), donde se espera inconsistências~\cite{McCoy2012,Carlucci2018}.
+A \autoref{tab:tabela-validacao-PRODAS-e-tabelas-de-tiro-M107} serve para validar o código desenvolvido em MATLAB®. Os resultados de alcance foram comparados com o PRODAS® e uma tabela de tiro de acordo com ângulos de elevação. Os erros superiores a \qty{1}{\percent} foram vistos em grandes elevações (QE \(\approx\) \qty{1200}{\milliradian}), donde se espera inconsistências~\cite{McCoy2012,Carlucci2018}.
 
 \begin{table}[ht]
     \centering
@@ -412,11 +426,11 @@ A \autoref{tab:tabela-validacao-PRODAS-e-tabela-de-tiro-M107} serve para validar
         \hline
     \end{tabular}%
     }
-    \label{tab:tabela-validacao-PRODAS-e-tabelaS-de-tiro-M107}
+    \label{tab:tabela-validacao-PRODAS-e-tabelas-de-tiro-M107}
     \fonte{Autor.}
 \end{table}
 
-A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-711mil-comparacao} esclarece os resultados das predições de voo para uma munição a QE = \qty{711}{\milliradian} e v = \qty{878}{\metre\per\second} (M = \num{2,58} a nível do mar). Os valores máximos de alcance horizontal e apogeu são expostos na  \autoref{tab:tabela-711mil-bb-1e2pol}.
+A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os alcances obtidos em simulações computacionais. A \autoref{fig:trajetoria-711mil-comparacao} esclarece os resultados das predições de voo para uma munição a QE = \qty{711}{\milliradian} e v = \qty{878}{\metre\per\second} (M = \num{2,58} a nível do mar). Os valores máximos de alcance horizontal e flecha são expostos na  \autoref{tab:tabela-711mil-bb-1e2pol}.
 
 \begin{figure}[!htpb]
 	\centering
@@ -431,7 +445,7 @@ A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os
     \vspace{0.5cm}
     \begin{tabular}{c|c|c|c|c|c}
         \hline
-        Diâmetro \textit{Base Bleed} & Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
+        Diâmetro \textit{Base Bleed} & Vazão Mássica & Alcance & Aumento & Flecha & Aumento \\
         \hline
         Inerte & \qty{0}{\kilogram\per\second} & \qty{23922,2}{\metre} & -- & \qty{7256,8}{\metre} & -- \\ 
         \multirow{2}{*}{\qty{25,4}{\millimetre}} & \qty{0,015}{\kilogram\per\second} & \qty{22647,8}{\metre} & \qty{-5,3}{\percent} & \qty{7145,0}{\metre} & \qty{-1,5}{\percent} \\
@@ -446,7 +460,7 @@ A metodologia para provar a eficiência do \textit{Base Bleed} foi demonstrar os
 
 Ao observar as predições de trajetória expostos na \autoref{fig:trajetoria-711mil-comparacao} percebe-se que o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\) provoca uma redução de desempenho, se comparado aos resultados do projetil inerte. Por outro lado, o aumento do diâmetro de \num{25,4} para \qty{50,8}{\millimetre} resulta no aumento de desempenho, seja no deslocamento horizontal ou vertical. Além disso, verifica-se que há uma relação direta entre a vazão mássica e a extensão de alcance da munição.
 
-Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução de desempenho ao implementar o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\).  A \autoref{tab:tabela-800mil-bb-1e2pol} descreve os resultados. Para o alcance a maior diferença ficou em aproximadamente \qty{1312}{\metre}, enquanto que para o apogeu o menor valor foi de \qty{202,7}{\metre}.
+Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução de desempenho ao implementar o \textit{Base Bleed} com \(\phi_{BB} = \qty{25,4}{\millimetre}\).  A \autoref{tab:tabela-800mil-bb-1e2pol} descreve os resultados. Para o alcance a maior diferença ficou em aproximadamente \qty{1312}{\metre}, enquanto que para a flecha o menor valor foi de \qty{202,7}{\metre}.
 
 \begin{figure}[!htpb]
 	\centering
@@ -455,7 +469,7 @@ Acerca da \autoref{fig:trajetoria-800mil-comparacao}, também há uma redução 
     \label{fig:trajetoria-800mil-comparacao}
 \end{figure}
 
-Ao verificar os resultados do projetil com \(\phi_{BB} = \qty{50,8}{\millimetre}\), percebe-se um aumento do alcance e do apogeu, atestado nas Tabelas \ref{tab:tabela-711mil-bb-1e2pol} e \ref{tab:tabela-800mil-bb-1e2pol}. Há o aumento do alcance de quase \qty{6}{\percent} quando \(\Dot{m}_{BB} = \qty{0,060}{\kilogram\per\second}\). Ao aumentar o ângulo de elevação para \qty{800}{\milliradian} houve um incremento percentual sobre o alcance e o apogeu também, como demonstrado na \autoref{fig:trajetoria-800mil-comparacao}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-1e2pol} com a \autoref{tab:tabela-800mil-bb-1e2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
+Ao verificar os resultados do projetil com \(\phi_{BB} = \qty{50,8}{\millimetre}\), percebe-se um aumento do alcance e do apogeu, atestado nas Tabelas \ref{tab:tabela-711mil-bb-1e2pol} e \ref{tab:tabela-800mil-bb-1e2pol}. Há o aumento do alcance de quase \qty{6}{\percent} quando \(\Dot{m}_{BB} = \qty{0,060}{\kilogram\per\second}\). Ao aumentar o ângulo de elevação para \qty{800}{\milliradian} houve um incremento percentual sobre o alcance e a flecha também, como demonstrado na \autoref{fig:trajetoria-800mil-comparacao}. Os resultados seguiram a mesma ordem de crescimento do deslocamento, quando se compara a \autoref{tab:tabela-711mil-bb-1e2pol} com a \autoref{tab:tabela-800mil-bb-1e2pol}. De qualquer forma, o diâmetro de saída do bocal tem forte influência na balística externa do projetil.
 
 \begin{table}[!htpb]
     \centering
@@ -463,7 +477,7 @@ Ao verificar os resultados do projetil com \(\phi_{BB} = \qty{50,8}{\millimetre}
     \vspace{0.5cm}
     \begin{tabular}{c|c|c|c|c|c}
         \hline
-        Diâmetro \textit{Base Bleed} & Vazão Mássica & Alcance & Aumento & Apogeu & Aumento \\
+        Diâmetro \textit{Base Bleed} & Vazão Mássica & Alcance & Aumento & Flecha & Aumento \\
         \hline
         Inerte & \qty{0}{\kilogram\per\second} & \qty{24429,5}{\metre} & -- & \qty{8638,6}{\metre} & -- \\ 
         \multirow{2}{*}{\qty{25,4}{\millimetre}} & \qty{0,015}{\kilogram\per\second} & \qty{23117,9}{\metre} & \qty{-5,4}{\percent} & \qty{8493,6}{\metre} & \qty{-1,7}{\percent} \\

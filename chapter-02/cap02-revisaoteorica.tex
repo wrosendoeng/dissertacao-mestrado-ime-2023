@@ -12,7 +12,7 @@ Para entender o conceito de compressibilidade, \citeauthor{anderson_modern_2002}
 
 Sob regime de altas velocidades, o gradiente de pressão \(\left(dp\right)\) costuma ser elevado, donde se conclui que a variação da densidade é elevada, portanto não pode ser desprezada. Como os gases possuem alta compressibilidade \(\left(\beta\right)\), os valores moderados a altos de variação da pressão resultam em consideráveis mudanças de densidade, tanto que esses fluidos são comumente tratados como compressíveis.
 
-Os fundamentos dos escoamentos compressíveis são vastos para a engenharia, muito aplicados em problemas de aerodinâmica e propulsão, como é o caso do presente trabalho. Para entender os regimes de voo nos quais o projetil é submetido, deve-se considerar os três principais campos de velocidades do fluxo de ar externo: subsônico, transônico e supersônico. Todos eles dependem da propriedade termodinâmica do gás conhecida como velocidade do som ao escoamento livre \(\left(a_{\infty}\right)\), cuja relação com a velocidade do escoamento livre \(\left(U_{\infty}\right)\) é chamada de Número de Mach (M), como visto na equação \ref{eq:macheq}
+Os fundamentos dos escoamentos compressíveis são vastos para a engenharia, muito aplicados em problemas de aerodinâmica e propulsão, como é o caso do presente trabalho. Para entender os regimes de voo nos quais o projetil é submetido, deve-se considerar os três principais campos de velocidades do fluxo de ar externo: subsônico, transônico e supersônico. Todos eles dependem da propriedade termodinâmica do gás conhecida como velocidade do som no escoamento livre \(\left(a_{\infty}\right)\), cuja relação com a velocidade do escoamento livre \(\left(U_{\infty}\right)\) é chamada de Número de Mach (M), como visto na equação \ref{eq:macheq}
 
 \begin{equation} \label{eq:macheq}
     M = \frac{U_\infty}{a_\infty}
@@ -25,7 +25,7 @@ O regime transônico \num{0,8} \(\leq\) M \(\leq\) \num{1,2} é uma situação p
 \begin{figure}[!ht]
 	\centering
     \includegraphics[width=0.5\textwidth]{foto01-dali2018b.png}
-	\caption[Coeficiente de Arrasto versus Mach para o projetil com \textit{Base Bleed} pelas simulações CFD usando os modelos SST \(\kappa-\omega\), Transição \(\kappa-\kappa l-\kappa-\omega\) e RSM e comparando com resultados semi-empíricos.]{Coeficiente de Arrasto versus Mach para o projetil com \textit{Base Bleed} pelas simulações CFD usando os modelos SST \(\kappa-\omega\), Transição \(\kappa-\kappa l-\kappa-\omega\) e RSM e comparando com resultados semi-empíricos \cite{Dali2018b}.}
+	\caption[Coeficiente de Arrasto versus Mach para o projetil 122mm com \textit{Base Bleed} pelas simulações CFD usando os modelos SST \(\kappa-\omega\), Transição \(\kappa-\kappa l-\kappa-\omega\) e RSM e comparando com resultados semi-empíricos.]{Coeficiente de Arrasto versus Mach para o projetil 122mm com \textit{Base Bleed} pelas simulações CFD usando os modelos SST \(\kappa-\omega\), Transição \(\kappa-\kappa l-\kappa-\omega\) e RSM e comparando com resultados semi-empíricos \cite{Dali2018b}.}
 	\label{fig:dali2018b}
 \end{figure}
 
@@ -35,7 +35,7 @@ Há outras formas de classificar os escoamentos, por exemplo, a partir da viscos
 
 \section{Equações de Governo}
 
-Neste presente trabalho, as equações de Navier-Stokes são resolvidas para um fluido compressível e em regime estacionário, logo as propriedades não variam em função do tempo. Elas servem como pré-requisito para compreender o comportamento do fluido. Em todos os casos, as formulações são obtidas a partir do equilíbrio sobre um volume de controle. Para um fluido newtoniano atuando como um gás ideal, as equações de Navier-Stokes são dadas a seguir.
+Neste presente trabalho, as equações de governo são resolvidas para um fluido compressível e em regime estacionário, logo as propriedades não variam em função do tempo. Elas servem como pré-requisito para compreender o comportamento do fluido. Em todos os casos, as formulações são obtidas a partir do equilíbrio sobre um volume de controle. Para um fluido newtoniano atuando como um gás ideal, as equações de governo são dadas a seguir.
 
 \subsection{Conservação de massa}
 
@@ -48,9 +48,9 @@ O princípio da conservação de massa indica que, na ausência de fontes e sumi
 
 A equação acima considera o efeito da compressibilidade, fenômeno presente no problema a ser estudado nesta pesquisa.
 
-\subsection{Conservação do momento linear}
+\subsection{Conservação do movimento linear}
 
-O princípio da conservação do momento linear indica que, na ausência de forças externas atuando sobre um corpo, o corpo retém seu momento, ou seja, o produto da massa pelo vetor velocidade. Em suma, a conservação de momento linear só é modificada na presença de uma força líquida, causada por forças de corpo e de superfície. Na forma conservativa, a conservação do momento linear é dada pela equação \ref{eq:gov-momento} \cite{Moukalled2015, Wilcox2006}
+O princípio da conservação do movimento linear indica que, na ausência de forças externas atuando sobre um corpo, o corpo retém seu momento, ou seja, o produto da massa pelo vetor velocidade. Em suma, a conservação de movimento linearsó é modificada na presença de uma força líquida, causada por forças de corpo e de superfície. Na forma conservativa, a conservação do movimento linearé dada pela equação \ref{eq:gov-momento} \cite{Moukalled2015, Wilcox2006}
 
 \begin{equation}
     \label{eq:gov-momento}
@@ -64,7 +64,7 @@ Considerando que o fluido é newtoniano, o tensor das tensões viscosas \(\left(
     t_{ij} = \mu \left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) + \zeta\frac{\partial u_k}{\partial x_k}\delta_{ij}
 \end{equation}
 %
-onde \(\mu\) é a viscosidade dinâmica e \(\zeta\) é o coeficiente de dilatação da viscosidade para um gás monoatômico \(\left(\zeta = -(2/3)\mu\right)\) e \(\delta_{ij}\) é o delta de Kronecker. 
+onde \(\mu\) é a viscosidade dinâmica e \(\zeta\) é o coeficiente de viscosidade de expansão para um gás monoatômico \(\left(\zeta = -(2/3)\mu\right)\) e \(\delta_{ij}\) é o delta de Kronecker. 
 
 \subsection{Conservação de energia}
 

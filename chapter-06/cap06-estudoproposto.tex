@@ -43,24 +43,21 @@ Ao observar a equação \ref{eq:parametro-injecao}, o maior desafio é obter val
 
 Como requisitos das simulações de dinâmica dos fluidos computacional, a temperatura e velocidade de saída dos gases (em função do número de Mach) são computadas com base na pressão da câmara e da garganta (\(p_{c}\) e \(p_{t}\), respectivamente), que é obtida a partir das equações \ref{eq:temperatura-BB} e \ref{eq:velocidade-mach-BB} \cite{Gil2020}:
 
-\begin{align}
+\begin{equation}
     \label{eq:temperatura-BB}
-    T_{t} = T_{c}\left(\frac{p_t}{p_c}\right)^{(\gamma - 1)/\gamma} \\
+    T_{t} = T_{c}\left(\frac{p_t}{p_c}\right)^{(\gamma - 1)/\gamma}
+\end{equation}
+
+\medskip
+
+\begin{equation}
     \label{eq:velocidade-mach-BB}
     M_{t} = \sqrt{\frac{2}{\gamma - 1}\left[\left(\frac{p_c}{p_t}\right)^{(\gamma - 1)/\gamma}-1\right]}
-\end{align}
-
-% Como o fluido de trabalho é considerado ideal, portanto a vazão mássica pode ser calculada através da equação \ref{eq:vazao-massica-BB} \cite{Gil2020}:
-
-% \begin{equation}\label{eq:vazao-massica-BB}
-%     \Dot{m}_{BB} = \rho_{t}A_{t}V_{t} = \frac{p_{c}A_{t}}{\sqrt{\gamma RT_{c}}}\sqrt{\frac{2\gamma^{2}}{\gamma - 1}\left(\frac{p_{t}}{p_{c}}\right)^{2/\gamma}\left[1-\left(\frac{p_{t}}{p_{c}}\right)^{(\gamma-1)/\gamma}\right]}
-% \end{equation}
-%
-% Sejam $p_{c}$ e $p_{t}$ as pressões na câmara geradora de gás e na saída do sistema, respectivamente. Os termos $\rho_{t}$, $V_{t}$ e $A_{t}$ se referem a densidade, a velocidade e a área na saída do \textit{Base Bleed}. 
+\end{equation}
 
 \section{Geração de malha}\label{sec:geracao-malha}
 
-Para conseguir formular a abordagem numérica exigida pelo método de volumes finitos, a ser empregado no presente trabalho, foi necessário construir um domínio computacional através de uma malha. Com a evolução do projeto, foi construída um domínio axissimétrico em formato de "C", assim como visto em trabalhos anteriores \cite{Mahmoud2009,nicolas-perez_accuracy_2017}. Uma vantagem desse tipo de malha é permitir simplificações nas fronteiras para imposição das condições de contorno, além de reduzir o custo computacional para obtenção de resultados.
+Para conseguir formular a abordagem numérica exigida pelo método de volumes finitos, a ser empregado no presente trabalho, foi necessário construir um domínio computacional através de uma malha. Com a evolução do projeto, foi construído um domínio axissimétrico em formato de "C", assim como visto em trabalhos anteriores \cite{Mahmoud2009,nicolas-perez_accuracy_2017}. Uma vantagem desse tipo de malha é permitir simplificações nas fronteiras para imposição das condições de contorno, além de reduzir o custo computacional para obtenção de resultados.
 
 \begin{figure}[!ht]
 	\centering
@@ -69,7 +66,7 @@ Para conseguir formular a abordagem numérica exigida pelo método de volumes fi
 	\label{fig12:autor-malha}
 \end{figure}
 
-E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para obter convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de \qty{1}{\polegada} (\qty{25,4}{\millimetre}).
+E com o domínio preparado, foram feitas 2 malhas (vide Tabela \ref{tab:tabela-malhas-inicial}), objetivando comparar valores com referências já citadas \cite{Mahmoud2009} para verificar convergência dos resultados. Na direção vertical, a maior distância ao projetil é da ordem de 20 vezes o próprio calibre, enquanto que na direção horizontal à montante a maior distância ao projetil ficou na ordem de 5 vezes o comprimento longitudinal e à jusante na ordem de 15 vezes o valor do comprimento de referência da munição. Em ambos os casos, o diâmetro de saída do bocal do sistema \textit{Base Bleed} é de \qty{1}{\polegada} (\qty{25,4}{\millimetre}).
 
 \begin{table}[ht]
 \centering
@@ -144,11 +141,11 @@ Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 & Vazão nº 2\\
 
 No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento, donde se fez necessário tratar o fluido (ar) como gás ideal. A pressão $p = \qty{101,325}{\kilo\pascal}$ e a temperatura $T = \qty{288,15}{\kelvin}$ são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
 
-A região denominada "Saída do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na figura anterior representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram prescritas para descobrir a velocidade do escoamento nesta região. A pressão na saída dos gases BB é definida como sendo igual a pressão no "Escoamento livre"{} $\left(\nabla p = 0\right)$.
+A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na \autoref{fig12:autor-malha} representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram prescritas para descobrir a velocidade do escoamento nesta região. O gradiente de pressão da entrada dos gases do \textit{Base Bleed} é considerado nulo em referencial ao "Escoamento livre"{} \(\left(\nabla p = 0\right)\).
 
-No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que são iguais aos valores determinados no "Escoamento livre"{} $\left(\nabla p = 0, \nabla T = 0\right)$.
+No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que são iguais aos valores determinados no "Escoamento livre"{} \(\left(\nabla p = 0, \nabla T = 0\right)\).
 
-A região da parede, que descreve o contorno do formato do projetil, possui a condição de não-deslizamento, portanto $V_{parede} = 0$ para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. A parede é considerada como adiabática, logo o fluxo de temperatura nesta região é nulo $\left(\nabla T = 0\right)$.
+A região da parede, que descreve o contorno do formato do projetil, possui a condição de não-deslizamento, portanto \(V_{parede} = 0\) para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. A parede é considerada como adiabática, logo o fluxo de temperatura nesta região é nulo \(\left(\nabla T = 0\right)\).
 
 Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a \qty{0,7}{\metre}, aproximadamente o valor do comprimento do projetil.
 
@@ -160,7 +157,7 @@ Para lidar com a compressibilidade existente no regime de voo desta munição es
 
 Para o cálculo dos gradientes foi utilizado o método dos Mínimos Quadrados e o esquema de avaliação do fluxo optou pelo ROE-FDS, pois demonstra bons resultados para problemas com escoamentos compressíveis \cite{nicolas-perez_accuracy_2017}. Para a resolução do sistema de equações lineares foi utilizada a técnica \textit{multigrid} \cite{Hutchinson1986}.
 
-O problema foi considerado convergido quando todos os resíduos forem menores que $\num{1e-6}$. Um software comercial foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
+O problema foi considerado convergido quando todos os resíduos forem menores que \(\num{1e-6}\). O software ANSYS 2021R2 foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
 
 \section{Implementação do Modelo de Trajetória}\label{subsec:implementacao-trajetoria}
 
@@ -272,7 +269,7 @@ Velocidade angular da Terra & \qty[exponent-mode=scientific]{7,292e-5}{\radian\p
 
 Com o suporte do PRODAS®, os coeficientes aerodinâmicos foram calculados usando formulações semi-empíricas a partir das propriedades geométricas e de massa do projétil sem alcance estendido. Essas variáveis adimensionais são funções do número de Mach e da guinada de repouso.
 
-A norma compara os coeficientes aerodinâmicos da STANAG 4355 com o que a NACA (Comitê Nacional para Aconselhamento da Aeronáutica) oferece \cite{stanag4355}. Os coeficientes obtidos no PRODAS® são calculados em função dos eixos da munição, enquanto que os valores adimensionais de interesse são em respeito ao vetor de velocidade do centro de massa. Logo, são feitas algumas transformações rotacionais para se chegar nos coeficientes desejados:
+A norma STANAG 4355 compara os coeficientes aerodinâmicos obtidos com o que a NACA (Comitê Nacional para Aconselhamento da Aeronáutica) oferece \cite{stanag4355}. Os coeficientes obtidos no PRODAS® são calculados em função dos eixos da munição, enquanto que os valores adimensionais de interesse são em respeito ao vetor de velocidade do centro de massa. Logo, são feitas algumas transformações rotacionais para se chegar nos coeficientes desejados:
 
 \begin{equation}
 \begin{aligned}

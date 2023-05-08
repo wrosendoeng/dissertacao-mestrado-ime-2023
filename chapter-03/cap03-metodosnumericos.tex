@@ -13,7 +13,7 @@ As equações de Navier-Stokes podem ser escritas em variadas formas, a depender
 
 Sobre os métodos de solução, depende do problema. Seja um problema estacionário ou transiente, os problemas são altamente não-lineares, logo exige um processo iterativo para resolver. Em regra, o tipo de malha e o número de nós envolvidos é o que define a escolha pelo método mais eficiente. Por último, considera-se o critério de convergência, pois é com eles que se analisa as iterações para o método de solução escolhido. 
 
-As mais importantes propriedades são consideradas a partir do que é proposto por \citeauthor{Ferziger&Peric2020}:
+As mais importantes propriedades são consideradas \cite{Ferziger&Peric2020}:
 
 \begin{enumerate}
     \item Consistência: para o método ser considerado \textit{consistente}, o valor do erro de truncamento causado pela diferença entre a equação exata e a algébrica deve ser igual a zero. Para uma simulação ter consistência, é preciso se atentar com erros na mesma ordem de precisão, principalmente termos convectivos para altos números de Reynolds ou para os termos difusivos quando se tem baixos números de Reynolds. Contudo, essa propriedade não garante que a solução das equações discretas serão as soluções exatas no limite do intervalo de tempo. Para isso ocorrer, a solução deve ser \textit{estável}.
@@ -35,7 +35,7 @@ Como pré-requisitos para transformar as equações analíticas em algébricas, 
 \begin{enumerate}
     \item Diferenças Finitas: é o método mais antigo e simples para resolver equações diferenciais parciais (EDP). O ponto inicial é colocar as equações de conservação na forma diferencial, sendo o domínio da solução uma malha discretizada, onde cada nó representa os valores aproximados das funções discretas obtidas através das EDP. É mais aplicado em geometrias simples, onde a malha é estruturada. A maior desvantagem é que a conservação das propriedades não é garantida, exceto se houve um tratamento específico.
     \item Volumes Finitos: neste método a malha se divide em um número finito de volumes de controle (VC) de tal forma que as propriedades do fluido são calculadas para a superfície do VC através de interpolações nos nós. Esta técnica pode ser aplicada em qualquer tipo de malha, inclusive em geometrias complexas. Esta abordagem de discretização é conservativa por natureza, sendo uma razão pela qual as análises em CFD a tornam mais usual. Sua principal desvantagem é aplicar métodos acima de segunda ordem em malhas 3D, pois exige interpolação, diferenciação e integração.
-    \item Elementos Finitos: apesar de haver uma similaridade com o método de volumes finitos, suas equações são multiplicadas por funções peso antes de serem integradas num domínio. No casos mais simples, a função é aproximada por uma função linear. O resultado desta técnica é gerar um sistema de equações algébricas não-lineares. É ótimo para lidar com geometrias arbitrárias. Sua principal deficiência está na resolução de malhas não-estruturadas, pois a construção de matrizes do sistema não-linear não se forma a permitir aplicações de técnicas para solucionar.
+    \item Elementos Finitos: apesar de haver uma similaridade com o método de volumes finitos, suas equações são multiplicadas por funções peso antes de serem integradas num domínio. No casos mais simples, a função é aproximada por uma função linear. O resultado desta técnica é gerar um sistema de equações algébricas não-lineares. É ótimo para lidar com geometrias arbitrárias. Sua principal deficiência está na resolução de malhas não-estruturadas, pois a construção de matrizes do sistema não-linear não se permite aplicações de técnicas para solucionar.
 \end{enumerate}
 
 \section{Método dos Volumes Finitos}
@@ -67,16 +67,16 @@ onde o subscrito \(nb\) se refere às células vizinhas, enquanto que \(a_{p}\) 
 
 \subsection{Algoritmos de resolução de escoamentos}
 
-Há dois tipos principais de algoritmos para resolver as equações de transporte de continuidade, momento linear e energia:
+Há dois tipos principais de algoritmos para resolver as equações de transporte de continuidade, movimento linear e energia:
 
 \begin{enumerate}
     \item \textit{Pressure-based}: costumam atender os casos de baixas velocidades e em regime incompressível.
     \item \textit{Density-based}: costumam ser usados em escoamentos compressíveis a altas velocidades.
 \end{enumerate}
 
-% Em ambos os casos, o campo de velocidade é obtido pela equação de momento linear. No algoritmo , enquanto que no algoritmo \textit{density-based} resolve a densidade pela conservação de massa e o campo de pressão a partir de uma equação de estado. Por outro lado, na abordagem \textit{pressure-based}, o campo de pressão é resolvido por uma equação para a pressão ou o ajuste desta propriedade que é obtida pela manipulação das equações de continuidade e momento linear.
+% Em ambos os casos, o campo de velocidade é obtido pela equação de movimento linear. No algoritmo , enquanto que no algoritmo \textit{density-based} resolve a densidade pela conservação de massa e o campo de pressão a partir de uma equação de estado. Por outro lado, na abordagem \textit{pressure-based}, o campo de pressão é resolvido por uma equação para a pressão ou o ajuste desta propriedade que é obtida pela manipulação das equações de continuidade e movimento linear.
 
-Apesar de suas aplicações usuais, os métodos já foram reformulados para atender uma variedade de condições além do que foram propostos a fazer. Seja qual for o algoritmo, serão resolvidas as equações de transporte para a continuidade e momento linear, assim como para a energia, turbulência e espécies químicas, se houver necessidade. A maneira que as equações de governo são linearizadas podem resultar numa forma “implícita” ou “explícita”. Tal explicação é demonstrada a seguir:
+Apesar de suas aplicações usuais, os métodos já foram reformulados para atender uma variedade de condições além do que foram propostos a fazer. Seja qual for o algoritmo, serão resolvidas as equações de transporte para a continuidade e movimento linear, assim como para a energia, turbulência e espécies químicas, se houver necessidade. A maneira que as equações de governo são linearizadas podem resultar numa forma “implícita” ou “explícita”. Tal explicação é demonstrada a seguir:
 
 \begin{enumerate}
     \item Implícita: para uma dada variável, o valor a descobrir em cada volume de controle \(\forall\) é computado usando uma relação que inclui os valores existentes e desconhecidos das células vizinhas. Portanto, cada valor desejado aparecerá em mais de uma equação algébrica, onde essas equações devem ser resolvidas simultaneamente para obter o valores desconhecidos.
@@ -85,7 +85,7 @@ Apesar de suas aplicações usuais, os métodos já foram reformulados para aten
 
 \subsubsection{Algoritmo \textit{Pressure-Based}}
 
-O campo de velocidade é calculado após resolver uma equação para o campo de pressão (ou o ajuste da pressão). Essa equação é derivada das conservações de massa e momento linear, onde o campo de velocidade também satisfaz a continuidade \cite{Chorin68}. Por ser um sistema altamente não-linear e acoplado, necessita-se de um processo iterativo até atingir a convergência da solução. Há duas possibilidades de algoritmos \textit{pressure-based}, como mostra a Figura \ref{flux:pressure-based}. 
+O campo de velocidade é calculado após resolver uma equação para o campo de pressão (ou o ajuste da pressão). Essa equação é derivada das conservações de massa e movimento linear, onde o campo de velocidade também satisfaz a continuidade \cite{Chorin68}. Por ser um sistema altamente não-linear e acoplado, necessita-se de um processo iterativo até atingir a convergência da solução. Há duas possibilidades de algoritmos \textit{pressure-based}, como mostra a Figura \ref{flux:pressure-based}. 
 
 \begin{figure}[!ht]
 \centering
@@ -223,7 +223,7 @@ Não
 Sim
 \end{minipage}};
 % Text Node
-\draw (404.6,130.25) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {Resolver juntas as equa-\\ções de momento linear e\\ continuidade baseados\\ na pressão};
+\draw (404.6,130.25) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {Resolver juntas as equa-\\ções de movimento linear e\\ continuidade baseados\\ na pressão};
 % Text Node
 \draw (96,28.75) node [anchor=north west][inner sep=0.75pt]  [font=\small] [align=left] {Algoritmo segregado};
 % Text Node
@@ -252,7 +252,7 @@ As comparações da \autoref{tab:esquema-comparacao-segregado-acoplado} são bas
 
 \subsubsection{Algoritmo \textit{Density-Based}}
 
-Esse algoritmo busca resolver as equações de transporte para a conservação da massa, momento linear e energia simultaneamente \cite{Weiss1995PreconditioningAT, Weiss1997IMPLICITSO, Weiss1999ImplicitSO}. As equações adicionais de turbulência e espécies químicas (se houver) são resolvidas sequencialmente. Assim como o método \textit{pressure-based}, há a necessidade de se resolver iterativamente até atingir a convergência da solução. Na Figura \ref{fig:density-based} é apresentado o fluxograma para a compreensão do método \cite{fluent2021ansys}.
+Esse algoritmo busca resolver as equações de transporte para a conservação da massa, movimento linear e energia simultaneamente \cite{Weiss1995PreconditioningAT, Weiss1997IMPLICITSO, Weiss1999ImplicitSO}. As equações adicionais de turbulência e espécies químicas (se houver) são resolvidas sequencialmente. Assim como o método \textit{pressure-based}, há a necessidade de se resolver iterativamente até atingir a convergência da solução. Na Figura \ref{fig:density-based} é apresentado o fluxograma para a compreensão do método \cite{fluent2021ansys}.
 
 \begin{figure}[!ht]
     \centering
@@ -297,7 +297,7 @@ Esse algoritmo busca resolver as equações de transporte para a conservação d
 % Text Node
 \draw (234,63.5) node [anchor=north west][inner sep=0.75pt]  [font=\footnotesize] [align=left] {Atualizar as propriedades};
 % Text Node
-\draw (234,116) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {Resolver simultaneamente\\as equações de conservação \\de massa, momento linear,\\ energia e espécies químicas};
+\draw (234,116) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {Resolver simultaneamente\\as equações de conservação \\de massa, movimento linear,\\ energia e espécies químicas};
 % Text Node
 \draw (234,214.92) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize] [align=left] {Resolver as equações das\\propriedades escalares};
 % Text Node
@@ -374,7 +374,7 @@ Quando uma precisão de segunda ordem é requerida, utiliza-se uma interpolaçã
     \phi_f = \phi_{c_0} + \left(\nabla\phi\cdot\overrightarrow{r}\right)_{up}
 \end{equation}
 
-Considere \(\phi_{c_0}\) o valor de \(\phi\) na célula central. A equação \ref{eq:esquema-upwind-2aordem} assume que o escoamento está na direção positiva, já que a face analisada está a leste, conforme o subscrito \(e\) surge na variável \(\phi\). Na direção negativa, o gradiente da função ainda terá a mesma magnitude, porém com sentido inverso. Para definir o gradiente de \(\phi\), \(\nabla\phi\), assume-se neste projeto que foi usado o método dos mínimos quadrados \cite{Anderson1994}, cuja proposta é admitir que a solução varia linearmente. Conforme demonstrado na equação \ref{eq:gradiente-minimos-quadrados}, espera-se que calcule os valores para as células \(c0\) e \(ci\) (ver \autoref{fig:minimos-quadrados})
+Considere \(\phi_{c_0}\) o valor de \(\phi\) na célula central. A equação \ref{eq:esquema-upwind-2aordem} assume que o escoamento está na direção positiva, já que a face analisada está a leste, logo o subscrito \(e\) surge na variável \(\phi_e\) na equação~\ref{eq}. Na direção negativa, o gradiente da função ainda terá a mesma magnitude, porém com sentido inverso. Para definir o gradiente de \(\phi\), \(\nabla\phi\), assume-se neste projeto que foi usado o método dos mínimos quadrados \cite{Anderson1994}, cuja proposta é admitir que a solução varia linearmente. Conforme demonstrado na equação \ref{eq:gradiente-minimos-quadrados}, espera-se que calcule os valores para as células \(c0\) e \(ci\) (ver \autoref{fig:minimos-quadrados})
 
 \begin{equation} \label{eq:gradiente-minimos-quadrados}
     \left(\nabla\phi\right)_{c0} \cdot \Delta r_i = \phi_{ci} - \phi_{c0}
@@ -441,7 +441,7 @@ A equação \ref{eq:multigrid-corrigido} serve para corrigir o operador original
 
 \subsection{Critério de Convergência}
 
-O resíduo normalizado \(R^{\phi}\) da equação de transporte discretizada é calculado a partir da equação \ref{eq:forma-linear-mvf} \cite{Rezende2009}:
+O resíduo normalizado \(R^{\phi}\) da equação de transporte discretizada é calculado a partir da equação~\ref{eq:criterio-convergencia} \cite{Rezende2009}:
 
 \begin{equation}
 \label{eq:criterio-convergencia}

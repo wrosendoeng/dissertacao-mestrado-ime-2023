@@ -17,7 +17,7 @@ Por exigir menor esforço computacional e apresentar resultados satisfatórios, 
 
 \section{O problema de fechamento}
 
-A turbulência se deve às flutuações aleatórias presentes nas propriedades dos fluidos, por isso os modelos RANS necessitam de uma abordagem estatística \cite{Wilcox2006}. Os procedimentos formulados por Osbourne Reynolds ainda no século XIX são aplicados até os dias atuais no estudo de fluidos, principalmente nos casos incompressíveis. A estatística aplica permite criar um número suficiente de equações para resolver os problemas existentes nas equações de governo.
+A turbulência se deve às flutuações aleatórias presentes nas propriedades dos fluidos, por isso os modelos RANS necessitam de uma abordagem estatística \cite{Wilcox2006}. Os procedimentos formulados por Osbourne Reynolds ainda no século XIX são aplicados até os dias atuais no estudo de fluidos, principalmente nos casos incompressíveis. A estatística aplicada permite criar um número suficiente de equações para resolver os problemas existentes nas equações de governo.
 
 \subsection{Decomposição de Reynolds}
 
@@ -259,7 +259,7 @@ Em altos números de Reynolds, as propriedades envolvidas possuem suas equaçõe
     \label{eq:transporte-eps-modelo-k-epsilon}
 \end{gather}
 	
-As constantes utilizadas neste método foram obtidas a partir de testes experimentais \cite{JONES1972301}, cujos resultados são apresentados na \autoref{tab:tabela-constantes-k-epsilon}. Embora o presente modelo seja bastante utilizado e obtenha bons resultados para escoamentos simples com gradientes de pressão considerados pequenos, o mesmo possui imprecisão nas proximidades de gradientes de pressão adversos \cite{Wilcox1988ReassessmentOT}. Portanto, há uma restrição deste modelo para análise de camada limite, a não ser que aplique um tratamento para amortecer a viscosidade turbulenta nessa região em que o número de Reynolds é baixo \cite{Moukalled2015}.
+As constantes utilizadas neste método foram obtidas a partir de testes experimentais \cite{JONES1972301}, cujos resultados são apresentados na \autoref{tab:tabela-constantes-k-epsilon}. Embora o presente modelo seja bastante utilizado e obtenha bons resultados para escoamentos simples com gradientes de pressão considerados pequenos, o mesmo possui imprecisão nas proximidades de gradientes de pressão adversos \cite{Wilcox1988ReassessmentOT}. Portanto, há uma restrição deste modelo para análise de camada limite, a não ser que seja aplicado um tratamento para amortecer a viscosidade turbulenta nessa região em que o número de Reynolds é baixo \cite{Moukalled2015}.
 
 \begin{table}[ht]
 \centering
