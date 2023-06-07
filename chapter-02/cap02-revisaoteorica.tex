@@ -48,9 +48,9 @@ O princípio da conservação de massa indica que, na ausência de fontes e sumi
 
 A equação acima considera o efeito da compressibilidade, fenômeno presente no problema a ser estudado nesta pesquisa.
 
-\subsection{Conservação do movimento linear}
+\subsection{Conservação da quantidade de movimento linear}
 
-O princípio da conservação do movimento linear indica que, na ausência de forças externas atuando sobre um corpo, o corpo retém seu momento, ou seja, o produto da massa pelo vetor velocidade. Em suma, a conservação de movimento linearsó é modificada na presença de uma força líquida, causada por forças de corpo e de superfície. Na forma conservativa, a conservação do movimento linearé dada pela equação \ref{eq:gov-momento} \cite{Moukalled2015, Wilcox2006}
+O princípio da conservação do movimento linear indica que, na ausência de forças externas atuando sobre um corpo, o corpo retém seu momento, ou seja, o produto da massa pelo vetor velocidade. Em suma, a conservação de movimento linearsó é modificada na presença de uma força líquida, causada por forças de corpo e de superfície. Na forma conservativa, a conservação da quantidade de movimento linear é dada pela equação \ref{eq:gov-momento} \cite{Moukalled2015, Wilcox2006}
 
 \begin{equation}
     \label{eq:gov-momento}
@@ -61,7 +61,12 @@ Considerando que o fluido é newtoniano, o tensor das tensões viscosas \(\left(
 
 \begin{equation}
     \label{eq:tau-newtoniano}
-    t_{ij} = \mu \left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) + \zeta\frac{\partial u_k}{\partial x_k}\delta_{ij}
+    t_{ij} = \mu \left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i} \right) + \zeta\frac{\partial u_k}{\partial x_k}\delta_{ij} \hspace{1cm} 
+    \delta_{ij} =
+        \begin{cases}
+            1,& \text{ se $i = j$} \\
+            0,& \text{ se $i \neq j$}
+        \end{cases}
 \end{equation}
 %
 onde \(\mu\) é a viscosidade dinâmica e \(\zeta\) é o coeficiente de viscosidade de expansão para um gás monoatômico \(\left(\zeta = -(2/3)\mu\right)\) e \(\delta_{ij}\) é o delta de Kronecker. 

@@ -3,7 +3,7 @@
 
 O programa FLUENT 2021R2 \cite{fluent2021ansys} foi utilizado para implementação de malha, resolução do sistema de equações algébricas e pós-processamento das simulações de dinâmica dos fluidos computacional. As simulações CFD analisam as configurações com e sem \textit{Base Bleed} (ativo e inerte, respectivamente), assim como três parâmetros do projetil ativo: o diâmetro de saída; a vazão mássica e a temperatura. Também é verificada a diferença entre os resultados das análises feitas a partir de dois modelos RANS de turbulência (Spalart-Allmaras e SST \(\kappa-\omega\)) para a munição ativa numa configuração específica.
 
-Os valores encontrados para as curvas de arrasto em função do número de Mach foram acoplados a um código desenvolvido em MATLAB® para fazer a predição de trajetória. A validação do programa foi realizada pela comparação dos resultados de uma tabela de tiro para uma munição \qty{155}{\millimetre} e do PRODAS®. Deste ponto em diante foram elaboradas trajetórias com dois ângulos de elevação (\qtylist{40;45}{\degree} ou \qtylist{711;800}{\milliradian}, respectivamente) para averiguar a extensão de alcance para um projetil ativo sobre o caso inerte.
+Os valores encontrados para as curvas de arrasto em função do número de Mach foram acoplados a um código desenvolvido em MATLAB para fazer a predição de trajetória. A validação do programa foi realizada pela comparação dos resultados de uma tabela de tiro para uma munição \qty{155}{\millimetre} e do PRODAS. Deste ponto em diante foram elaboradas trajetórias com dois ângulos de elevação (\qtylist{40;45}{\degree} ou \qtylist{711;800}{\milliradian}, respectivamente) para averiguar a extensão de alcance para um projetil ativo sobre o caso inerte.
 
 \section{Projetil inerte (sem \textit{Base Bleed})}\label{sec:resultados-sem-basebleed}
 
@@ -16,9 +16,9 @@ Os valores encontrados para o coeficiente de arrasto aerodinâmico em um projeti
 	\label{fig:cd-sembasebleed-comparacao}
 \end{figure}
 
-Através do que é demonstrado na \autoref{fig:cd-sembasebleed-comparacao}, percebe-se que a curva referente a malha com \num{380000} elementos (380K) se aproximou consideravelmente da referência. A malha com \num{187000} elementos apresentou uma mudança na curva de arrasto em M > 2,0 porque o esquema de interpolação \textit{upwind} de 1\textsuperscript{a} ordem foi utilizado em razão da divergência dos resultados ao implementar o esquema de 2\textsuperscript{a} ordem. Por esta razão, a implementação do domínio computacional serviu para validação geral das próximas análises com a tecnologia \textit{Base Bleed} como condição de contorno.
+Através do que é demonstrado na \autoref{fig:cd-sembasebleed-comparacao}, percebe-se que a curva referente a malha com \num{380000} elementos (380K) se aproximou consideravelmente da referência, com erros de 3\%, no máximo. A malha com \num{187000} elementos apresentou uma mudança na curva de arrasto em M > 2,0 porque o esquema de interpolação \textit{upwind} de 1\textsuperscript{a} ordem foi utilizado em razão da divergência dos resultados ao implementar o esquema de 2\textsuperscript{a} ordem. Por esta razão, a implementação do domínio computacional serviu para verificação numérica das próximas análises com a tecnologia \textit{Base Bleed} como condição de contorno.
 
-Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, observou-se a onda de choque da \autoref{fig:contornos-pressao-velocidade-sembasebleed}, que é causada pela velocidade supersônica (M = 2,0). Além disso, há a separação da fluido com a parede na região a jusante do projetil, onde existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. A \autoref{fig:campos-pressao-velocidade-base-sembasebleed} apresenta o detalhamento na região de maior interesse, pois a tecnologia \textit{Base Bleed} procura reduzir o arrasto total através da diminuição do arrasto causado pela pressão atmosférica na base do projetil. Na \autoref{fig:corrente-velocidade-base-sembasebleed} se atesta as linhas de corrente para verificar a formação da bolha de recirculação, enquanto que o campo de pressão é relatado na \autoref{fig:contorno-pressao-base-sembasebleed} para analisar a influência do gradiente existente sob a região.
+Antes de iniciar as validações das simulações que incluem o efeito \textit{Base Bleed}, observou-se a onda de choque da \autoref{fig:contornos-pressao-velocidade-sembasebleed}, que é causada pela velocidade supersônica (M = 2,0). Além disso, há a separação da fluido com a parede na região a jusante do projetil, onde existe uma região de baixa pressão na base da munição cuja consequência é criar uma região de recirculação com baixas velocidades. A \autoref{fig:contornos-pressao-velocidade-sembasebleed} também apresenta o detalhamento na região de maior interesse, pois a tecnologia \textit{Base Bleed} procura reduzir o arrasto total através da diminuição do arrasto causado pela pressão atmosférica na base do projetil. Na \autoref{fig:corrente-velocidade-base-sembasebleed} se atesta as linhas de corrente para verificar a formação da bolha de recirculação, enquanto que o campo de pressão é relatado na \autoref{fig:contorno-pressao-base-sembasebleed} para analisar a influência do gradiente existente sob a região.
 
 \begin{figure}[!htpb]
 	\centering
@@ -52,25 +52,6 @@ Antes de iniciar as validações das simulações que incluem o efeito \textit{B
 	\caption{Projetil sob regime de velocidade igual a Mach \num{2}}
 	\label{fig:contornos-pressao-velocidade-sembasebleed}
 \end{figure}
-
-% \begin{figure}[!htpb]
-%     \centering
-%     \begin{subfigure}[b]{0.47\textwidth}
-%         \centering
-%         \includegraphics[height=5cm,width=\textwidth]{corrente-velocidade-off.png}
-%         \caption{Linhas de corrente de velocidade para a base do projetil}
-%         \label{fig:corrente-velocidade-base-sembasebleed}    
-%     \end{subfigure}
-%     \hfill
-%     \begin{subfigure}[b]{0.47\textwidth}
-%         \centering    
-%         \includegraphics[height=5cm,width=\textwidth]{coeficientepressao-INERTE.png}
-%         \caption{Contornos de pressão para a base do projetil}
-%         \label{fig:contorno-pressao-base-sembasebleed}
-%     \end{subfigure}
-%     \caption{Campos de pressão e velocidade para a base do projetil sob M = \num{2,0}}
-%     \label{fig:campos-pressao-velocidade-base-sembasebleed}
-% \end{figure}
 
 \section{Projetil ativo (com \textit{Base Bleed})}\label{sec:resultados-com-basebleed}
 

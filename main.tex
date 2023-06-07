@@ -37,6 +37,7 @@
 \usepackage{tabularx}
 \usepackage{ragged2e}
 \usepackage{lscape}
+\usepackage{pdfpages}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{tikz}
@@ -45,6 +46,7 @@
 \usepackage{cancel}
 \usepackage{array}
 \usepackage{amssymb}
+\usepackage{comment}
 \usepackage{gensymb}
 \usepackage{extarrows}
 \usepackage{booktabs}
@@ -128,8 +130,7 @@
     citecolor=black,	% color of links to bibliography
     filecolor=black, % color of file links
     urlcolor=black,
-    bookmarksdepth=4
-}
+    bookmarksdepth==-p098}
 \makeatother
 % % --- 
 % % --- 
@@ -157,7 +158,7 @@
 \setfloatadjustment{quadro}{\centering}
 \counterwithout{quadro}{chapter}
 \renewcommand{\cftquadroname}{\quadroname\space} 
-\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+\renewcommand*{\cftqzzuadroaftersnum}{\hfill--\hfill}
 
 \setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
 % ---
@@ -212,20 +213,21 @@
 % Inserir a ficha bibliografica
 % ---
 
-% \begin{fichacatalografica}
-%     \inputpdf{fig_ficha_catalografica.pdf}
-% \end{fichacatalografica}
+\begin{fichacatalografica}
+\inputpdf{ficha_catalog_Wallace.pdf}
+\end{fichacatalografica}
 
 \imprimirfichacatalografica
+
 % ---
 
 % ---
 % Inserir folha de aprovação
 % ---
 
-% \begin{folhadeaprovacao}
-% \inputpdf{folhadeaprovacao_final.pdf}
-% \end{folhadeaprovacao}
+\begin{folhadeaprovacao}
+\inputpdf{folhadeaprovacao_final.pdf}
+\end{folhadeaprovacao}
 %
 \imprimirfolhadeaprovacao
 % ---

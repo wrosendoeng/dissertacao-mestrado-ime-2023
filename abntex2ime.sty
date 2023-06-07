@@ -222,53 +222,53 @@
     \savegeometry{Mem}
     \newgeometry{top=3cm,bottom=2cm,left=2cm,right=3cm}
     \sffamily
-    \begin{normalsize}
-         \noindent{\copyright\imprimirdata}\\
-        INSTITUTO MILITAR DE ENGENHARIA\\
-        Praça General Tibúrcio, 80 – Praia Vermelha\\
-        Rio de Janeiro – RJ CEP: 22290-270\\
-        \par\noindent
-        Este exemplar é de propriedade do Instituto Militar de Engenharia, que poderá incluí-lo em base de dados, armazenar em computador, microfilmar ou adotar qualquer forma de arquivamento.
-        \par\noindent
-        É permitida a menção, reprodução parcial ou integral e a transmissão entre bibliotecas deste trabalho, sem modificação de seu texto, em qualquer meio que esteja ou venha a ser fixado, para pesquisa acadêmica, comentários e citações, desde que sem finalidade comercial e que seja feita a referência bibliográfica completa.
-        \par\noindent
-        Os conceitos expressos neste trabalho são de responsabilidade do autor e do orientador.
-    \end{normalsize}
-    
-    \vspace*{\fill}
-    
-    \begin{center}
-        \fbox{\begin{minipage}[c][10cm]{13.5cm}
-            \small
-            \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
-                \foreachitem \nome \in \listNomeAutores{
-                    \listSobrenomeAutores[\nomecnt], \nome\ifthenelse{\nomecnt<\listNomeAutoreslen}{;}{.}
-                }\par
-                \hspace{0.5cm}\imprimirtitulo\space / 
-                \foreachitem \nome \in \listNomeAutores{\nome\ \listSobrenomeAutores[\nomecnt]\ifthenelse{\nomecnt<\listNomeAutoreslen}{\ifthenelse{\nomecnt<\number\numexpr\listNomeAutoreslen-1\relax}{, }{\ e}}{.}
-        } --
-                \imprimirlocal, \imprimirdata. \par
-                \hspace{0.5cm}\thelastpage\ f.
-            }\par
-            \vspace{0.5cm}
-            \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
-                Orientador: 
-                \foreachitem \nome \in \listNomeOrientadores{\nome\ \listSobrenomeOrientadores[\nomecnt]\ifthenelse{\nomecnt<\listNomeOrientadoreslen}{\ifthenelse{\nomecnt<\number\numexpr\listNomeOrientadoreslen-1\relax}{, }{\ e }}{.}}
-            }\par
-            \vspace{0.5cm}
-            \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
-                \imprimirtipodocumentonivelestudo\  (\MakeLowercase{\imprimirnivelestudo})~--~\imprimirinstituicao,\ \imprimirprogramaoudepartamento,\ \imprimirdata.
-            }\par
-            \vspace{0.5cm}
-            \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
-                \hspace{0.5cm}
-                \imprimirpalavraschavefichacatalografica
-                \foreachitem \nome \in \listNomeOrientadores{\romannumeral\nomecnt. \listSobrenomeOrientadores[\nomecnt], \nome\ (orient.) }
-                \romannumeral\number\numexpr\listNomeOrientadoreslen+1\relax. Título
-            }
-        \end{minipage}}
-    \end{center}
-    \clearpage
+        \begin{normalsize}
+            \noindent{\copyright\imprimirdata}\\
+           INSTITUTO MILITAR DE ENGENHARIA\\
+           Praça General Tibúrcio, 80 – Praia Vermelha\\
+           Rio de Janeiro – RJ CEP: 22290-270\\
+           \par\noindent
+           Este exemplar é de propriedade do Instituto Militar de Engenharia, que poderá incluí-lo em base de dados, armazenar em computador, microfilmar ou adotar qualquer forma de arquivamento.
+           \par\noindent
+           É permitida a menção, reprodução parcial ou integral e a transmissão entre bibliotecas deste trabalho, sem modificação de seu texto, em qualquer meio que esteja ou venha a ser fixado, para pesquisa acadêmica, comentários e citações, desde que sem finalidade comercial e que seja feita a referência bibliográfica completa.
+           \par\noindent
+           Os conceitos expressos neste trabalho são de responsabilidade do autor e do orientador.
+       \end{normalsize}
+       
+       \vspace*{\fill}
+       
+       \begin{center}
+           \fbox{\begin{minipage}[c][10cm]{13.5cm}
+               \small
+               \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
+                   \foreachitem \nome \in \listNomeAutores{
+                       \listSobrenomeAutores[\nomecnt], \nome\ifthenelse{\nomecnt<\listNomeAutoreslen}{;}{.}
+                   }\par
+                   \hspace{0.5cm}\imprimirtitulo\space / 
+                   \foreachitem \nome \in \listNomeAutores{\nome\ \listSobrenomeAutores[\nomecnt]\ifthenelse{\nomecnt<\listNomeAutoreslen}{\ifthenelse{\nomecnt<\number\numexpr\listNomeAutoreslen-1\relax}{, }{\ e}}{.}
+           } --
+                   \imprimirlocal, \imprimirdata. \par
+                   \hspace{0.5cm}\thelastpage\ f.
+               }\par
+               \vspace{0.5cm}
+               \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
+                   Orientador: 
+                   \foreachitem \nome \in \listNomeOrientadores{\nome\ \listSobrenomeOrientadores[\nomecnt]\ifthenelse{\nomecnt<\listNomeOrientadoreslen}{\ifthenelse{\nomecnt<\number\numexpr\listNomeOrientadoreslen-1\relax}{, }{\ e }}{.}}
+               }\par
+               \vspace{0.5cm}
+               \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
+                   \imprimirtipodocumentonivelestudo\  (\MakeLowercase{\imprimirnivelestudo})~--~\imprimirinstituicao,\ \imprimirprogramaoudepartamento,\ \imprimirdata.
+               }\par
+               \vspace{0.5cm}
+               \hspace{0.5cm}\parbox[t]{\textwidth-1cm}{
+                   \hspace{0.5cm}
+                   \imprimirpalavraschavefichacatalografica
+                   \foreachitem \nome \in \listNomeOrientadores{\romannumeral\nomecnt. \listSobrenomeOrientadores[\nomecnt], \nome\ (orient.) }
+                   \romannumeral\number\numexpr\listNomeOrientadoreslen+1\relax. Título
+               }
+           \end{minipage}}
+       \end{center}
+       \clearpage       
     \loadgeometry{Mem}
 \end{fichacatalografica}
 }

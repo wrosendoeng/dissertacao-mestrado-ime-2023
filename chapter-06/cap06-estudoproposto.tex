@@ -27,7 +27,7 @@ A pressão é uma das propriedades de maior interesse do fluido, portanto calcul
     C_P = \frac{p - p_{\infty}}{\frac{1}{2}\rho V^2}
 \end{equation}
 %
-onde $p_{\infty}$ é a pressão do meio livre. Quando os contornos de pressão indicam regiões com $C_{P} > 1$, o escoamento é compressível.
+onde $p_{\infty}$ é a pressão do meio livre. Quando os contornos de pressão indicam regiões com $C_{P} > 1$, o escoamento é compressível \cite{anderson_modern_2002}.
 
 \subsection{Parâmetro de Injeção}
 
@@ -84,7 +84,7 @@ Número da Malha & Quantidade de elementos \\
 \fonte{Autor.}
 \end{table}
 
-A seguir a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a \qty{50,8}{\millimetre} e a temperatura de saída com valor de \qty{2306,15}{\kelvin}. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade era ratificar a suficiência da malha com \num{380000} elementos para obtenção dos resultados finais.
+A seguir, a segunda fase de testes de convergência foi realizada, assumindo que o diâmetro de saída do bocal do sistema BB seja igual a \qty{50,8}{\millimetre} e a temperatura de saída com valor de \qty{2306,15}{\kelvin}. Nesta etapa, foram testadas 4 malhas, de acordo com a Tabela \ref{tab:tabela-malhas-secundaria}, com a finalidade de ratificar a suficiência da malha com \num{380000} elementos para obtenção dos resultados finais.
 
 \begin{table}[ht]
 \centering
@@ -139,35 +139,34 @@ Diâmetro do \textit{Base Bleed} (mm) & Vazão nº1 & Vazão nº 2\\
 
 \section{Condições de Contorno}\label{sec:condicao-contorno}
 
-No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento, donde se fez necessário tratar o fluido (ar) como gás ideal. A pressão $p = \qty{101,325}{\kilo\pascal}$ e a temperatura $T = \qty{288,15}{\kelvin}$ são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
+No local descrito como "Escoamento livre"{} (\textit{far-field}), o conceito por trás dessa condição é definir o meio livre do escoamento, donde se fez necessário tratar o fluido (ar) como gás ideal. A pressão \(p = \qty{101,325}{\kilo\pascal}\) e a temperatura \(T = \qty{288,15}{\kelvin}\) são prescritas de acordo com as condições ambientais para um disparo a nível do mar. A velocidade é prescrita conforme os valores de entrada do escoamento, variando o número de Mach de \numrange{0,4}{3}. 
 
 A região denominada "Entrada do \textit{Base Bleed}"{} (\textit{Base Bleed inlet}) mostrada na \autoref{fig12:autor-malha} representa a entrada de fluxo de gases injetados na base do projetil, onde a velocidade de entrada possui valor apenas na direção axial. A vazão mássica e a temperatura do BB foram prescritas para descobrir a velocidade do escoamento nesta região. O gradiente de pressão da entrada dos gases do \textit{Base Bleed} é considerado nulo em referencial ao "Escoamento livre"{} \(\left(\nabla p = 0\right)\).
 
 No local descrito como "Saída"{} (\textit{outlet}) são prescritas apenas a pressão e a temperatura do contorno, que são iguais aos valores determinados no "Escoamento livre"{} \(\left(\nabla p = 0, \nabla T = 0\right)\).
 
-A região da parede, que descreve o contorno do formato do projetil, possui a condição de não-deslizamento, portanto \(V_{parede} = 0\) para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. A parede é considerada como adiabática, logo o fluxo de temperatura nesta região é nulo \(\left(\nabla T = 0\right)\).
+A região da parede, que descreve o contorno do formato do projetil, possui a condição de não-deslizamento, portanto \(V_{parede} = 0\) para desconsiderar o efeito dissipativo causado pela rugosidade da superfície. A parede é considerada como adiabática, logo o fluxo de calor nesta região é nulo \(\left(\nabla T = 0\right)\).
 
 Há a referência para o eixo de simetria, a fim de se garantir que os cálculos sejam feitos de acordo com o estudo proposto. Em todas as regiões definidas o valor da intensidade de turbulência determinado é de 0\% e o comprimento da escala turbulenta igual a \qty{0,7}{\metre}, aproximadamente o valor do comprimento do projetil.
 
 \section{Método de Resolução das Simulações CFD}\label{sec:metodo-resolucao-cfd}
 
-Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos \cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de 2\textsuperscript{a} ordem. 
+Em todos os casos simulados no presente trabalho foi utilizado o método numérico denominado método dos volumes finitos~\cite{McDonald1971,MacComarck&Paulay1972} para discretizar as equações de governo. O esquema de interpolação para os termos advectivos e difusivos foi o \textit{upwind} de 2\textsuperscript{a} ordem. 
 
 Para lidar com a compressibilidade existente no regime de voo desta munição estudada, o esquema \textit{density-based} totalmente implícito foi aplicado \cite{Weiss1995PreconditioningAT,Weiss1997IMPLICITSO,Weiss1999ImplicitSO}. Em todos os casos simulados o regime estacionário foi considerado, portanto as propriedades calculadas não variam em função do tempo. 
 
-Para o cálculo dos gradientes foi utilizado o método dos Mínimos Quadrados e o esquema de avaliação do fluxo optou pelo ROE-FDS, pois demonstra bons resultados para problemas com escoamentos compressíveis \cite{nicolas-perez_accuracy_2017}. Para a resolução do sistema de equações lineares foi utilizada a técnica \textit{multigrid} \cite{Hutchinson1986}.
+Para o cálculo dos gradientes foi utilizado o método dos Mínimos Quadrados e o esquema de avaliação do fluxo optou pelo ROE-FDS, pois demonstra bons resultados para problemas com escoamentos compressíveis~\cite{nicolas-perez_accuracy_2017}. Para a resolução do sistema de equações lineares foi utilizada a técnica \textit{multigrid}~\cite{Hutchinson1986}.
 
-O problema foi considerado convergido quando todos os resíduos forem menores que \(\num{1e-6}\). O software ANSYS 2021R2 foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos \cite{fluent2021ansys}.
+O problema foi considerado convergido quando todos os resíduos forem menores ou igual a \(\num{1e-6}\). O software ANSYS 2021R2 foi usado para a construção da geometria, construção das malhas, além de suporte aos métodos numéricos e equações de governo e no pós-processamento dos casos construídos~\cite{fluent2021ansys}.
 
 \section{Implementação do Modelo de Trajetória}\label{subsec:implementacao-trajetoria}
 
-No trabalho de \citeauthor{Rosendo2020} cita-se a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. A Figura \ref{fig:fluxograma-mpmtm} apresenta o fluxograma com as condições necessárias, que são apresentadas da \autoref{subsec:condicoes-geometricas} a \autoref{subsec:condicoes-aerodinamicas}, bem como a aplicação do integrador numérico Runge-Kutta de 4\textsuperscript{a} ordem, anteriormente explicado na \autoref{sec:numint}. Destacaram-se três pontos importantes: as funções para o parâmetro de injeção e a guinada de repouso, pois são parâmetros essenciais ao projeto e permitem calcular o desempenho da munição com e sem \textit{Base Bleed}, além da definição da altura que o projetil atinge o solo, pois serve como limitador do processo iterativo. 
+\cite{Rosendo2020} citaram a necessidade de dividir os dados de entrada relevantes de projeto em 4 grandes seções: aerodinâmicos, ambientais, balísticos e geométricos. A Figura \ref{fig:fluxograma-mpmtm} apresenta o fluxograma com as condições necessárias, que são apresentadas da \autoref{subsec:condicoes-geometricas} a \autoref{subsec:condicoes-aerodinamicas}, bem como a aplicação do integrador numérico Runge-Kutta de 4\textsuperscript{a} ordem, anteriormente explicado na \autoref{sec:numint}. Destacaram-se três pontos importantes: as funções para o parâmetro de injeção e a guinada de repouso, pois são parâmetros essenciais ao projeto e permitem calcular o desempenho da munição com e sem \textit{Base Bleed}, além da definição da altura que o projetil atinge o solo, pois serve como limitador do processo iterativo. 
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width=0.6\textwidth]{foto03-fluxograma-mpmtm.png}
-	\caption{Domínio computacional}
-	\label{fig:fluxograma-mpmtm}
+	\caption{\label{fig:fluxograma-mpmtm} Fluxograma do modelo de trajetória MPMTM.}
 \end{figure}
 
 \subsection{Condições Geométricas}\label{subsec:condicoes-geometricas}
