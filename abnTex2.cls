@@ -980,8 +980,9 @@
    \item[]%
    \begin{SingleSpace}%
    \ifthenelse{\not\equal{#1}{default}}{\itshape\selectlanguage{#1}}{}%
- }{\end{SingleSpace}
-   \endlist}
+ }{%
+   \end{SingleSpace}%
+   \endlist}%
 % ---
 
 % ---

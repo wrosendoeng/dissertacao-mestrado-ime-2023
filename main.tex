@@ -158,7 +158,7 @@
 \setfloatadjustment{quadro}{\centering}
 \counterwithout{quadro}{chapter}
 \renewcommand{\cftquadroname}{\quadroname\space} 
-\renewcommand*{\cftqzzuadroaftersnum}{\hfill--\hfill}
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
 
 \setfloatlocations{quadro}{hbtp} % Ver https://github.com/abntex/abntex2/issues/176
 % ---
@@ -214,10 +214,10 @@
 % ---
 
 \begin{fichacatalografica}
-\inputpdf{ficha_catalog_Wallace.pdf}
-\end{fichacatalografica}
+    \includepdf{ficha_catalog_Wallace}
+ \end{fichacatalografica}
 
-\imprimirfichacatalografica
+%\imprimirfichacatalografica
 
 % ---
 
@@ -226,10 +226,10 @@
 % ---
 
 \begin{folhadeaprovacao}
-\inputpdf{folhadeaprovacao_final.pdf}
+    \includepdf{folha-aprovacao-WALLACEROSENDO}
 \end{folhadeaprovacao}
 %
-\imprimirfolhadeaprovacao
+%\imprimirfolhadeaprovacao
 % ---
 
 \include{pre-texto}
